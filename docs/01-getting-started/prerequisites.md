@@ -17,11 +17,12 @@ Antes de comenzar con la instalación del homelab, asegúrate de cumplir con los
 ### Hardware Utilizado en Esta Guía
 
 Este homelab fue construido en un **portátil HP** con:
-- **CPU**: Intel Core i5 (4 cores)
-- **RAM**: 16 GB DDR3
-- **SSD**: 256 GB (sistema y contenedores)
-- **HDD**: 250 GB (backups locales)
+- **CPU**: AMD Ryzen 5 3550H (4 cores, 8 threads)
+- **RAM**: 16 GB
+- **SSD Principal**: Micron 2200V NVMe 500 GB (sistema y contenedores)
+- **SSD Secundario**: Crucial MX500 250 GB (backups locales)
 - **Red**: Ethernet 1 Gbps
+- **Sistema**: ASUS TUF Gaming FX505DY
 
 ### Opciones de Hardware
 

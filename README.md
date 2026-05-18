@@ -116,7 +116,8 @@
 
 ### Requisitos Previos
 
-- **Hardware**: Portátil/PC con al menos 8GB RAM, 100GB disco SSD + HDD opcional para backups
+- **Hardware**: Portátil/PC con al menos 8GB RAM, 100GB disco SSD + SSD/HDD adicional para backups
+- **Este proyecto**: ASUS TUF Gaming FX505DY (Ryzen 5 3550H, 16GB RAM, NVMe 500GB + SSD 250GB)
 - **Software**: Proxmox VE 8.x instalado
 - **Red**: Acceso a router para configurar IPs estáticas o DHCP reservado
 - **Conocimientos**: Básicos de Linux, Docker y redes

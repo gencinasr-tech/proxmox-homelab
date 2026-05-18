@@ -170,8 +170,8 @@ Este es un **homelab completo y funcional** basado en Proxmox VE que te permite 
 
 ### Hardware
 - **Mínimo**: Portátil viejo con 8GB RAM (~0€ si ya lo tienes)
-- **Recomendado**: PC con 16GB RAM y SSD (~300-500€)
-- **Opcional**: HDD adicional para backups (~50€)
+- **Este proyecto**: ASUS TUF Gaming FX505DY (Ryzen 5 3550H, 16GB RAM, 500GB + 250GB SSD)
+- **Recomendado**: PC/Portátil con 16GB RAM y SSD (~300-500€)
 
 ### Software
 - **Todo es gratuito y open-source**: 0€

@@ -2,6 +2,15 @@
 
 Esta guía reproduce **todos los pasos y comandos** ejecutados durante la construcción del servidor Proxmox, desde la instalación base hasta la configuración de backups en Google Drive. Está diseñada para copiar y pegar, y refleja fielmente las direcciones IP, rutas y configuraciones utilizadas.
 
+> [!NOTE] Hardware Real del Proyecto
+> Este homelab fue construido en un **ASUS TUF Gaming FX505DY** con:
+> - **CPU**: AMD Ryzen 5 3550H (4 cores, 8 threads)
+> - **RAM**: 16 GB
+> - **SSD Principal**: Micron 2200V NVMe 500 GB
+> - **SSD Secundario**: Crucial MX500 250 GB (backups)
+>
+> Algunas referencias en esta guía mencionan "HDD" por razones históricas, pero el disco de backups es un SSD.
+
 > [!WARNING] Seguridad
 > Las contraseñas, tokens y secretos reales han sido reemplazados por placeholders como `TU_PASSWORD_AQUI`. Debes sustituirlos por tus propias claves seguras.
 

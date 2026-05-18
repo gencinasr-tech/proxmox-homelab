@@ -62,7 +62,7 @@
 │  └─ CT115: Downloads (Descargador de música)                   │
 │                                                                 │
 │  💾 Backups                                                     │
-│  ├─ Local: HDD 250GB (/mnt/hdd250)                            │
+│  ├─ Local: SSD 250GB (/mnt/hdd250) - Crucial MX500           │
 │  ├─ Remoto: Google Drive (cifrado con rclone)                  │
 │  └─ Duplicati: Backups selectivos de datos                     │
 └─────────────────────────────────────────────────────────────────┘

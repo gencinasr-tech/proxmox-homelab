@@ -243,16 +243,20 @@ Esto permite acceder a servicios privados desde LAN sin VPN, útil para:
 
 ```
 Proxmox Host
-├── local (SSD 256GB)
+├── local (NVMe 500GB)
+│   ├── Micron 2200V NVMe
 │   ├── ISO images
 │   ├── CT templates
 │   └── Backups de configuración
 │
-├── local-lvm (SSD 256GB)
+├── local-lvm (NVMe 500GB)
+│   ├── Partición LVM en NVMe principal
 │   ├── Discos de VMs
 │   └── Volúmenes de CTs
 │
-└── /mnt/hdd250 (HDD 250GB)
+└── /mnt/hdd250 (SSD 250GB)
+    ├── Crucial MX500 SATA SSD
+    ├── Nota: nombre "hdd250" es legacy, es un SSD
     ├── backups/
     │   └── dump/          # Backups de Proxmox
     ├── data/              # Datos compartidos

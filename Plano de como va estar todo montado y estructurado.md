@@ -1,3 +1,16 @@
+═══════════════════════════════════════════════════════════════════════════════
+HARDWARE REAL DEL PROYECTO
+═══════════════════════════════════════════════════════════════════════════════
+Sistema: ASUS TUF Gaming FX505DY
+CPU: AMD Ryzen 5 3550H (4 cores, 8 threads)
+RAM: 16 GB
+SSD Principal: Micron 2200V NVMe 500 GB (sistema y contenedores)
+SSD Secundario: Crucial MX500 250 GB (backups)
+
+NOTA: Este documento menciona "HDD" por razones históricas, pero el disco de 
+backups es un SSD. Las rutas como "/mnt/hdd250" se mantienen por compatibilidad.
+═══════════════════════════════════════════════════════════════════════════════
+
 PROXMOX PVE - 192.168.1.200
 │
 ├── HOST / SISTEMA BASE

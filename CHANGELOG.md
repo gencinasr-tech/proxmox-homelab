@@ -63,7 +63,7 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/lang/es/).
 - Rutas estáticas para acceso LAN → red privada
 - Scripts de rendimiento (modo turbo y modo noche)
 - Configuración de portátil (ignorar cierre de tapa)
-- HDD 250GB dedicado para backups locales
+- SSD 250GB (Crucial MX500) dedicado para backups locales
 - Certificados SSL locales para dominios .home.arpa
 - OAuth 2.0 / OpenID Connect para SSO
 - Monitoring de discos con Scrutiny

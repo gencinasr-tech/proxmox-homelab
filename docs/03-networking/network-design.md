@@ -71,7 +71,7 @@ Arquitectura y diseño de la red del homelab.
       │
       │
       └─── vmbr1 (Private Bridge) ───────────┐
-           10.0.0.0/24                       │
+           10.10.10.0/24                       │
                                              │
            ┌─────────────────────────────────┤
            │ Servicios Privados             │
@@ -129,7 +129,7 @@ Arquitectura y diseño de la red del homelab.
 - Desde Internet: ❌ Bloqueado (excepto VPN)
 - A Internet: ✅ Permitido
 
-### Red Privada (10.0.0.0/24)
+### Red Privada (10.10.10.0/24)
 
 **Propósito:** Servicios sensibles aislados
 
@@ -192,7 +192,7 @@ Usuario Remoto → Tailscale VPN → CT100 (Subnet Router)
 ### Acceso a Internet desde Servicios
 
 ```
-Servicio Privado (10.0.0.x) → vmbr1 → NAT → vmbr0 → Router → Internet
+Servicio Privado (10.10.10.x) → vmbr1 → NAT → vmbr0 → Router → Internet
 ```
 
 ### Proxy Reverso
@@ -201,9 +201,9 @@ Servicio Privado (10.0.0.x) → vmbr1 → NAT → vmbr0 → Router → Internet
 Cliente → Nginx Proxy Manager (CT112)
               │
               ├─→ homarr.local → CT101 (192.168.1.101)
-              ├─→ vault.local → CT106 (10.0.0.106)
-              ├─→ cloud.local → CT108 (10.0.0.108)
-              └─→ grafana.local → CT105 (10.0.0.105)
+              ├─→ vault.local → CT106 (10.10.10.106)
+              ├─→ cloud.local → CT108 (10.10.10.108)
+              └─→ grafana.local → CT105 (10.10.10.105)
 ```
 
 ## Direccionamiento IP
@@ -228,26 +228,26 @@ Cliente → Nginx Proxy Manager (CT112)
 #### Servicios LAN (192.168.1.x)
 | IP | ID | Hostname | Servicio |
 |----|-------|----------|----------|
-| 192.168.1.100 | CT100 | tailscale | VPN |
+| 192.168.1.87 | CT100 | tailscale | VPN |
 | 192.168.1.101 | CT101 | homarr | Dashboard |
 | 192.168.1.102 | CT102 | portainer | Docker Mgmt |
 | 192.168.1.103 | CT103 | adguard | DNS |
 | 192.168.1.104 | VM104 | casaos | Storage |
 | 192.168.1.112 | CT112 | proxy | Nginx PM |
 
-#### Servicios Privados (10.0.0.x)
+#### Servicios Privados (10.10.10.x)
 | IP | ID | Hostname | Servicio |
 |----|-------|----------|----------|
-| 10.0.0.105 | CT105 | monitoring | Grafana |
-| 10.0.0.106 | CT106 | vault | Vaultwarden |
-| 10.0.0.107 | CT107 | paperless | Paperless |
-| 10.0.0.108 | CT108 | cloud | Nextcloud |
-| 10.0.0.109 | VM109 | photos | Immich |
-| 10.0.0.110 | CT110 | tools | Utilidades |
-| 10.0.0.111 | CT111 | databases | PostgreSQL/MariaDB |
-| 10.0.0.113 | CT113 | keycloak | SSO |
-| 10.0.0.114 | CT114 | music | Navidrome |
-| 10.0.0.115 | CT115 | downloads | qBittorrent |
+| 10.10.10.105 | CT105 | monitoring | Grafana |
+| 10.10.10.106 | CT106 | vault | Vaultwarden |
+| 10.10.10.107 | CT107 | paperless | Paperless |
+| 10.10.10.108 | CT108 | cloud | Nextcloud |
+| 10.10.10.109 | VM109 | photos | Immich |
+| 10.10.10.110 | CT110 | tools | Utilidades |
+| 10.10.10.111 | CT111 | databases | PostgreSQL/MariaDB |
+| 10.10.10.113 | CT113 | keycloak | SSO |
+| 10.10.10.114 | CT114 | music | Navidrome |
+| 10.10.10.115 | CT115 | downloads | qBittorrent |
 
 ## Puertos y Servicios
 

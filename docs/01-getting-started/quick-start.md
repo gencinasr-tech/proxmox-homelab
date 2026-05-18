@@ -127,7 +127,11 @@ Dentro del CT:
 ```bash
 # Instalar Tailscale
 curl -fsSL https://tailscale.com/install.sh | sh
-tailscale up --advertise-routes=192.168.1.0/24 --accept-routes
+
+# Anunciar ambas redes (LAN y Privada)
+tailscale up --advertise-routes=192.168.1.0/24,10.10.10.0/24 --accept-routes
+
+# Nota: Debes aprobar las rutas en el panel de Tailscale (https://login.tailscale.com)
 ```
 
 ### CT 101 - Dashboard

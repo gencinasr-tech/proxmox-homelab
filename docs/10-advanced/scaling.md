@@ -174,10 +174,10 @@ pct migrate 100 nodo2 --restart
 
 ```yaml
 # Inicializar swarm
-docker swarm init --advertise-addr 192.168.1.100
+docker swarm init --advertise-addr 192.168.1.87
 
 # Añadir workers
-docker swarm join --token TOKEN 192.168.1.100:2377
+docker swarm join --token TOKEN 192.168.1.87:2377
 
 # Desplegar stack
 docker stack deploy -c docker-compose.yml myapp

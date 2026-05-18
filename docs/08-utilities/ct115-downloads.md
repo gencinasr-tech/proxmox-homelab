@@ -6,7 +6,7 @@ Cliente de torrents con interfaz web.
 
 - **ID:** CT115
 - **Hostname:** downloads
-- **IP Privada:** 10.0.0.115
+- **IP Privada:** 10.10.10.115
 - **OS:** Debian 12
 - **Recursos:** 2 CPU, 2GB RAM, 16GB disco + almacenamiento de descargas
 
@@ -26,7 +26,7 @@ Para instrucciones completas de instalación y configuración, consulta la docum
 
 ## 🔗 Acceso
 
-- **Interno:** http://10.0.0.115:8080
+- **Interno:** http://10.10.10.115:8080
 - **Externo:** https://downloads.tu-dominio.com (vía Nginx Proxy Manager)
 
 ## 🔗 Recursos Relacionados

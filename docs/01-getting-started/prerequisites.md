@@ -1,4 +1,4 @@
-# ✅ Requisitos Previos
+﻿# ✅ Requisitos Previos
 
 Antes de comenzar con la instalación del homelab, asegúrate de cumplir con los siguientes requisitos.
 
@@ -137,7 +137,7 @@ Este homelab usa dos redes:
   - Gateway: `10.10.10.87` (Tailscale Gateway)
   - Servicios: `10.10.10.30-90`
 
-> **Nota**: Si tu red local usa otro rango (ej: `192.168.0.x` o `10.0.0.x`), deberás ajustar las IPs en toda la configuración.
+> **Nota**: Si tu red local usa otro rango (ej: `192.168.0.x` o `10.10.10.x`), deberás ajustar las IPs en toda la configuración.
 
 ## 💿 Software
 

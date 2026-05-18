@@ -27,8 +27,8 @@ ip route show
 
 # Salida típica:
 default via 192.168.1.1 dev vmbr0
-10.0.0.0/24 dev vmbr1 proto kernel scope link src 10.0.0.1
-100.64.0.0/10 via 192.168.1.100 dev vmbr0
+10.10.10.0/24 dev vmbr1 proto kernel scope link src 10.10.10.1
+100.64.0.0/10 via 192.168.1.87 dev vmbr0
 192.168.1.0/24 dev vmbr0 proto kernel scope link src 192.168.1.10
 ```
 
@@ -37,7 +37,7 @@ default via 192.168.1.1 dev vmbr0
 ```
 ip route add <red_destino> via <gateway> dev <interfaz>
               ↓              ↓            ↓
-         10.0.0.0/24   192.168.1.10    vmbr0
+         10.10.10.0/24   192.168.1.10    vmbr0
 ```
 
 ## Rutas en Proxmox
@@ -59,23 +59,23 @@ iface vmbr0 inet static
 # Bridge Privado
 auto vmbr1
 iface vmbr1 inet static
-    address 10.0.0.1/24
+    address 10.10.10.1/24
     bridge-ports none
     bridge-stp off
     bridge-fd 0
     # Ruta a Tailscale
-    post-up ip route add 100.64.0.0/10 via 192.168.1.100 dev vmbr0
-    post-down ip route del 100.64.0.0/10 via 192.168.1.100 dev vmbr0
+    post-up ip route add 100.64.0.0/10 via 192.168.1.87 dev vmbr0
+    post-down ip route del 100.64.0.0/10 via 192.168.1.87 dev vmbr0
 ```
 
 ### Rutas Temporales
 
 ```bash
 # Añadir ruta temporal (se pierde al reiniciar)
-ip route add 10.0.0.0/24 via 192.168.1.10
+ip route add 10.10.10.0/24 via 192.168.1.10
 
 # Eliminar ruta
-ip route del 10.0.0.0/24 via 192.168.1.10
+ip route del 10.10.10.0/24 via 192.168.1.10
 
 # Cambiar ruta por defecto
 ip route change default via 192.168.1.1
@@ -88,17 +88,17 @@ ip route change default via 192.168.1.1
 ```bash
 # Desde dispositivos LAN a red privada
 # (Configurar en router o dispositivos)
-ip route add 10.0.0.0/24 via 192.168.1.10
+ip route add 10.10.10.0/24 via 192.168.1.10
 
 # Verificar
-ping 10.0.0.106  # Vaultwarden
+ping 10.10.10.106  # Vaultwarden
 ```
 
 #### Ruta a Tailscale
 
 ```bash
 # Desde Proxmox a red Tailscale
-ip route add 100.64.0.0/10 via 192.168.1.100 dev vmbr0
+ip route add 100.64.0.0/10 via 192.168.1.87 dev vmbr0
 
 # Verificar
 ping 100.64.0.1  # Tailscale coordination server
@@ -118,7 +118,7 @@ echo 'net.ipv6.conf.all.forwarding = 1' >> /etc/sysctl.conf
 sysctl -p
 
 # Anunciar subnets
-tailscale up --advertise-routes=192.168.1.0/24,10.0.0.0/24 --accept-routes
+tailscale up --advertise-routes=192.168.1.0/24,10.10.10.0/24 --accept-routes
 ```
 
 ### Aprobar Rutas en Tailscale
@@ -128,7 +128,7 @@ tailscale up --advertise-routes=192.168.1.0/24,10.0.0.0/24 --accept-routes
 1. Ir a Machines
 2. Seleccionar CT100
 3. Edit route settings
-4. Aprobar: 192.168.1.0/24 y 10.0.0.0/24
+4. Aprobar: 192.168.1.0/24 y 10.10.10.0/24
 ```
 
 ### Acceso desde Dispositivos Remotos
@@ -138,7 +138,7 @@ Una vez configurado el subnet router:
 ```bash
 # Desde cualquier dispositivo con Tailscale
 ping 192.168.1.10  # Proxmox
-ping 10.0.0.106    # Vaultwarden
+ping 10.10.10.106    # Vaultwarden
 ssh user@192.168.1.10  # SSH a Proxmox
 ```
 
@@ -151,17 +151,17 @@ ssh user@192.168.1.10  # SSH a Proxmox
 
 auto eth0
 iface eth0 inet static
-    address 10.0.0.106/24
-    gateway 10.0.0.1
+    address 10.10.10.106/24
+    gateway 10.10.10.1
     # Ruta específica si es necesaria
-    post-up ip route add 192.168.1.0/24 via 10.0.0.1
+    post-up ip route add 192.168.1.0/24 via 10.10.10.1
 ```
 
 ### Rutas Dinámicas
 
 ```bash
 # Añadir ruta desde Proxmox al contenedor
-pct exec 106 -- ip route add 192.168.1.0/24 via 10.0.0.1
+pct exec 106 -- ip route add 192.168.1.0/24 via 10.10.10.1
 
 # Verificar rutas en contenedor
 pct exec 106 -- ip route show
@@ -175,7 +175,7 @@ Para que dispositivos LAN puedan acceder a la red privada:
 
 ```
 # En configuración del router (ejemplo genérico)
-Red de destino: 10.0.0.0
+Red de destino: 10.10.10.0
 Máscara: 255.255.255.0
 Gateway: 192.168.1.10
 Interfaz: LAN
@@ -184,14 +184,14 @@ Interfaz: LAN
 ### Ejemplo: Router Mikrotik
 
 ```bash
-/ip route add dst-address=10.0.0.0/24 gateway=192.168.1.10
+/ip route add dst-address=10.10.10.0/24 gateway=192.168.1.10
 ```
 
 ### Ejemplo: pfSense/OPNsense
 
 ```
 System → Routing → Static Routes
-- Destination network: 10.0.0.0/24
+- Destination network: 10.10.10.0/24
 - Gateway: 192.168.1.10
 - Description: Proxmox Private Network
 ```
@@ -201,7 +201,7 @@ System → Routing → Static Routes
 La mayoría de routers domésticos tienen una sección de "Rutas Estáticas" o "Static Routes":
 
 ```
-Destino: 10.0.0.0
+Destino: 10.10.10.0
 Máscara: 255.255.255.0
 Gateway: 192.168.1.10
 ```
@@ -217,7 +217,7 @@ Para routing más avanzado basado en origen:
 echo "200 custom" >> /etc/iproute2/rt_tables
 
 # Añadir regla
-ip rule add from 10.0.0.0/24 table custom
+ip rule add from 10.10.10.0/24 table custom
 
 # Añadir ruta a la tabla
 ip route add default via 192.168.1.1 table custom
@@ -227,8 +227,8 @@ ip route add default via 192.168.1.1 table custom
 
 ```bash
 # Forzar tráfico de un servicio por una ruta específica
-ip rule add from 10.0.0.106 table vpn
-ip route add default via 192.168.1.100 table vpn
+ip rule add from 10.10.10.106 table vpn
+ip route add default via 192.168.1.87 table vpn
 ```
 
 ## Troubleshooting
@@ -240,7 +240,7 @@ ip route add default via 192.168.1.100 table vpn
 ip route show
 
 # Ver ruta a destino específico
-ip route get 10.0.0.106
+ip route get 10.10.10.106
 
 # Ver tabla de routing completa
 route -n
@@ -253,14 +253,14 @@ netstat -rn
 
 ```bash
 # Ping a través de ruta
-ping -c 4 10.0.0.106
+ping -c 4 10.10.10.106
 
 # Traceroute para ver el camino
-traceroute 10.0.0.106
-mtr 10.0.0.106
+traceroute 10.10.10.106
+mtr 10.10.10.106
 
 # Probar desde interfaz específica
-ping -I vmbr0 10.0.0.106
+ping -I vmbr0 10.10.10.106
 ```
 
 ### Problemas Comunes
@@ -269,10 +269,10 @@ ping -I vmbr0 10.0.0.106
 
 ```bash
 # Verificar ruta existe
-ip route show | grep 10.0.0.0
+ip route show | grep 10.10.10.0
 
 # Añadir si falta
-ip route add 10.0.0.0/24 via 192.168.1.10
+ip route add 10.10.10.0/24 via 192.168.1.10
 
 # Verificar forwarding
 cat /proc/sys/net/ipv4/ip_forward  # Debe ser 1
@@ -286,7 +286,7 @@ auto vmbr0
 iface vmbr0 inet static
     address 192.168.1.10/24
     gateway 192.168.1.1
-    post-up ip route add 10.0.0.0/24 via 192.168.1.10
+    post-up ip route add 10.10.10.0/24 via 192.168.1.10
 ```
 
 #### Conflicto de rutas
@@ -296,10 +296,10 @@ iface vmbr0 inet static
 ip route show | sort
 
 # Eliminar ruta incorrecta
-ip route del 10.0.0.0/24 via <gateway_incorrecto>
+ip route del 10.10.10.0/24 via <gateway_incorrecto>
 
 # Añadir ruta correcta
-ip route add 10.0.0.0/24 via <gateway_correcto>
+ip route add 10.10.10.0/24 via <gateway_correcto>
 ```
 
 ### Debug de Routing
@@ -313,7 +313,7 @@ dmesg | grep -i route
 journalctl -k | grep -i route
 
 # Capturar tráfico
-tcpdump -i vmbr0 host 10.0.0.106
+tcpdump -i vmbr0 host 10.10.10.106
 ```
 
 ## Monitoreo
@@ -332,7 +332,7 @@ ip route show default
 
 # Ruta a red privada
 echo -e "\nRuta a red privada:"
-ip route show 10.0.0.0/24
+ip route show 10.10.10.0/24
 
 # Ruta a Tailscale
 echo -e "\nRuta a Tailscale:"
@@ -340,7 +340,7 @@ ip route show 100.64.0.0/10
 
 # Probar conectividad
 echo -e "\nProbando conectividad:"
-ping -c 1 -W 1 10.0.0.1 && echo "✓ Red privada OK" || echo "✗ Red privada FAIL"
+ping -c 1 -W 1 10.10.10.1 && echo "✓ Red privada OK" || echo "✗ Red privada FAIL"
 ping -c 1 -W 1 192.168.1.1 && echo "✓ Gateway OK" || echo "✗ Gateway FAIL"
 ```
 
@@ -381,7 +381,7 @@ ping -c 1 -W 1 192.168.1.1 && echo "✓ Gateway OK" || echo "✗ Gateway FAIL"
 # Script de test completo
 #!/bin/bash
 ROUTES=(
-    "10.0.0.0/24"
+    "10.10.10.0/24"
     "100.64.0.0/10"
 )
 
@@ -421,16 +421,16 @@ iface vmbr0 inet static
 # Bridge Privado
 auto vmbr1
 iface vmbr1 inet static
-    address 10.0.0.1/24
+    address 10.10.10.1/24
     bridge-ports none
     bridge-stp off
     bridge-fd 0
     post-up echo 1 > /proc/sys/net/ipv4/ip_forward
-    post-up iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o vmbr0 -j MASQUERADE
-    post-down iptables -t nat -D POSTROUTING -s 10.0.0.0/24 -o vmbr0 -j MASQUERADE
+    post-up iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -o vmbr0 -j MASQUERADE
+    post-down iptables -t nat -D POSTROUTING -s 10.10.10.0/24 -o vmbr0 -j MASQUERADE
     # Ruta a Tailscale
-    post-up ip route add 100.64.0.0/10 via 192.168.1.100 dev vmbr0 || true
-    post-down ip route del 100.64.0.0/10 via 192.168.1.100 dev vmbr0 || true
+    post-up ip route add 100.64.0.0/10 via 192.168.1.87 dev vmbr0 || true
+    post-down ip route del 100.64.0.0/10 via 192.168.1.87 dev vmbr0 || true
 ```
 
 ## 📚 Recursos Relacionados

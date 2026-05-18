@@ -6,7 +6,7 @@ Plataforma de gestión de fotos y videos auto-hospedada.
 
 - **ID:** VM109
 - **Hostname:** immich
-- **IP Privada:** 10.0.0.109
+- **IP Privada:** 10.10.10.109
 - **OS:** Ubuntu Server 22.04
 - **Recursos:** 4 CPU, 8GB RAM, 64GB disco + almacenamiento
 
@@ -26,7 +26,7 @@ Para instrucciones completas de instalación y configuración, consulta la docum
 
 ## 🔗 Acceso
 
-- **Interno:** http://10.0.0.109:2283
+- **Interno:** http://10.10.10.109:2283
 - **Externo:** https://photos.tu-dominio.com (vía Nginx Proxy Manager)
 
 ## 🔗 Recursos Relacionados

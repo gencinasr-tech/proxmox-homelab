@@ -414,7 +414,7 @@ services:
 logging:
   driver: syslog
   options:
-    syslog-address: "tcp://192.168.1.100:514"
+    syslog-address: "tcp://192.168.1.87:514"
 
 # Loki (para Grafana)
 logging:

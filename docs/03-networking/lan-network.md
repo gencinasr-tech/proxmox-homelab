@@ -23,16 +23,16 @@ Internet
    │  ├─ Proxmox Host (192.168.1.10)
    │  │  │
    │  │  ├─ vmbr0 (Bridge LAN)
-   │  │  │  ├─ CT100 - Tailscale (192.168.1.100)
+   │  │  │  ├─ CT100 - Tailscale (192.168.1.87)
    │  │  │  ├─ CT101 - Dashboards (192.168.1.101)
    │  │  │  ├─ CT102 - Portainer (192.168.1.102)
    │  │  │  ├─ CT103 - DNS (192.168.1.103)
    │  │  │  └─ CT112 - Proxy (192.168.1.112)
    │  │  │
    │  │  └─ vmbr1 (Bridge Privada)
-   │  │     ├─ CT105 - Monitoring (10.0.0.105)
-   │  │     ├─ CT106 - Vaultwarden (10.0.0.106)
-   │  │     └─ CT108 - Nextcloud (10.0.0.108)
+   │  │     ├─ CT105 - Monitoring (10.10.10.105)
+   │  │     ├─ CT106 - Vaultwarden (10.10.10.106)
+   │  │     └─ CT108 - Nextcloud (10.10.10.108)
    │  │
    │  ├─ Dispositivos LAN
    │  └─ WiFi Access Points
@@ -43,7 +43,7 @@ Internet
 | Red | Rango | Uso |
 |-----|-------|-----|
 | LAN Principal | 192.168.1.0/24 | Dispositivos generales |
-| Red Privada | 10.0.0.0/24 | Servicios internos |
+| Red Privada | 10.10.10.0/24 | Servicios internos |
 | Tailscale | 100.64.0.0/10 | VPN mesh |
 | Docker | 172.16.0.0/12 | Redes Docker |
 
@@ -55,17 +55,17 @@ Internet
 - `192.168.1.103` - DNS Server (AdGuard/Pi-hole)
 
 #### Servicios Públicos (LAN)
-- `192.168.1.100` - Tailscale
+- `192.168.1.87` - Tailscale
 - `192.168.1.101` - Homarr Dashboard
 - `192.168.1.102` - Portainer
 - `192.168.1.112` - Nginx Proxy Manager
 
-#### Servicios Privados (10.0.0.0/24)
-- `10.0.0.105` - Grafana/Prometheus
-- `10.0.0.106` - Vaultwarden
-- `10.0.0.107` - Paperless-ngx
-- `10.0.0.108` - Nextcloud
-- `10.0.0.113` - Keycloak
+#### Servicios Privados (10.10.10.0/24)
+- `10.10.10.105` - Grafana/Prometheus
+- `10.10.10.106` - Vaultwarden
+- `10.10.10.107` - Paperless-ngx
+- `10.10.10.108` - Nextcloud
+- `10.10.10.113` - Keycloak
 
 ## Configuración de Interfaces
 
@@ -92,14 +92,14 @@ iface vmbr0 inet static
 
 auto vmbr1
 iface vmbr1 inet static
-    address 10.0.0.1/24
+    address 10.10.10.1/24
     bridge-ports none
     bridge-stp off
     bridge-fd 0
     # NAT para acceso a internet
     post-up echo 1 > /proc/sys/net/ipv4/ip_forward
-    post-up iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o vmbr0 -j MASQUERADE
-    post-down iptables -t nat -D POSTROUTING -s 10.0.0.0/24 -o vmbr0 -j MASQUERADE
+    post-up iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -o vmbr0 -j MASQUERADE
+    post-down iptables -t nat -D POSTROUTING -s 10.10.10.0/24 -o vmbr0 -j MASQUERADE
 ```
 
 ### Aplicar Cambios
@@ -175,10 +175,10 @@ En tu router o servidor DHCP:
 
 ```bash
 # Ruta a red privada desde LAN
-ip route add 10.0.0.0/24 via 192.168.1.10
+ip route add 10.10.10.0/24 via 192.168.1.10
 
 # Ruta a Tailscale
-ip route add 100.64.0.0/10 via 192.168.1.100
+ip route add 100.64.0.0/10 via 192.168.1.87
 ```
 
 ### NAT para Red Privada
@@ -188,7 +188,7 @@ ip route add 100.64.0.0/10 via 192.168.1.100
 echo 1 > /proc/sys/net/ipv4/ip_forward
 
 # Configurar NAT
-iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -o vmbr0 -j MASQUERADE
+iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -o vmbr0 -j MASQUERADE
 
 # Hacer permanente
 echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf

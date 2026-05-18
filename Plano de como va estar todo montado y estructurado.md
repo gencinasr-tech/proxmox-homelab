@@ -1,4 +1,4 @@
-═══════════════════════════════════════════════════════════════════════════════
+﻿═══════════════════════════════════════════════════════════════════════════════
 HARDWARE REAL DEL PROYECTO
 ═══════════════════════════════════════════════════════════════════════════════
 Sistema: ASUS TUF Gaming FX505DY
@@ -183,11 +183,11 @@ PROXMOX PVE - 192.168.1.200
 │   │
 │   ├── CT 106 vaultwarden - 10.10.10.60
 │   │   ├── Vaultwarden
-│   │   │   ├── Principal seguro: https://vaultwarden.tailfcb362.ts.net
+│   │   │   ├── Principal seguro: https://vaultwarden.tailXXXXXX.ts.net
 │   │   │   ├── Interno/proxy: https://vault.home.arpa
 │   │   │   └── Directo interno: http://10.10.10.60:8080
 │   │   ├── Vaultwarden Admin
-│   │   │   └── https://vaultwarden.tailfcb362.ts.net/admin
+│   │   │   └── https://vaultwarden.tailXXXXXX.ts.net/admin
 │   │   ├── Tailscale Serve HTTPS
 │   │   ├── Registros cerrados
 │   │   ├── Portainer Agent
@@ -4629,7 +4629,7 @@ cd /opt/stacks/vaultwarden
 cp docker-compose.yml docker-compose.yml.bak
 
 sed -i '/DOMAIN=/d' docker-compose.yml
-sed -i '/TZ=Europe\/Madrid/a\      - DOMAIN=https://vaultwarden.tailfcb362.ts.net' docker-compose.yml
+sed -i '/TZ=Europe\/Madrid/a\      - DOMAIN=https://vaultwarden.tailXXXXXX.ts.net' docker-compose.yml
 
 docker compose down
 docker compose up -d
@@ -4651,7 +4651,7 @@ docker compose up -d
 Ahora entra aquí:
 
 ```text
-https://vaultwarden.tailfcb362.ts.net/#/register
+https://vaultwarden.tailXXXXXX.ts.net/#/register
 ```
 
 Crea tu cuenta con:
@@ -4679,7 +4679,7 @@ docker compose up -d
 Ahora entra aquí:
 
 ```text
-https://vaultwarden.tailfcb362.ts.net
+https://vaultwarden.tailXXXXXX.ts.net
 ```
 
 Y usa:
@@ -4692,7 +4692,7 @@ Contraseña: la contraseña maestra que acabas de crear
 El panel admin queda en:
 
 ```text
-https://vaultwarden.tailfcb362.ts.net/admin
+https://vaultwarden.tailXXXXXX.ts.net/admin
 ```
 
 Ahí se entra con el `ADMIN_TOKEN`, no con tu contraseña maestra.
@@ -4703,7 +4703,7 @@ Perfecto ✅ Vaultwarden ya está funcionando bien con HTTPS privado por Tailsca
 
 ```text
 Vaultwarden:
-https://vaultwarden.tailfcb362.ts.net
+https://vaultwarden.tailXXXXXX.ts.net
 ```
 
 Ahora haz solo estas 3 cosas para dejarlo fino:
@@ -4728,8 +4728,8 @@ docker compose up -d
 URLs finales:
 
 ```text
-Vaultwarden:       https://vaultwarden.tailfcb362.ts.net
-Vaultwarden Admin: https://vaultwarden.tailfcb362.ts.net/admin
+Vaultwarden:       https://vaultwarden.tailXXXXXX.ts.net
+Vaultwarden Admin: https://vaultwarden.tailXXXXXX.ts.net/admin
 IP privada:        10.10.10.60
 Tailscale IP:      100.92.226.111
 ```
@@ -4738,7 +4738,7 @@ En Homarr añade:
 
 ```text
 Nombre: Vaultwarden
-URL: https://vaultwarden.tailfcb362.ts.net
+URL: https://vaultwarden.tailXXXXXX.ts.net
 ```
 
 En Uptime Kuma añade monitor HTTPS:
@@ -4746,7 +4746,7 @@ En Uptime Kuma añade monitor HTTPS:
 ```text
 Nombre: Vaultwarden
 Tipo: HTTP(s)
-URL: https://vaultwarden.tailfcb362.ts.net
+URL: https://vaultwarden.tailXXXXXX.ts.net
 ```
 
 Con esto queda añadido al esquema:
@@ -4754,9 +4754,9 @@ Con esto queda añadido al esquema:
 ```text
 CT 106 vaultwarden - 10.10.10.60 / 100.92.226.111
 ├── Vaultwarden
-│   └── https://vaultwarden.tailfcb362.ts.net
+│   └── https://vaultwarden.tailXXXXXX.ts.net
 ├── Vaultwarden Admin
-│   └── https://vaultwarden.tailfcb362.ts.net/admin
+│   └── https://vaultwarden.tailXXXXXX.ts.net/admin
 ├── Tailscale Serve HTTPS
 └── Registros cerrados
 ```
@@ -4937,14 +4937,14 @@ Privado:
 Para Vaultwarden, en Homarr usa mejor la URL HTTPS de Tailscale:
 
 ```text
-https://vaultwarden.tailfcb362.ts.net
+https://vaultwarden.tailXXXXXX.ts.net
 ```
 
 
 Porque Vaultwarden ahora lo estás usando por **Tailscale Serve HTTPS**:
 
 ```text
-https://vaultwarden.tailfcb362.ts.net
+https://vaultwarden.tailXXXXXX.ts.net
 ```
 
 y eso no responde como un ping normal desde Homarr. Homarr puede marcar mal el estado si intenta comprobar “ping” ICMP o si el contenedor `dashboard` no resuelve/entra bien a nombres `.ts.net`.
@@ -4955,13 +4955,13 @@ Configúralo así:
 
 ```text
 App URL:
-https://vaultwarden.tailfcb362.ts.net
+https://vaultwarden.tailXXXXXX.ts.net
 
 Health check / Ping:
 HTTP status
 
 Health check URL:
-https://vaultwarden.tailfcb362.ts.net
+https://vaultwarden.tailXXXXXX.ts.net
 ```
 
 Si Homarr te deja elegir código esperado:
@@ -4987,7 +4987,7 @@ y para abrir la app usa la URL buena:
 
 ```text
 App URL:
-https://vaultwarden.tailfcb362.ts.net
+https://vaultwarden.tailXXXXXX.ts.net
 ```
 
 Así queda perfecto:
@@ -23342,7 +23342,7 @@ Primero haz el bloque 1. Si no funciona, haz el bloque 2.
 
 Vamos. Para Vaultwarden vamos **manual en Keycloak** y **sin forzar SSO_ONLY**. Así no te quedas fuera del gestor de contraseñas.
 
-La guía actual tiene Vaultwarden en **CT106**, IP `10.10.10.60`, usando **Tailscale Serve HTTPS** con `https://vaultwarden.tailfcb362.ts.net`, y con `DOMAIN` ya configurado hacia ese dominio. Además, Vaultwarden ahora soporta SSO por OpenID Connect con variables como `SSO_ENABLED`, `SSO_ONLY`, `SSO_AUTHORITY`, `SSO_CLIENT_ID` y `SSO_CLIENT_SECRET`; su plantilla indica que `SSO_AUTHORITY` no debe llevar `/.well-known/openid-configuration` ni barra final.
+La guía actual tiene Vaultwarden en **CT106**, IP `10.10.10.60`, usando **Tailscale Serve HTTPS** con `https://vaultwarden.tailXXXXXX.ts.net`, y con `DOMAIN` ya configurado hacia ese dominio. Además, Vaultwarden ahora soporta SSO por OpenID Connect con variables como `SSO_ENABLED`, `SSO_ONLY`, `SSO_AUTHORITY`, `SSO_CLIENT_ID` y `SSO_CLIENT_SECRET`; su plantilla indica que `SSO_AUTHORITY` no debe llevar `/.well-known/openid-configuration` ni barra final.
 
 ---
 
@@ -23395,7 +23395,7 @@ Client authentication: ONAuthorization: OFFAuthentication flow:Standard flow: ON
 Aquí es lo importante. Pon:
 
 ```
-Root URL:https://vaultwarden.tailfcb362.ts.netHome URL:https://vaultwarden.tailfcb362.ts.netValid redirect URIs:https://vaultwarden.tailfcb362.ts.net/identity/connect/oidc-signinhttps://vaultwarden.tailfcb362.ts.net/*Valid post logout redirect URIs:https://vaultwarden.tailfcb362.ts.net/*Web origins:https://vaultwarden.tailfcb362.ts.net
+Root URL:https://vaultwarden.tailXXXXXX.ts.netHome URL:https://vaultwarden.tailXXXXXX.ts.netValid redirect URIs:https://vaultwarden.tailXXXXXX.ts.net/identity/connect/oidc-signinhttps://vaultwarden.tailXXXXXX.ts.net/*Valid post logout redirect URIs:https://vaultwarden.tailXXXXXX.ts.net/*Web origins:https://vaultwarden.tailXXXXXX.ts.net
 ```
 
 Guarda.
@@ -23480,7 +23480,7 @@ services:
       - "8080:80"
     environment:
       - TZ=Europe/Madrid
-      - DOMAIN=https://vaultwarden.tailfcb362.ts.net
+      - DOMAIN=https://vaultwarden.tailXXXXXX.ts.net
       - SIGNUPS_ALLOWED=false
       - INVITATIONS_ALLOWED=false
       - WEBSOCKET_ENABLED=true
@@ -23535,7 +23535,7 @@ Si sale algo de certificado, será el mismo problema que Nextcloud con `auth.hom
 Cuando el contenedor quede `Up`, abre:
 
 ```text
-https://vaultwarden.tailfcb362.ts.net
+https://vaultwarden.tailXXXXXX.ts.net
 ```
 
 Debe seguir funcionando el login normal, y debería aparecer opción de SSO.
@@ -23583,7 +23583,7 @@ for line in text.splitlines():
 docker compose up -dLIENT_SECRET=).+/\1********/"T_FILE" docker-compose.yml 
 ===== Compose relevante =====
     image: vaultwarden/server:latest
-      - DOMAIN=https://vaultwarden.tailfcb362.ts.net
+      - DOMAIN=https://vaultwarden.tailXXXXXX.ts.net
       - SSO_ENABLED=true
       - SSO_ONLY=false
       - SSO_AUTHORITY=https://auth.home.arpa/realms/homelab
@@ -23830,8 +23830,8 @@ insert = f"""      - SIGNUPS_ALLOWED=true
       - INVITATIONS_ALLOWED=false
       - ORG_CREATION_USERS={admin}"""
 
-text = text.replace("      - DOMAIN=https://vaultwarden.tailfcb362.ts.net",
-                    "      - DOMAIN=https://vaultwarden.tailfcb362.ts.net\n" + insert,
+text = text.replace("      - DOMAIN=https://vaultwarden.tailXXXXXX.ts.net",
+                    "      - DOMAIN=https://vaultwarden.tailXXXXXX.ts.net\n" + insert,
                     1)
 
 p.write_text(text + "\n")
@@ -23875,7 +23875,7 @@ grep -E "signups_allowed|invitations_allowed|org_creation_users" data/config.jso
 Con esto, tu madre y tu hermano podrán entrar a:
 
 ```text
-https://vaultwarden.tailfcb362.ts.net
+https://vaultwarden.tailXXXXXX.ts.net
 ```
 
 y darle a:
@@ -23917,7 +23917,7 @@ Las organizaciones permiten compartir credenciales con otros miembros, y las col
 Entra con tu cuenta en Vaultwarden:
 
 ```text
-https://vaultwarden.tailfcb362.ts.net
+https://vaultwarden.tailXXXXXX.ts.net
 ```
 
 Busca algo tipo:

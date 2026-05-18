@@ -6,7 +6,7 @@ Configuración de Tailscale para acceso remoto seguro al homelab.
 
 - **ID:** CT100
 - **Hostname:** tailscale
-- **IP LAN:** 192.168.1.100
+- **IP LAN:** 192.168.1.87
 - **OS:** Debian 12
 - **Recursos:** 1 CPU, 512MB RAM, 8GB disco
 
@@ -24,7 +24,7 @@ Tailscale proporciona:
 Para instrucciones completas de instalación y configuración, consulta:
 
 - **Guía de Instalación:** Ver sección de Tailscale en la documentación principal
-- **Configuración de Subnet Router:** Configurar acceso a redes 192.168.1.0/24 y 10.0.0.0/24
+- **Configuración de Subnet Router:** Configurar acceso a redes 192.168.1.0/24 y 10.10.10.0/24
 - **Gestión de Dispositivos:** Panel de Tailscale en https://login.tailscale.com
 
 ## 🔗 Recursos Relacionados

@@ -6,7 +6,7 @@ Gestor de contraseñas auto-hospedado compatible con Bitwarden.
 
 - **ID:** CT106
 - **Hostname:** vaultwarden
-- **IP Privada:** 10.0.0.106
+- **IP Privada:** 10.10.10.106
 - **OS:** Debian 12
 - **Recursos:** 1 CPU, 1GB RAM, 8GB disco
 
@@ -32,7 +32,7 @@ Para instrucciones completas de instalación y configuración, consulta la docum
 
 ## 🔗 Acceso
 
-- **Interno:** http://10.0.0.106:80
+- **Interno:** http://10.10.10.106:80
 - **Externo:** https://vault.tu-dominio.com (vía Nginx Proxy Manager)
 
 ## 🔗 Recursos Relacionados

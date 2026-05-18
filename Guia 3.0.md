@@ -1,4 +1,4 @@
-# Guía Completa de Instalación del Homelab Proxmox (Réplica Exacta)
+﻿# Guía Completa de Instalación del Homelab Proxmox (Réplica Exacta)
 
 Esta guía reproduce **todos los pasos y comandos** ejecutados durante la construcción del servidor Proxmox, desde la instalación base hasta la configuración de backups en Google Drive. Está diseñada para copiar y pegar, y refleja fielmente las direcciones IP, rutas y configuraciones utilizadas.
 
@@ -1132,7 +1132,7 @@ Configurar el dominio en Vaultwarden:
 cd /opt/stacks/vaultwarden
 cp docker-compose.yml docker-compose.yml.bak
 sed -i '/DOMAIN=/d' docker-compose.yml
-sed -i '/TZ=Europe\/Madrid/a\      - DOMAIN=https://vaultwarden.tailfcb362.ts.net' docker-compose.yml
+sed -i '/TZ=Europe\/Madrid/a\      - DOMAIN=https://vaultwarden.tailXXXXXX.ts.net' docker-compose.yml
 docker compose down && docker compose up -d
 ```
 
@@ -1143,14 +1143,14 @@ sed -i 's/SIGNUPS_ALLOWED=false/SIGNUPS_ALLOWED=true/' docker-compose.yml
 docker compose down && docker compose up -d
 ```
 
-Acceder a `https://vaultwarden.tailfcb362.ts.net/#/register`, crear cuenta, y luego cerrar registros:
+Acceder a `https://vaultwarden.tailXXXXXX.ts.net/#/register`, crear cuenta, y luego cerrar registros:
 
 ```bash
 sed -i 's/SIGNUPS_ALLOWED=true/SIGNUPS_ALLOWED=false/' docker-compose.yml
 docker compose down && docker compose up -d
 ```
 
-Panel admin en `https://vaultwarden.tailfcb362.ts.net/admin` con el token.
+Panel admin en `https://vaultwarden.tailXXXXXX.ts.net/admin` con el token.
 
 ---
 
@@ -1841,7 +1841,7 @@ Añadir monitores HTTP(s) para:
 - Portainer: `https://portainer.home.arpa`
 - AdGuard: `https://adguard.home.arpa`
 - CasaOS: `https://casaos.home.arpa`
-- Vaultwarden: `https://vaultwarden.tailfcb362.ts.net` o `http://10.10.10.60:8080`
+- Vaultwarden: `https://vaultwarden.tailXXXXXX.ts.net` o `http://10.10.10.60:8080`
 - Paperless: `https://paperless.home.arpa`
 - Nextcloud: `https://nextcloud.home.arpa`
 - Immich: `https://immich.home.arpa`

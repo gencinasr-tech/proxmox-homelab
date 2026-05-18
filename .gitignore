@@ -1,0 +1,75 @@
+# Archivos de configuración con datos sensibles
+*.env
+.env.*
+secrets/
+*.key
+*.pem
+*.crt
+*.p12
+*.pfx
+
+# Backups y datos temporales
+*.backup
+*.bak
+*.tmp
+*.log
+*.old
+backups/
+temp/
+tmp/
+
+# Configuraciones locales específicas
+local-config/
+my-config/
+personal/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+
+# IDEs y editores
+.vscode/settings.json
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node modules (si usas algún script en Node.js)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+env/
+
+# Archivos grandes que no deben estar en Git
+*.iso
+*.qcow2
+*.vmdk
+*.vdi
+*.img
+
+# Datos de prueba
+test-data/
+sample-data/
+
+# Documentos en sucio (mantener solo versiones limpias)
+*-draft.md
+*-borrador.md
+*-sucio.md
+notas-personales.md
+
+# Exports de configuración con datos reales
+*-export-real.json
+*-backup-real.yml
+realm-export-production.json
+
+# Made with Bob

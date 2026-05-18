@@ -6,7 +6,7 @@ Sistema de gestión documental digital (DMS).
 
 - **ID:** CT107
 - **Hostname:** paperless
-- **IP Privada:** 10.10.10.107
+- **IP Privada:** 10.10.10.40
 - **OS:** Debian 12
 - **Recursos:** 2 CPU, 2GB RAM, 16GB disco
 
@@ -25,7 +25,7 @@ Para instrucciones completas de instalación y configuración, consulta la docum
 
 ## 🔗 Acceso
 
-- **Interno:** http://10.10.10.107:8000
+- **Interno:** http://10.10.10.40:8000
 - **Externo:** https://paperless.tu-dominio.com (vía Nginx Proxy Manager)
 
 ## 🔗 Recursos Relacionados

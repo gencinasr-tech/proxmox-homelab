@@ -6,7 +6,7 @@ Servidor de streaming de música personal.
 
 - **ID:** CT114
 - **Hostname:** music
-- **IP Privada:** 10.10.10.114
+- **IP Privada:** 10.10.10.82
 - **OS:** Debian 12
 - **Recursos:** 2 CPU, 2GB RAM, 16GB disco + biblioteca de música
 
@@ -26,7 +26,7 @@ Para instrucciones completas de instalación y configuración, consulta la docum
 
 ## 🔗 Acceso
 
-- **Interno:** http://10.10.10.114:4533
+- **Interno:** http://10.10.10.82:4533
 - **Externo:** https://music.tu-dominio.com (vía Nginx Proxy Manager)
 
 ## 🔗 Recursos Relacionados

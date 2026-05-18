@@ -6,7 +6,7 @@ Contenedor con herramientas y utilidades varias.
 
 - **ID:** CT110
 - **Hostname:** tools
-- **IP Privada:** 10.10.10.110
+- **IP Privada:** 10.10.10.70
 - **OS:** Debian 12
 - **Recursos:** 2 CPU, 2GB RAM, 16GB disco
 

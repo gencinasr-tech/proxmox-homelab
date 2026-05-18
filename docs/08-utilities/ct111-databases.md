@@ -6,7 +6,7 @@ Servidor centralizado de bases de datos (PostgreSQL y MariaDB).
 
 - **ID:** CT111
 - **Hostname:** databases
-- **IP Privada:** 10.10.10.111
+- **IP Privada:** 10.10.10.73
 - **OS:** Debian 12
 - **Recursos:** 4 CPU, 8GB RAM, 64GB disco
 

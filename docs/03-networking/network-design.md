@@ -201,9 +201,9 @@ Servicio Privado (10.10.10.x) → vmbr1 → NAT → vmbr0 → Router → Interne
 Cliente → Nginx Proxy Manager (CT112)
               │
               ├─→ homarr.local → CT101 (192.168.1.101)
-              ├─→ vault.local → CT106 (10.10.10.106)
-              ├─→ cloud.local → CT108 (10.10.10.108)
-              └─→ grafana.local → CT105 (10.10.10.105)
+              ├─→ vault.local → CT106 (10.10.10.60)
+              ├─→ cloud.local → CT108 (10.10.10.65)
+              └─→ grafana.local → CT105 (10.10.10.50)
 ```
 
 ## Direccionamiento IP
@@ -238,16 +238,16 @@ Cliente → Nginx Proxy Manager (CT112)
 #### Servicios Privados (10.10.10.x)
 | IP | ID | Hostname | Servicio |
 |----|-------|----------|----------|
-| 10.10.10.105 | CT105 | monitoring | Grafana |
-| 10.10.10.106 | CT106 | vault | Vaultwarden |
-| 10.10.10.107 | CT107 | paperless | Paperless |
-| 10.10.10.108 | CT108 | cloud | Nextcloud |
-| 10.10.10.109 | VM109 | photos | Immich |
-| 10.10.10.110 | CT110 | tools | Utilidades |
-| 10.10.10.111 | CT111 | databases | PostgreSQL/MariaDB |
-| 10.10.10.113 | CT113 | keycloak | SSO |
-| 10.10.10.114 | CT114 | music | Navidrome |
-| 10.10.10.115 | CT115 | downloads | qBittorrent |
+| 10.10.10.50 | CT105 | monitoring | Grafana |
+| 10.10.10.60 | CT106 | vault | Vaultwarden |
+| 10.10.10.40 | CT107 | paperless | Paperless |
+| 10.10.10.65 | CT108 | cloud | Nextcloud |
+| 10.10.10.30 | VM109 | photos | Immich |
+| 10.10.10.70 | CT110 | tools | Utilidades |
+| 10.10.10.73 | CT111 | databases | PostgreSQL/MariaDB |
+| 10.10.10.74 | CT113 | keycloak | SSO |
+| 10.10.10.82 | CT114 | music | Navidrome |
+| 10.10.10.83 | CT115 | downloads | qBittorrent |
 
 ## Puertos y Servicios
 

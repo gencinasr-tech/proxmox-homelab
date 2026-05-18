@@ -30,9 +30,9 @@ Internet
    │  │  │  └─ CT112 - Proxy (192.168.1.112)
    │  │  │
    │  │  └─ vmbr1 (Bridge Privada)
-   │  │     ├─ CT105 - Monitoring (10.10.10.105)
-   │  │     ├─ CT106 - Vaultwarden (10.10.10.106)
-   │  │     └─ CT108 - Nextcloud (10.10.10.108)
+   │  │     ├─ CT105 - Monitoring (10.10.10.50)
+   │  │     ├─ CT106 - Vaultwarden (10.10.10.60)
+   │  │     └─ CT108 - Nextcloud (10.10.10.65)
    │  │
    │  ├─ Dispositivos LAN
    │  └─ WiFi Access Points
@@ -61,11 +61,11 @@ Internet
 - `192.168.1.112` - Nginx Proxy Manager
 
 #### Servicios Privados (10.10.10.0/24)
-- `10.10.10.105` - Grafana/Prometheus
-- `10.10.10.106` - Vaultwarden
-- `10.10.10.107` - Paperless-ngx
-- `10.10.10.108` - Nextcloud
-- `10.10.10.113` - Keycloak
+- `10.10.10.50` - Grafana/Prometheus
+- `10.10.10.60` - Vaultwarden
+- `10.10.10.40` - Paperless-ngx
+- `10.10.10.65` - Nextcloud
+- `10.10.10.74` - Keycloak
 
 ## Configuración de Interfaces
 

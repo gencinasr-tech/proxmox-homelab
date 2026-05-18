@@ -1,6 +1,7 @@
 # Archivos de configuración con datos sensibles
 *.env
 .env.*
+!.env.example
 secrets/
 *.key
 *.pem

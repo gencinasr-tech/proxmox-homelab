@@ -6,7 +6,7 @@ Plataforma de almacenamiento y colaboración en la nube auto-hospedada.
 
 - **ID:** CT108
 - **Hostname:** nextcloud
-- **IP Privada:** 10.10.10.108
+- **IP Privada:** 10.10.10.65
 - **OS:** Debian 12
 - **Recursos:** 4 CPU, 4GB RAM, 32GB disco + almacenamiento
 
@@ -26,7 +26,7 @@ Para instrucciones completas de instalación y configuración, consulta la docum
 
 ## 🔗 Acceso
 
-- **Interno:** http://10.10.10.108:80
+- **Interno:** http://10.10.10.65:80
 - **Externo:** https://cloud.tu-dominio.com (vía Nginx Proxy Manager)
 
 ## 🔗 Recursos Relacionados

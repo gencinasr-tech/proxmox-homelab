@@ -6,7 +6,7 @@ Sistema de monitoreo y visualización de métricas del homelab.
 
 - **ID:** CT105
 - **Hostname:** monitoring
-- **IP Privada:** 10.10.10.105
+- **IP Privada:** 10.10.10.50
 - **OS:** Debian 12
 - **Recursos:** 2 CPU, 4GB RAM, 16GB disco
 
@@ -26,7 +26,7 @@ Para instrucciones completas, consulta:
 
 ## 🔗 Acceso
 
-- **Interno:** http://10.10.10.105:3000
+- **Interno:** http://10.10.10.50:3000
 - **Externo:** https://grafana.tu-dominio.com (vía Nginx Proxy Manager)
 
 ## 🔗 Recursos Relacionados

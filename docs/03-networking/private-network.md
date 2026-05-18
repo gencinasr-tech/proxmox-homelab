@@ -66,14 +66,14 @@ iptables -t nat -L -n -v | grep 10.10.10.0
 # Crear contenedor con red privada
 pct create 106 local:vztmpl/debian-12-standard_12.2-1_amd64.tar.zst \
   --hostname vaultwarden \
-  --net0 name=eth0,bridge=vmbr1,ip=10.10.10.106/24,gw=10.10.10.1 \
+  --net0 name=eth0,bridge=vmbr1,ip=10.10.10.60/24,gw=10.10.10.1 \
   --nameserver 192.168.1.103 \
   --cores 2 \
   --memory 2048 \
   --rootfs local-lvm:8
 
 # O editar contenedor existente
-pct set 106 -net0 name=eth0,bridge=vmbr1,ip=10.10.10.106/24,gw=10.10.10.1
+pct set 106 -net0 name=eth0,bridge=vmbr1,ip=10.10.10.60/24,gw=10.10.10.1
 ```
 
 ## Servicios en Red Privada
@@ -82,27 +82,27 @@ pct set 106 -net0 name=eth0,bridge=vmbr1,ip=10.10.10.106/24,gw=10.10.10.1
 
 | IP | ID | Servicio | Puerto | Criticidad |
 |----|-------|----------|--------|------------|
-| 10.10.10.105 | CT105 | Grafana/Prometheus | 3000/9090 | Alta |
-| 10.10.10.106 | CT106 | Vaultwarden | 80 | Crítica |
-| 10.10.10.107 | CT107 | Paperless-ngx | 8000 | Media |
-| 10.10.10.108 | CT108 | Nextcloud | 80 | Alta |
-| 10.10.10.109 | VM109 | Immich | 2283 | Media |
-| 10.10.10.110 | CT110 | Herramientas | Varios | Baja |
-| 10.10.10.111 | CT111 | Bases de Datos | 5432/3306 | Crítica |
-| 10.10.10.113 | CT113 | Keycloak | 8080 | Crítica |
-| 10.10.10.114 | CT114 | Navidrome | 4533 | Baja |
-| 10.10.10.115 | CT115 | qBittorrent | 8080 | Baja |
+| 10.10.10.50 | CT105 | Grafana/Prometheus | 3000/9090 | Alta |
+| 10.10.10.60 | CT106 | Vaultwarden | 80 | Crítica |
+| 10.10.10.40 | CT107 | Paperless-ngx | 8000 | Media |
+| 10.10.10.65 | CT108 | Nextcloud | 80 | Alta |
+| 10.10.10.30 | VM109 | Immich | 2283 | Media |
+| 10.10.10.70 | CT110 | Herramientas | Varios | Baja |
+| 10.10.10.73 | CT111 | Bases de Datos | 5432/3306 | Crítica |
+| 10.10.10.74 | CT113 | Keycloak | 8080 | Crítica |
+| 10.10.10.82 | CT114 | Navidrome | 4533 | Baja |
+| 10.10.10.83 | CT115 | qBittorrent | 8080 | Baja |
 
 ### CT105 - Monitoring (Grafana/Prometheus)
 
 ```yaml
 # Configuración de red
-IP: 10.10.10.105/24
+IP: 10.10.10.50/24
 Gateway: 10.10.10.1
 DNS: 192.168.1.103
 
 # Acceso
-Interno: http://10.10.10.105:3000
+Interno: http://10.10.10.50:3000
 Externo: https://grafana.tu-dominio.com (vía proxy)
 ```
 
@@ -110,12 +110,12 @@ Externo: https://grafana.tu-dominio.com (vía proxy)
 
 ```yaml
 # Configuración de red
-IP: 10.10.10.106/24
+IP: 10.10.10.60/24
 Gateway: 10.10.10.1
 DNS: 192.168.1.103
 
 # Acceso
-Interno: http://10.10.10.106:80
+Interno: http://10.10.10.60:80
 Externo: https://vault.tu-dominio.com (vía proxy)
 
 # Seguridad
@@ -128,12 +128,12 @@ Externo: https://vault.tu-dominio.com (vía proxy)
 
 ```yaml
 # Configuración de red
-IP: 10.10.10.108/24
+IP: 10.10.10.65/24
 Gateway: 10.10.10.1
 DNS: 192.168.1.103
 
 # Acceso
-Interno: http://10.10.10.108:80
+Interno: http://10.10.10.65:80
 Externo: https://cloud.tu-dominio.com (vía proxy)
 
 # Características
@@ -146,7 +146,7 @@ Externo: https://cloud.tu-dominio.com (vía proxy)
 
 ```yaml
 # Configuración de red
-IP: 10.10.10.111/24
+IP: 10.10.10.73/24
 Gateway: 10.10.10.1
 DNS: 192.168.1.103
 
@@ -164,12 +164,12 @@ MariaDB: 3306
 
 ```yaml
 # Configuración de red
-IP: 10.10.10.113/24
+IP: 10.10.10.74/24
 Gateway: 10.10.10.1
 DNS: 192.168.1.103
 
 # Acceso
-Interno: http://10.10.10.113:8080
+Interno: http://10.10.10.74:8080
 Externo: https://auth.tu-dominio.com (vía proxy)
 
 # Función
@@ -193,7 +193,7 @@ server {
     server_name vault.tu-dominio.com;
 
     location / {
-        proxy_pass http://10.10.10.106:80;
+        proxy_pass http://10.10.10.60:80;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -207,9 +207,9 @@ server {
 ```bash
 # Acceso directo vía Tailscale
 # Una vez conectado a Tailscale, puedes acceder directamente:
-http://10.10.10.106  # Vaultwarden
-http://10.10.10.108  # Nextcloud
-http://10.10.10.105:3000  # Grafana
+http://10.10.10.60  # Vaultwarden
+http://10.10.10.65  # Nextcloud
+http://10.10.10.50:3000  # Grafana
 ```
 
 ### Reglas de Firewall
@@ -250,7 +250,7 @@ ip route show | grep 10.10.10.0
 ```yaml
 # En Nextcloud config.php
 'dbtype' => 'pgsql',
-'dbhost' => '10.10.10.111:5432',
+'dbhost' => '10.10.10.73:5432',
 'dbname' => 'nextcloud',
 'dbuser' => 'nextcloud',
 'dbpassword' => 'password',
@@ -263,7 +263,7 @@ ip route show | grep 10.10.10.0
 datasources:
   - name: Prometheus
     type: prometheus
-    url: http://10.10.10.105:9090
+    url: http://10.10.10.50:9090
     access: proxy
 ```
 
@@ -300,10 +300,10 @@ sysctl -p
 
 ```bash
 # Desde Proxmox, probar conectividad
-ping 10.10.10.106
+ping 10.10.10.60
 
 # Verificar servicio está escuchando
-nmap -p 80 10.10.10.106
+nmap -p 80 10.10.10.60
 
 # Verificar firewall
 iptables -L -n -v | grep 10.0.0

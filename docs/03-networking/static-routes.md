@@ -91,7 +91,7 @@ ip route change default via 192.168.1.1
 ip route add 10.10.10.0/24 via 192.168.1.10
 
 # Verificar
-ping 10.10.10.106  # Vaultwarden
+ping 10.10.10.60  # Vaultwarden
 ```
 
 #### Ruta a Tailscale
@@ -138,7 +138,7 @@ Una vez configurado el subnet router:
 ```bash
 # Desde cualquier dispositivo con Tailscale
 ping 192.168.1.10  # Proxmox
-ping 10.10.10.106    # Vaultwarden
+ping 10.10.10.60    # Vaultwarden
 ssh user@192.168.1.10  # SSH a Proxmox
 ```
 
@@ -151,7 +151,7 @@ ssh user@192.168.1.10  # SSH a Proxmox
 
 auto eth0
 iface eth0 inet static
-    address 10.10.10.106/24
+    address 10.10.10.60/24
     gateway 10.10.10.1
     # Ruta específica si es necesaria
     post-up ip route add 192.168.1.0/24 via 10.10.10.1
@@ -227,7 +227,7 @@ ip route add default via 192.168.1.1 table custom
 
 ```bash
 # Forzar tráfico de un servicio por una ruta específica
-ip rule add from 10.10.10.106 table vpn
+ip rule add from 10.10.10.60 table vpn
 ip route add default via 192.168.1.87 table vpn
 ```
 
@@ -240,7 +240,7 @@ ip route add default via 192.168.1.87 table vpn
 ip route show
 
 # Ver ruta a destino específico
-ip route get 10.10.10.106
+ip route get 10.10.10.60
 
 # Ver tabla de routing completa
 route -n
@@ -253,14 +253,14 @@ netstat -rn
 
 ```bash
 # Ping a través de ruta
-ping -c 4 10.10.10.106
+ping -c 4 10.10.10.60
 
 # Traceroute para ver el camino
-traceroute 10.10.10.106
-mtr 10.10.10.106
+traceroute 10.10.10.60
+mtr 10.10.10.60
 
 # Probar desde interfaz específica
-ping -I vmbr0 10.10.10.106
+ping -I vmbr0 10.10.10.60
 ```
 
 ### Problemas Comunes
@@ -313,7 +313,7 @@ dmesg | grep -i route
 journalctl -k | grep -i route
 
 # Capturar tráfico
-tcpdump -i vmbr0 host 10.10.10.106
+tcpdump -i vmbr0 host 10.10.10.60
 ```
 
 ## Monitoreo

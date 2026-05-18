@@ -5,10 +5,19 @@ Configuración de Tailscale para acceso remoto seguro al homelab.
 ## 📋 Información del Contenedor
 
 - **ID:** CT100
-- **Hostname:** tailscale
-- **IP LAN:** 192.168.1.87
+- **Hostname:** tailscale-gw
+- **IP LAN:** 192.168.1.87/24
+- **IP Privada:** 10.10.10.87/24
 - **OS:** Debian 12
-- **Recursos:** 1 CPU, 512MB RAM, 8GB disco
+- **Recursos:** 1 CPU, 1GB RAM, 8GB disco
+
+## 🌐 Función
+
+CT100 actúa como:
+- **Tailscale Gateway:** Punto de entrada VPN
+- **Subnet Router:** Anuncia redes 192.168.1.0/24 y 10.10.10.0/24
+- **NAT:** Permite acceso desde Tailscale a ambas redes
+- **Exit Node:** (Opcional) Salida a internet a través del homelab
 
 ## 🎯 Propósito
 

@@ -6,7 +6,7 @@ Servidor de autenticación y Single Sign-On (SSO).
 
 - **ID:** CT113
 - **Hostname:** keycloak
-- **IP Privada:** 10.10.10.113
+- **IP Privada:** 10.10.10.74
 - **OS:** Debian 12
 - **Recursos:** 4 CPU, 4GB RAM, 16GB disco
 
@@ -32,7 +32,7 @@ Para instrucciones completas de instalación y configuración, consulta la docum
 
 ## 🔗 Acceso
 
-- **Interno:** http://10.10.10.113:8080
+- **Interno:** http://10.10.10.74:8080
 - **Externo:** https://auth.tu-dominio.com (vía Nginx Proxy Manager)
 
 ## 🔗 Recursos Relacionados

@@ -142,9 +142,9 @@ Este homelab usa dos redes:
 
 ### Sistema Operativo del Host
 
-- **Proxmox VE 8.x** (basado en Debian 13 "Trixie")
+- **Proxmox VE 9.1.9** (basado en Debian 13 "Trixie")
 - Descarga: [https://www.proxmox.com/en/downloads](https://www.proxmox.com/en/downloads)
-- Versión utilizada: Proxmox VE 8.2
+- Versión utilizada en este proyecto: Proxmox VE 9.1.9
 
 ### Herramientas Necesarias
 

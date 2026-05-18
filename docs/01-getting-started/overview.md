@@ -44,9 +44,9 @@ Este es un **homelab completo y funcional** basado en Proxmox VE que te permite 
 
 ### Tecnologías Utilizadas
 
-- **Proxmox VE 8.x**: Plataforma de virtualización open-source
-- **LXC Containers**: Contenedores Linux ligeros para servicios
-- **Docker**: Contenedores de aplicaciones
+- **Proxmox VE 9.1.9**: Plataforma de virtualización open-source
+- **LXC Containers**: 14 contenedores Linux ligeros para servicios
+- **Docker**: Contenedores de aplicaciones (40+ servicios)
 - **Tailscale**: VPN moderna basada en WireGuard
 - **Nginx Proxy Manager**: Reverse proxy con interfaz web
 - **Keycloak**: Sistema de autenticación centralizada (SSO)
@@ -128,15 +128,18 @@ Este es un **homelab completo y funcional** basado en Proxmox VE que te permite 
 - Múltiples agentes conectados
 - Despliegue de stacks desde la UI
 
-## 📈 Estadísticas del Sistema
+## 📈 Estadísticas del Sistema (Datos Reales)
 
-- **Contenedores LXC**: 13
-- **Máquinas Virtuales**: 2
+- **Contenedores LXC**: 14 (100, 101, 102, 103, 105, 106, 107, 108, 110, 111, 112, 113, 114, 115)
+- **Máquinas Virtuales**: 2 (104 CasaOS, 109 Immich)
 - **Servicios Docker**: 40+
 - **Dominios internos**: 25+
-- **Redes configuradas**: 2
-- **Sistemas de backup**: 3
-- **Servicios con SSO**: 4+
+- **Redes configuradas**: 2 (vmbr0 LAN + vmbr10 Privada)
+- **Sistemas de backup**: 3 niveles
+- **Servicios con SSO**: 4+ (Grafana, Homarr, Immich, Nextcloud)
+- **CPU Total Asignada**: 20 cores
+- **RAM Total Asignada**: 23 GB
+- **RAM en Uso Real**: ~8.5 GB (37%)
 
 ## 🎯 Casos de Uso
 

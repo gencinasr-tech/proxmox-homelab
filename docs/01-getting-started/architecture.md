@@ -190,7 +190,7 @@ Esto permite acceder a servicios privados desde LAN sin VPN, útil para:
 
 ## 📦 Contenedores vs Máquinas Virtuales
 
-### Contenedores LXC (13 total)
+### Contenedores LXC (14 total)
 
 **Ventajas**:
 - Muy ligeros (arrancan en segundos)
@@ -204,21 +204,21 @@ Esto permite acceder a servicios privados desde LAN sin VPN, útil para:
 - Servicios de red (DNS, proxy)
 - Herramientas de gestión
 
-**Lista de CTs**:
-- CT100: Tailscale Gateway
-- CT101: Dashboards
-- CT102: Portainer
-- CT103: DNS (AdGuard)
-- CT105: Monitoring
-- CT106: Vaultwarden
-- CT107: Paperless
-- CT108: Nextcloud
-- CT110: Tools
-- CT111: Databases
-- CT112: Nginx Proxy Manager
-- CT113: Keycloak
-- CT114: Navidrome
-- CT115: Downloads
+**Lista de CTs** (datos reales del servidor):
+- CT100: TailScale - 1 CPU, 1GB RAM, 8GB disco
+- CT101: dashboard - 1 CPU, 1GB RAM, 12GB disco
+- CT102: Portainer - 1 CPU, 1GB RAM, 12GB disco
+- CT103: DNS - 1 CPU, 1GB RAM, 12GB disco
+- CT105: monitoring - 1 CPU, 1GB RAM, 16GB disco
+- CT106: vaultwarden - 1 CPU, 1GB RAM, 12GB disco
+- CT107: paperless - 1 CPU, 1GB RAM, 16GB disco
+- CT108: nextcloud - 2 CPU, 2GB RAM, 32GB disco
+- CT110: tools - 1 CPU, 1GB RAM, 16GB disco
+- CT111: databases - 1 CPU, 2GB RAM, 24GB disco
+- CT112: proxy - 1 CPU, 1GB RAM, 12GB disco
+- CT113: identity (Keycloak) - 2 CPU, 2GB RAM, 24GB disco
+- CT114: music (Navidrome) - 1 CPU, 1GB RAM, 12GB disco
+- CT115: downloads - 2 CPU, 2GB RAM, 12GB disco
 
 ### Máquinas Virtuales (2 total)
 
@@ -233,9 +233,9 @@ Esto permite acceder a servicios privados desde LAN sin VPN, útil para:
 - Aplicaciones que requieren kernel específico
 - Servicios que no funcionan bien en LXC
 
-**Lista de VMs**:
-- VM104: CasaOS (sistema operativo completo para NAS)
-- VM109: Immich (requiere ML y procesamiento de imágenes)
+**Lista de VMs** (datos reales del servidor):
+- VM104: casaos-nas - 2 CPU, 4GB RAM, 32GB disco
+- VM109: immich - 4 CPU, 6GB RAM, 64GB disco
 
 ## 🗄️ Almacenamiento
 
@@ -416,28 +416,30 @@ Usuario
 
 ## 📊 Recursos por Servicio
 
-### Asignación de Recursos
+### Asignación de Recursos (Datos Reales del Servidor)
 
-| Servicio | CPU | RAM | Disco | Prioridad |
-|----------|-----|-----|-------|-----------|
-| CT100 Tailscale | 1 | 1GB | 8GB | Alta |
-| CT101 Dashboards | 1 | 1GB | 12GB | Media |
-| CT102 Portainer | 1 | 1GB | 8GB | Alta |
-| CT103 DNS | 1 | 512MB | 4GB | Crítica |
-| VM104 CasaOS | 2 | 4GB | 32GB | Alta |
-| CT105 Monitoring | 2 | 2GB | 16GB | Alta |
-| CT106 Vaultwarden | 1 | 512MB | 4GB | Crítica |
-| CT107 Paperless | 2 | 2GB | 16GB | Media |
-| CT108 Nextcloud | 2 | 2GB | 16GB | Alta |
-| VM109 Immich | 4 | 6GB | 64GB | Media |
-| CT110 Tools | 1 | 1GB | 8GB | Baja |
-| CT111 Databases | 2 | 4GB | 32GB | Alta |
-| CT112 Proxy | 1 | 1GB | 8GB | Crítica |
-| CT113 Keycloak | 2 | 2GB | 8GB | Alta |
-| CT114 Navidrome | 1 | 1GB | 8GB | Baja |
-| CT115 Downloads | 1 | 1GB | 8GB | Baja |
+| ID | Nombre | Tipo | CPU | RAM | Disco | Estado | Uso RAM Actual |
+|----|--------|------|-----|-----|-------|--------|----------------|
+| 100 | TailScale | LXC | 1 | 1GB | 8GB | ✅ Running | 44 MB |
+| 101 | dashboard | LXC | 1 | 1GB | 12GB | ✅ Running | 616 MB |
+| 102 | Portainer | LXC | 1 | 1GB | 12GB | ✅ Running | 118 MB |
+| 103 | DNS | LXC | 1 | 1GB | 12GB | ✅ Running | 125 MB |
+| 104 | casaos-nas | VM | 2 | 4GB | 32GB | ✅ Running | 2.5 GB |
+| 105 | monitoring | LXC | 1 | 1GB | 16GB | ✅ Running | 205 MB |
+| 106 | vaultwarden | LXC | 1 | 1GB | 12GB | ✅ Running | 121 MB |
+| 107 | paperless | LXC | 1 | 1GB | 16GB | ✅ Running | 104 MB |
+| 108 | nextcloud | LXC | 2 | 2GB | 32GB | ✅ Running | 250 MB |
+| 109 | immich | VM | 4 | 6GB | 64GB | ✅ Running | 2.9 GB |
+| 110 | tools | LXC | 1 | 1GB | 16GB | ✅ Running | 448 MB |
+| 111 | databases | LXC | 1 | 2GB | 24GB | ✅ Running | 158 MB |
+| 112 | proxy | LXC | 1 | 1GB | 12GB | ✅ Running | 238 MB |
+| 113 | identity | LXC | 2 | 2GB | 24GB | ✅ Running | 449 MB |
+| 114 | music | LXC | 1 | 1GB | 12GB | ✅ Running | 181 MB |
+| 115 | downloads | LXC | 2 | 2GB | 12GB | ✅ Running | 128 MB |
 
-**Total requerido**: ~8 CPU cores, ~28GB RAM, ~250GB disco
+**Total Asignado**: 20 CPU cores, 23GB RAM, ~280GB disco
+**Total en Uso Real**: ~8.5GB RAM (37% del asignado)
+**Host Disponible**: AMD Ryzen 5 3550H (4C/8T), 16GB RAM, 500GB NVMe + 250GB SSD
 
 ## 🎯 Decisiones de Diseño
 

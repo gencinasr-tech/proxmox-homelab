@@ -2,8 +2,8 @@
 
 <div align="center">
 
-![Proxmox Version](https://img.shields.io/badge/Proxmox-8.x-orange)
-![Services](https://img.shields.io/badge/Services-15+-blue)
+![Proxmox Version](https://img.shields.io/badge/Proxmox-9.1.9-orange)
+![Services](https://img.shields.io/badge/Services-16-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Status](https://img.shields.io/badge/Status-Production-success)
 
@@ -117,8 +117,8 @@
 ### Requisitos Previos
 
 - **Hardware**: Portátil/PC con al menos 8GB RAM, 100GB disco SSD + SSD/HDD adicional para backups
-- **Este proyecto**: ASUS TUF Gaming FX505DY (Ryzen 5 3550H, 16GB RAM, NVMe 500GB + SSD 250GB)
-- **Software**: Proxmox VE 8.x instalado
+- **Este proyecto**: ASUS TUF Gaming FX505DY (AMD Ryzen 5 3550H 4C/8T, 16GB RAM, Micron NVMe 500GB + Crucial MX500 SSD 250GB)
+- **Software**: Proxmox VE 9.1.9 instalado
 - **Red**: Acceso a router para configurar IPs estáticas o DHCP reservado
 - **Conocimientos**: Básicos de Linux, Docker y redes
 
@@ -218,8 +218,8 @@ cd proxmox-homelab
 ## 🛠️ Tecnologías Utilizadas
 
 ### Virtualización y Contenedores
-- **Proxmox VE 8.x** - Plataforma de virtualización
-- **LXC** - Contenedores Linux ligeros
+- **Proxmox VE 9.1.9** - Plataforma de virtualización
+- **LXC** - Contenedores Linux ligeros (14 contenedores)
 - **Docker** - Contenedores de aplicaciones
 - **Docker Compose** - Orquestación de servicios
 
@@ -264,14 +264,17 @@ cd proxmox-homelab
 
 ## 📊 Estadísticas del Proyecto
 
-- **Contenedores LXC**: 13
-- **Máquinas Virtuales**: 2
+- **Contenedores LXC**: 14 (100, 101, 102, 103, 105, 106, 107, 108, 110, 111, 112, 113, 114, 115)
+- **Máquinas Virtuales**: 2 (104 CasaOS, 109 Immich)
 - **Servicios Docker**: 40+
 - **Dominios internos**: 25+
-- **Redes configuradas**: 2 (LAN + Privada)
+- **Redes configuradas**: 2 (vmbr0 LAN + vmbr10 Privada)
 - **Backups automáticos**: 3 niveles (local, remoto, selectivo)
 - **Líneas de documentación**: 5500+
 - **Scripts de automatización**: 20+
+- **CPU Total Asignada**: 20 cores
+- **RAM Total Asignada**: 23 GB
+- **Almacenamiento Total**: ~200 GB
 
 ## 🎯 Casos de Uso
 

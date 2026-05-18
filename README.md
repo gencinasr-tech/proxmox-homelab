@@ -33,6 +33,17 @@
 - 🔄 **Gestión de contenedores** (Portainer con múltiples agentes)
 - 🌍 **DNS local** con AdGuard Home y dominios .home.arpa
 
+## ⚠️ Aviso Importante
+
+> **Esta documentación está basada en una infraestructura real**, pero todos los valores sensibles han sido sustituidos por placeholders para seguridad:
+>
+> - **Dominios Tailscale**: `tailXXXXXX.ts.net` (reemplaza con tu dominio real)
+> - **IPs de ejemplo**: Las IPs mostradas corresponden a la arquitectura real pero debes adaptarlas a tu red
+> - **Credenciales**: Todos los passwords y tokens son placeholders (`your_*_here`)
+> - **Archivos sensibles**: `.env`, backups reales y exports de producción están en `.gitignore`
+>
+> **Para replicar este homelab**: Copia `.env.example` a `.env` y personaliza todos los valores según tu infraestructura.
+
 ## 🏗️ Arquitectura
 
 ```

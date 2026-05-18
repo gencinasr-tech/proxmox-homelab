@@ -134,5 +134,3 @@ services:
 networks:
   dashboard-net:
     driver: bridge
-
-# Made with Bob

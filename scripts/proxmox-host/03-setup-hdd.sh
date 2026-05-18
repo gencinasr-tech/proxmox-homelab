@@ -101,5 +101,3 @@ echo "  - ID: hdd250-backups"
 echo "  - Directory: /mnt/hdd250/backups"
 echo "  - Content: VZDump backup file"
 echo ""
-
-# Made with Bob

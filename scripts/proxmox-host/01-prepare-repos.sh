@@ -39,5 +39,3 @@ echo ""
 echo "Puedes actualizar el sistema con:"
 echo "  apt upgrade -y"
 echo ""
-
-# Made with Bob

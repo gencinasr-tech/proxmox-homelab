@@ -47,5 +47,3 @@ echo "  1. Cierra la tapa del portátil"
 echo "  2. Desde otro PC, haz ping: ping 192.168.1.200"
 echo "  3. O accede a: https://192.168.1.200:8006"
 echo ""
-
-# Made with Bob

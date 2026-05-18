@@ -95,11 +95,12 @@ Este homelab fue construido en un **portátil ASUS TUF Gaming FX505DY** con:
 
 ### Almacenamiento Adicional
 
-Para backups locales, se recomienda un **HDD adicional**:
+Para backups locales, se recomienda un **disco adicional**:
 - **Mínimo**: 250 GB
 - **Recomendado**: 500 GB - 1 TB
-- **Tipo**: HDD SATA (más económico que SSD para backups)
+- **Tipo**: SSD SATA o HDD SATA (SSD para mejor rendimiento, HDD más económico)
 - **Conexión**: Interno (SATA) o externo (USB 3.0)
+- **Nota**: En este proyecto se usa un SSD Crucial MX500 250GB
 
 ## 🌐 Red
 

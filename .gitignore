@@ -66,8 +66,11 @@ sample-data/
 *-borrador.md
 *-sucio.md
 notas-personales.md
+Guia 3.0.md
+Plano de como va estar todo montado y estructurado.md
 
 # Exports de configuración con datos reales
 *-export-real.json
 *-backup-real.yml
 realm-export-production.json
+proxmox-info-export/

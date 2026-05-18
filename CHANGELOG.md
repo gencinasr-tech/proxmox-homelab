@@ -9,8 +9,8 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/lang/es/).
 
 ### Añadido
 - Infraestructura completa de Proxmox homelab
-- 13 contenedores LXC configurados
-- 2 máquinas virtuales (CasaOS y Immich)
+- 14 contenedores LXC configurados (100, 101, 102, 103, 105, 106, 107, 108, 110, 111, 112, 113, 114, 115)
+- 2 máquinas virtuales (VM104 CasaOS y VM109 Immich)
 - Red LAN (192.168.1.0/24) y red privada (10.10.10.0/24)
 - Tailscale como VPN y gateway entre redes
 - Sistema de backups triple: local, remoto cifrado y selectivo
@@ -55,9 +55,11 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/lang/es/).
 - CT115: Music Downloader
 
 ### Características Técnicas
-- Proxmox VE 8.x como base
+- Proxmox VE 9.1.9 como base
+- Hardware: AMD Ryzen 5 3550H (4C/8T), 16GB RAM
+- Almacenamiento: Micron NVMe 500GB + Crucial MX500 SSD 250GB
 - Docker y Docker Compose para servicios
-- LXC para contenedores ligeros
+- LXC para contenedores ligeros (14 contenedores)
 - Backups automáticos diarios a las 22:30
 - Backups remotos semanales a Google Drive (cifrados)
 - Rutas estáticas para acceso LAN → red privada

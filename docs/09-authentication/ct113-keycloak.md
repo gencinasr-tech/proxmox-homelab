@@ -1,22 +1,56 @@
-﻿# 
+﻿# CT113 - Keycloak (SSO)
 
-> 🚧 **Documentación en Progreso**
->
-> Este documento está siendo desarrollado. Por ahora, consulta la [Guia 3.0.md](../../Guia%203.0.md) en la raíz del repositorio para instrucciones detalladas.
+Servidor de autenticación y Single Sign-On (SSO).
 
-## 📚 Contenido Relacionado
+## 📋 Información del Contenedor
 
+- **ID:** CT113
+- **Hostname:** keycloak
+- **IP Privada:** 10.0.0.113
+- **OS:** Debian 12
+- **Recursos:** 4 CPU, 4GB RAM, 16GB disco
+
+## 🎯 Propósito
+
+Keycloak proporciona:
+- 🔐 Autenticación centralizada (SSO)
+- 👥 Gestión de usuarios y roles
+- 🔑 OAuth 2.0 / OpenID Connect
+- 🛡️ 2FA y autenticación fuerte
+- 📊 Auditoría de accesos
+- 🌐 Federación de identidades
+
+## 🔒 Seguridad
+
+- **Criticidad:** CRÍTICA
+- **Acceso:** Solo vía proxy con SSL
+- **Backups:** Diarios automáticos
+
+## 📚 Documentación Detallada
+
+Para instrucciones completas de instalación y configuración, consulta la documentación principal del proyecto.
+
+## 🔗 Acceso
+
+- **Interno:** http://10.0.0.113:8080
+- **Externo:** https://auth.tu-dominio.com (vía Nginx Proxy Manager)
+
+## 🔗 Recursos Relacionados
+
+- [SSO Grafana](sso-grafana.md)
+- [SSO Homarr](sso-homarr.md)
+- [SSO Immich](sso-immich.md)
+- [SSO Nextcloud](sso-nextcloud.md)
+- [Red Privada](../03-networking/private-network.md)
 - [Índice de Documentación](../README.md)
-- [Guía Completa (Guia 3.0.md)](../../Guia%203.0.md)
 
 ## 🆘 Ayuda
 
 Si necesitas ayuda:
-1. Consulta la guía completa en la raíz del repositorio
-2. Revisa [Issues en GitHub](https://github.com/gencinasr-tech/proxmox-homelab/issues)
+1. Revisa la [documentación completa](../README.md)
+2. Consulta [Issues en GitHub](https://github.com/gencinasr-tech/proxmox-homelab/issues)
 3. Abre una [nueva pregunta](https://github.com/gencinasr-tech/proxmox-homelab/issues/new?template=question.md)
 
 ---
 
 [🏠 Volver al índice](../README.md)
-

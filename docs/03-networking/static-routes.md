@@ -25,11 +25,15 @@ Las rutas estáticas son reglas que indican al sistema operativo cómo llegar a 
 # Ver tabla de rutas actual
 ip route show
 
-# Salida típica:
+# Salida típica en Proxmox Host:
 default via 192.168.1.1 dev vmbr0
-10.10.10.0/24 dev vmbr10 proto kernel scope link src 10.10.10.87
-100.64.0.0/10 via 192.168.1.87 dev vmbr0
 192.168.1.0/24 dev vmbr0 proto kernel scope link src 192.168.1.200
+100.64.0.0/10 via 192.168.1.87 dev vmbr0
+
+# Nota:
+# vmbr10 es un bridge privado sin IP en el host Proxmox.
+# El gateway de 10.10.10.0/24 es CT100 (10.10.10.87).
+# La ruta desde LAN a la red privada debe ir vía 192.168.1.87.
 ```
 
 ### Componentes de una Ruta

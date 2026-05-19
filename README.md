@@ -141,7 +141,7 @@
 
 ```bash
 # 1. Clonar el repositorio en tu PC
-git clone https://github.com/tu-usuario/proxmox-homelab.git
+git clone https://github.com/gencinasr-tech/proxmox-homelab.git
 cd proxmox-homelab
 
 # 2. En Proxmox, preparar el host (ejecutar en Shell de Proxmox)
@@ -173,7 +173,7 @@ cd proxmox-homelab
 ### 💿 Instalación Base
 - [Instalar Proxmox](docs/02-proxmox-base/installation.md) - Desde ISO hasta primer acceso
 - [Configuración Inicial](docs/02-proxmox-base/initial-config.md) - Repos, tapa portátil, updates
-- [Configurar HDD Backups](docs/02-proxmox-base/storage-setup.md) - Disco adicional para backups
+- [Configurar SSD de Backups](docs/02-proxmox-base/storage-setup.md) - Disco adicional para backups
 - [Scripts de Rendimiento](docs/02-proxmox-base/performance-scripts.md) - Modo turbo y modo noche
 
 ### 🌐 Redes

@@ -1,0 +1,4 @@
+### kernel
+### Comando: uname -a
+
+Linux pve 7.0.0-3-pve #1 SMP PREEMPT_DYNAMIC PMX 7.0.0-3 (2026-04-21T22:56Z) x86_64 GNU/Linux

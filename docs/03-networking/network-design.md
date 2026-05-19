@@ -53,7 +53,7 @@ Arquitectura y diseño de la red del homelab.
       ┌───────┴───────┐        │
       │               │        │
 [Proxmox Host]   [Dispositivos LAN]
-192.168.1.10     192.168.1.x
+192.168.1.200    192.168.1.x
       │
       │
       ├─── vmbr0 (LAN Bridge) ───────────────┐
@@ -70,7 +70,7 @@ Arquitectura y diseño de la red del homelab.
       │    └─────────────────────────────────┘
       │
       │
-      └─── vmbr1 (Private Bridge) ───────────┐
+      └─── vmbr10 (Private Bridge) ──────────┐
            10.10.10.0/24                       │
                                              │
            ┌─────────────────────────────────┤
@@ -85,7 +85,7 @@ Arquitectura y diseño de la red del homelab.
            │ CT111 - Bases de Datos         │
            │ CT113 - Keycloak (SSO)         │
            │ CT114 - Navidrome (Música)     │
-           │ CT115 - qBittorrent            │
+           │ CT115 - Music Downloader       │
            └─────────────────────────────────┘
 ```
 
@@ -177,7 +177,7 @@ Arquitectura y diseño de la red del homelab.
 Usuario LAN → Router → Switch → Proxmox Host
                                       │
                                       ├─→ vmbr0 → Servicios LAN
-                                      └─→ vmbr1 → Proxy → Servicios Privados
+                                      └─→ vmbr10 → Proxy → Servicios Privados
 ```
 
 ### Acceso Remoto (Tailscale)
@@ -186,13 +186,13 @@ Usuario LAN → Router → Switch → Proxmox Host
 Usuario Remoto → Tailscale VPN → CT100 (Subnet Router)
                                       │
                                       ├─→ vmbr0 → Servicios LAN
-                                      └─→ vmbr1 → Proxy → Servicios Privados
+                                      └─→ vmbr10 → Proxy → Servicios Privados
 ```
 
 ### Acceso a Internet desde Servicios
 
 ```
-Servicio Privado (10.10.10.x) → vmbr1 → NAT → vmbr0 → Router → Internet
+Servicio Privado (10.10.10.x) → vmbr10 → NAT → vmbr0 → Router → Internet
 ```
 
 ### Proxy Reverso
@@ -200,10 +200,10 @@ Servicio Privado (10.10.10.x) → vmbr1 → NAT → vmbr0 → Router → Interne
 ```
 Cliente → Nginx Proxy Manager (CT112)
               │
-              ├─→ homarr.local → CT101 (192.168.1.101)
-              ├─→ vault.local → CT106 (10.10.10.60)
-              ├─→ cloud.local → CT108 (10.10.10.65)
-              └─→ grafana.local → CT105 (10.10.10.50)
+              ├─→ homarr.home.arpa → CT101 (192.168.1.79)
+              ├─→ vault.home.arpa → CT106 (10.10.10.60)
+              ├─→ nextcloud.home.arpa → CT108 (10.10.10.65)
+              └─→ grafana.home.arpa → CT105 (10.10.10.50)
 ```
 
 ## Direccionamiento IP
@@ -223,17 +223,17 @@ Cliente → Nginx Proxy Manager (CT112)
 | IP | Hostname | Servicio |
 |----|----------|----------|
 | 192.168.1.1 | router | Gateway |
-| 192.168.1.10 | proxmox | Hypervisor |
+| 192.168.1.200 | proxmox | Hypervisor |
 
 #### Servicios LAN (192.168.1.x)
 | IP | ID | Hostname | Servicio |
 |----|-------|----------|----------|
 | 192.168.1.87 | CT100 | tailscale | VPN |
-| 192.168.1.101 | CT101 | homarr | Dashboard |
-| 192.168.1.102 | CT102 | portainer | Docker Mgmt |
-| 192.168.1.103 | CT103 | adguard | DNS |
-| 192.168.1.104 | VM104 | casaos | Storage |
-| 192.168.1.112 | CT112 | proxy | Nginx PM |
+| 192.168.1.79 | CT101 | homarr | Dashboard |
+| 192.168.1.80 | CT102 | portainer | Docker Mgmt |
+| 192.168.1.53 | CT103 | adguard | DNS |
+| 192.168.1.81 | VM104 | casaos | Storage |
+| 192.168.1.82 | CT112 | proxy | Nginx PM |
 
 #### Servicios Privados (10.10.10.x)
 | IP | ID | Hostname | Servicio |
@@ -247,7 +247,7 @@ Cliente → Nginx Proxy Manager (CT112)
 | 10.10.10.73 | CT111 | databases | PostgreSQL/MariaDB |
 | 10.10.10.74 | CT113 | keycloak | SSO |
 | 10.10.10.82 | CT114 | music | Navidrome |
-| 10.10.10.83 | CT115 | downloads | qBittorrent |
+| 10.10.10.83 | CT115 | downloads | Music Downloader |
 
 ## Puertos y Servicios
 
@@ -270,7 +270,7 @@ Cliente:443 → Nginx Proxy Manager:443
                     ↓
     ┌───────────────┼───────────────┐
     │               │               │
-vault.local    cloud.local    grafana.local
+vault.home.arpa    nextcloud.home.arpa    grafana.home.arpa
     ↓               ↓               ↓
 CT106:80       CT108:80       CT105:3000
 ```

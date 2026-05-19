@@ -28,14 +28,14 @@ La red privada (10.10.10.0/24) está diseñada para:
 
 ## Configuración
 
-### Bridge Privado (vmbr1)
+### Bridge Privado (vmbr10)
 
 ```bash
 # /etc/network/interfaces en Proxmox Host
 
-auto vmbr1
-iface vmbr1 inet static
-    address 10.10.10.1/24
+auto vmbr10
+iface vmbr10 inet static
+    address 10.10.10.87/24
     bridge-ports none
     bridge-stp off
     bridge-fd 0
@@ -53,8 +53,8 @@ iface vmbr1 inet static
 systemctl restart networking
 
 # Verificar bridge
-ip addr show vmbr1
-brctl show vmbr1
+ip addr show vmbr10
+brctl show vmbr10
 
 # Verificar NAT
 iptables -t nat -L -n -v | grep 10.10.10.0
@@ -66,14 +66,14 @@ iptables -t nat -L -n -v | grep 10.10.10.0
 # Crear contenedor con red privada
 pct create 106 local:vztmpl/debian-12-standard_12.2-1_amd64.tar.zst \
   --hostname vaultwarden \
-  --net0 name=eth0,bridge=vmbr1,ip=10.10.10.60/24,gw=10.10.10.1 \
-  --nameserver 192.168.1.103 \
+  --net0 name=eth0,bridge=vmbr10,ip=10.10.10.60/24,gw=10.10.10.87 \
+  --nameserver 192.168.1.53 \
   --cores 2 \
   --memory 2048 \
   --rootfs local-lvm:8
 
 # O editar contenedor existente
-pct set 106 -net0 name=eth0,bridge=vmbr1,ip=10.10.10.60/24,gw=10.10.10.1
+pct set 106 -net0 name=eth0,bridge=vmbr10,ip=10.10.10.60/24,gw=10.10.10.87
 ```
 
 ## Servicios en Red Privada
@@ -91,19 +91,19 @@ pct set 106 -net0 name=eth0,bridge=vmbr1,ip=10.10.10.60/24,gw=10.10.10.1
 | 10.10.10.73 | CT111 | Bases de Datos | 5432/3306 | Crítica |
 | 10.10.10.74 | CT113 | Keycloak | 8080 | Crítica |
 | 10.10.10.82 | CT114 | Navidrome | 4533 | Baja |
-| 10.10.10.83 | CT115 | qBittorrent | 8080 | Baja |
+| 10.10.10.83 | CT115 | Music Downloader | 6595 | Baja |
 
 ### CT105 - Monitoring (Grafana/Prometheus)
 
 ```yaml
 # Configuración de red
 IP: 10.10.10.50/24
-Gateway: 10.10.10.1
-DNS: 192.168.1.103
+Gateway: 10.10.10.87
+DNS: 192.168.1.53
 
 # Acceso
-Interno: http://10.10.10.50:3000
-Externo: https://grafana.tu-dominio.com (vía proxy)
+Interno: http://10.10.10.50:3002
+Externo: https://grafana.home.arpa (vía proxy)
 ```
 
 ### CT106 - Vaultwarden
@@ -111,12 +111,12 @@ Externo: https://grafana.tu-dominio.com (vía proxy)
 ```yaml
 # Configuración de red
 IP: 10.10.10.60/24
-Gateway: 10.10.10.1
-DNS: 192.168.1.103
+Gateway: 10.10.10.87
+DNS: 192.168.1.53
 
 # Acceso
-Interno: http://10.10.10.60:80
-Externo: https://vault.tu-dominio.com (vía proxy)
+Interno: http://10.10.10.60:8080
+Externo: https://vault.home.arpa (vía proxy)
 
 # Seguridad
 - Solo accesible vía proxy
@@ -129,12 +129,12 @@ Externo: https://vault.tu-dominio.com (vía proxy)
 ```yaml
 # Configuración de red
 IP: 10.10.10.65/24
-Gateway: 10.10.10.1
-DNS: 192.168.1.103
+Gateway: 10.10.10.87
+DNS: 192.168.1.53
 
 # Acceso
-Interno: http://10.10.10.65:80
-Externo: https://cloud.tu-dominio.com (vía proxy)
+Interno: http://10.10.10.65:8088
+Externo: https://nextcloud.home.arpa (vía proxy)
 
 # Características
 - Almacenamiento en /mnt/nextcloud
@@ -147,8 +147,8 @@ Externo: https://cloud.tu-dominio.com (vía proxy)
 ```yaml
 # Configuración de red
 IP: 10.10.10.73/24
-Gateway: 10.10.10.1
-DNS: 192.168.1.103
+Gateway: 10.10.10.87
+DNS: 192.168.1.53
 
 # Servicios
 PostgreSQL: 5432
@@ -165,12 +165,12 @@ MariaDB: 3306
 ```yaml
 # Configuración de red
 IP: 10.10.10.74/24
-Gateway: 10.10.10.1
-DNS: 192.168.1.103
+Gateway: 10.10.10.87
+DNS: 192.168.1.53
 
 # Acceso
 Interno: http://10.10.10.74:8080
-Externo: https://auth.tu-dominio.com (vía proxy)
+Externo: https://auth.home.arpa (vía proxy)
 
 # Función
 - Autenticación centralizada
@@ -190,10 +190,10 @@ Los servicios en red privada NO son accesibles directamente desde LAN. El acceso
 # Configuración de proxy para Vaultwarden
 server {
     listen 443 ssl http2;
-    server_name vault.tu-dominio.com;
+    server_name vault.home.arpa;
 
     location / {
-        proxy_pass http://10.10.10.60:80;
+        proxy_pass http://10.10.10.60:8080;
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

@@ -113,8 +113,8 @@ Hostname: tailscale-gw
 Template: debian-13-standard
 Disk: 8 GB
 CPU: 1 core
-RAM: 512 MB
-Network: vmbr0
+RAM: 1024 MB
+Network: vmbr0 + vmbr10 (dual network)
 IP: 192.168.1.87/24
 Gateway: 192.168.1.1
 DNS: 1.1.1.1
@@ -143,9 +143,9 @@ Tu centro de control visual:
 CT ID: 101
 Hostname: dashboard
 IP: 192.168.1.79/24
-Disk: 16 GB
-CPU: 2 cores
-RAM: 2048 MB
+Disk: 12 GB
+CPU: 1 core
+RAM: 1024 MB
 ```
 
 Instalar Docker y Homarr:

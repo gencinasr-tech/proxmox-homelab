@@ -84,7 +84,7 @@ Comment: Allow DNS queries
 
 ## Firewall por Contenedor
 
-### CT103 - DNS (AdGuard/Pi-hole)
+### CT103 - DNS (AdGuard Home)
 
 ```bash
 # Permitir DNS

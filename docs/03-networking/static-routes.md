@@ -27,9 +27,9 @@ ip route show
 
 # Salida típica:
 default via 192.168.1.1 dev vmbr0
-10.10.10.0/24 dev vmbr1 proto kernel scope link src 10.10.10.1
+10.10.10.0/24 dev vmbr10 proto kernel scope link src 10.10.10.87
 100.64.0.0/10 via 192.168.1.87 dev vmbr0
-192.168.1.0/24 dev vmbr0 proto kernel scope link src 192.168.1.10
+192.168.1.0/24 dev vmbr0 proto kernel scope link src 192.168.1.200
 ```
 
 ### Componentes de una Ruta
@@ -37,7 +37,7 @@ default via 192.168.1.1 dev vmbr0
 ```
 ip route add <red_destino> via <gateway> dev <interfaz>
               ↓              ↓            ↓
-         10.10.10.0/24   192.168.1.10    vmbr0
+         10.10.10.0/24   192.168.1.87    vmbr0
 ```
 
 ## Rutas en Proxmox
@@ -50,16 +50,16 @@ ip route add <red_destino> via <gateway> dev <interfaz>
 # Bridge LAN
 auto vmbr0
 iface vmbr0 inet static
-    address 192.168.1.10/24
+    address 192.168.1.200/24
     gateway 192.168.1.1
     bridge-ports enp3s0
     bridge-stp off
     bridge-fd 0
 
 # Bridge Privado
-auto vmbr1
-iface vmbr1 inet static
-    address 10.10.10.1/24
+auto vmbr10
+iface vmbr10 inet static
+    address 10.10.10.87/24
     bridge-ports none
     bridge-stp off
     bridge-fd 0
@@ -72,10 +72,10 @@ iface vmbr1 inet static
 
 ```bash
 # Añadir ruta temporal (se pierde al reiniciar)
-ip route add 10.10.10.0/24 via 192.168.1.10
+ip route add 10.10.10.0/24 via 192.168.1.87
 
 # Eliminar ruta
-ip route del 10.10.10.0/24 via 192.168.1.10
+ip route del 10.10.10.0/24 via 192.168.1.87
 
 # Cambiar ruta por defecto
 ip route change default via 192.168.1.1
@@ -88,7 +88,7 @@ ip route change default via 192.168.1.1
 ```bash
 # Desde dispositivos LAN a red privada
 # (Configurar en router o dispositivos)
-ip route add 10.10.10.0/24 via 192.168.1.10
+ip route add 10.10.10.0/24 via 192.168.1.87
 
 # Verificar
 ping 10.10.10.60  # Vaultwarden
@@ -137,9 +137,9 @@ Una vez configurado el subnet router:
 
 ```bash
 # Desde cualquier dispositivo con Tailscale
-ping 192.168.1.10  # Proxmox
+ping 192.168.1.200  # Proxmox
 ping 10.10.10.60    # Vaultwarden
-ssh user@192.168.1.10  # SSH a Proxmox
+ssh user@192.168.1.200  # SSH a Proxmox
 ```
 
 ## Rutas en Contenedores
@@ -152,16 +152,16 @@ ssh user@192.168.1.10  # SSH a Proxmox
 auto eth0
 iface eth0 inet static
     address 10.10.10.60/24
-    gateway 10.10.10.1
+    gateway 10.10.10.87
     # Ruta específica si es necesaria
-    post-up ip route add 192.168.1.0/24 via 10.10.10.1
+    post-up ip route add 192.168.1.0/24 via 10.10.10.87
 ```
 
 ### Rutas Dinámicas
 
 ```bash
 # Añadir ruta desde Proxmox al contenedor
-pct exec 106 -- ip route add 192.168.1.0/24 via 10.10.10.1
+pct exec 106 -- ip route add 192.168.1.0/24 via 10.10.10.87
 
 # Verificar rutas en contenedor
 pct exec 106 -- ip route show
@@ -177,14 +177,14 @@ Para que dispositivos LAN puedan acceder a la red privada:
 # En configuración del router (ejemplo genérico)
 Red de destino: 10.10.10.0
 Máscara: 255.255.255.0
-Gateway: 192.168.1.10
+Gateway: 192.168.1.87
 Interfaz: LAN
 ```
 
 ### Ejemplo: Router Mikrotik
 
 ```bash
-/ip route add dst-address=10.10.10.0/24 gateway=192.168.1.10
+/ip route add dst-address=10.10.10.0/24 gateway=192.168.1.87
 ```
 
 ### Ejemplo: pfSense/OPNsense
@@ -192,7 +192,7 @@ Interfaz: LAN
 ```
 System → Routing → Static Routes
 - Destination network: 10.10.10.0/24
-- Gateway: 192.168.1.10
+- Gateway: 192.168.1.87
 - Description: Proxmox Private Network
 ```
 
@@ -203,7 +203,7 @@ La mayoría de routers domésticos tienen una sección de "Rutas Estáticas" o "
 ```
 Destino: 10.10.10.0
 Máscara: 255.255.255.0
-Gateway: 192.168.1.10
+Gateway: 192.168.1.87
 ```
 
 ## Políticas de Routing
@@ -272,7 +272,7 @@ ping -I vmbr0 10.10.10.60
 ip route show | grep 10.10.10.0
 
 # Añadir si falta
-ip route add 10.10.10.0/24 via 192.168.1.10
+ip route add 10.10.10.0/24 via 192.168.1.87
 
 # Verificar forwarding
 cat /proc/sys/net/ipv4/ip_forward  # Debe ser 1
@@ -284,9 +284,9 @@ cat /proc/sys/net/ipv4/ip_forward  # Debe ser 1
 # Añadir a /etc/network/interfaces
 auto vmbr0
 iface vmbr0 inet static
-    address 192.168.1.10/24
+    address 192.168.1.200/24
     gateway 192.168.1.1
-    post-up ip route add 10.10.10.0/24 via 192.168.1.10
+    post-up ip route add 10.10.10.0/24 via 192.168.1.87
 ```
 
 #### Conflicto de rutas
@@ -411,17 +411,17 @@ iface enp3s0 inet manual
 # Bridge LAN
 auto vmbr0
 iface vmbr0 inet static
-    address 192.168.1.10/24
+    address 192.168.1.200/24
     gateway 192.168.1.1
     bridge-ports enp3s0
     bridge-stp off
     bridge-fd 0
-    dns-nameservers 192.168.1.103 1.1.1.1
+    dns-nameservers 192.168.1.53 1.1.1.1
 
 # Bridge Privado
-auto vmbr1
-iface vmbr1 inet static
-    address 10.10.10.1/24
+auto vmbr10
+iface vmbr10 inet static
+    address 10.10.10.87/24
     bridge-ports none
     bridge-stp off
     bridge-fd 0

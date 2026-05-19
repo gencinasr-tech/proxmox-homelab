@@ -20,16 +20,16 @@ Internet
    │
    ├─ Switch Principal
    │  │
-   │  ├─ Proxmox Host (192.168.1.10)
+   │  ├─ Proxmox Host (192.168.1.200)
    │  │  │
    │  │  ├─ vmbr0 (Bridge LAN)
    │  │  │  ├─ CT100 - Tailscale (192.168.1.87)
-   │  │  │  ├─ CT101 - Dashboards (192.168.1.101)
-   │  │  │  ├─ CT102 - Portainer (192.168.1.102)
-   │  │  │  ├─ CT103 - DNS (192.168.1.103)
-   │  │  │  └─ CT112 - Proxy (192.168.1.112)
+   │  │  │  ├─ CT101 - Dashboards (192.168.1.79)
+   │  │  │  ├─ CT102 - Portainer (192.168.1.80)
+   │  │  │  ├─ CT103 - DNS (192.168.1.53)
+   │  │  │  └─ CT112 - Proxy (192.168.1.82)
    │  │  │
-   │  │  └─ vmbr1 (Bridge Privada)
+   │  │  └─ vmbr10 (Bridge Privada)
    │  │     ├─ CT105 - Monitoring (10.10.10.50)
    │  │     ├─ CT106 - Vaultwarden (10.10.10.60)
    │  │     └─ CT108 - Nextcloud (10.10.10.65)
@@ -51,14 +51,14 @@ Internet
 
 #### Infraestructura
 - `192.168.1.1` - Router/Gateway
-- `192.168.1.10` - Proxmox Host
-- `192.168.1.103` - DNS Server (AdGuard/Pi-hole)
+- `192.168.1.200` - Proxmox Host
+- `192.168.1.53` - DNS Server (AdGuard Home)
 
 #### Servicios Públicos (LAN)
 - `192.168.1.87` - Tailscale
-- `192.168.1.101` - Homarr Dashboard
-- `192.168.1.102` - Portainer
-- `192.168.1.112` - Nginx Proxy Manager
+- `192.168.1.79` - Homarr Dashboard
+- `192.168.1.80` - Portainer
+- `192.168.1.82` - Nginx Proxy Manager
 
 #### Servicios Privados (10.10.10.0/24)
 - `10.10.10.50` - Grafana/Prometheus
@@ -76,23 +76,23 @@ Internet
 
 auto vmbr0
 iface vmbr0 inet static
-    address 192.168.1.10/24
+    address 192.168.1.200/24
     gateway 192.168.1.1
     bridge-ports enp3s0
     bridge-stp off
     bridge-fd 0
     # DNS
-    dns-nameservers 192.168.1.103 1.1.1.1
+    dns-nameservers 192.168.1.53 1.1.1.1
 ```
 
-### Bridge Privado (vmbr1)
+### Bridge Privado (vmbr10)
 
 ```bash
 # /etc/network/interfaces
 
-auto vmbr1
-iface vmbr1 inet static
-    address 10.10.10.1/24
+auto vmbr10
+iface vmbr10 inet static
+    address 10.10.10.87/24
     bridge-ports none
     bridge-stp off
     bridge-fd 0
@@ -154,7 +154,7 @@ El servidor DNS (CT103) maneja:
 
 ```bash
 # Configurar DNS en Proxmox
-echo "nameserver 192.168.1.103" > /etc/resolv.conf
+echo "nameserver 192.168.1.53" > /etc/resolv.conf
 echo "nameserver 1.1.1.1" >> /etc/resolv.conf
 ```
 
@@ -164,9 +164,9 @@ En tu router o servidor DHCP:
 
 ```
 # Servicios críticos
-192.168.1.10 - proxmox.local (MAC: XX:XX:XX:XX:XX:XX)
-192.168.1.103 - dns.local (MAC: XX:XX:XX:XX:XX:XX)
-192.168.1.112 - proxy.local (MAC: XX:XX:XX:XX:XX:XX)
+192.168.1.200 - proxmox.home.arpa (MAC: XX:XX:XX:XX:XX:XX)
+192.168.1.53 - adguard.home.arpa (MAC: XX:XX:XX:XX:XX:XX)
+192.168.1.82 - npm.home.arpa (MAC: XX:XX:XX:XX:XX:XX)
 ```
 
 ## Routing
@@ -175,7 +175,7 @@ En tu router o servidor DHCP:
 
 ```bash
 # Ruta a red privada desde LAN
-ip route add 10.10.10.0/24 via 192.168.1.10
+ip route add 10.10.10.0/24 via 192.168.1.87
 
 # Ruta a Tailscale
 ip route add 100.64.0.0/10 via 192.168.1.87
@@ -204,7 +204,7 @@ sysctl -p
 ping 192.168.1.1
 
 # Ping a DNS
-ping 192.168.1.103
+ping 192.168.1.53
 
 # Ping a internet
 ping 8.8.8.8
@@ -294,7 +294,7 @@ tail -f /var/log/syslog | grep -i firewall
 # Habilitar jumbo frames (MTU 9000)
 auto vmbr0
 iface vmbr0 inet static
-    address 192.168.1.10/24
+    address 192.168.1.200/24
     gateway 192.168.1.1
     bridge-ports enp3s0
     bridge-stp off

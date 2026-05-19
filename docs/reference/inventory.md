@@ -68,4 +68,8 @@ Este inventario debe actualizarse cuando:
 - Se modifican IPs o puertos
 - Se actualizan dominios internos
 
-**Última actualización**: 2026-01-18
+**Última actualización**: 2026-05-19
+
+---
+
+[🏠 Volver al índice](../README.md) | [🌐 Ver Dominios](domains.md) | [🔌 Ver Puertos](ports.md) | [🗺️ Ver Topología](topology.md)

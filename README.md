@@ -7,7 +7,7 @@
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Status](https://img.shields.io/badge/Status-Production-success)
 
-**Un homelab completo y replicable con 15 servicios self-hosted**
+**Un homelab completo y replicable con 15 bloques principales y 40+ servicios Docker**
 
 [📖 Documentación](#-documentación) • [🚀 Quick Start](#-quick-start) • [🏗️ Arquitectura](#️-arquitectura) • [💬 Comunidad](#-comunidad-y-soporte)
 

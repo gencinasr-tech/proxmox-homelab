@@ -57,22 +57,37 @@
 
 ## Dominios Tailscale
 
-### Acceso Externo vía VPN
-Los servicios críticos están disponibles vía Tailscale con dominios propios:
+### Acceso Externo vía Tailscale Serve
 
-| Servicio    | Dominio Tailscale                    | IP Interna   |
-| ----------- | ------------------------------------ | ------------ |
-| Vaultwarden | vaultwarden.tailXXXXXX.ts.net        | 10.10.10.60  |
-| Nextcloud   | nextcloud.tailXXXXXX.ts.net          | 10.10.10.65  |
-| Grafana     | grafana.tailXXXXXX.ts.net            | 10.10.10.50  |
+Actualmente solo Vaultwarden se publica mediante Tailscale Serve:
+
+| Servicio    | Dominio Tailscale             | IP Interna  | Puerto |
+| ----------- | ----------------------------- | ----------- | ------ |
+| Vaultwarden | vaultwarden.tailXXXXXX.ts.net | 10.10.10.60 | 8080   |
 
 **Nota**: `tailXXXXXX` es un placeholder. Cada instalación de Tailscale tiene su propio dominio único.
 
-### Configuración Tailscale Serve
+### Configuración Actual en CT100
 ```bash
-# Ejemplo de configuración en CT100
+# Vaultwarden publicado con Tailscale Serve
 tailscale serve https / http://10.10.10.60:8080
 ```
+
+### Acceso a Otros Servicios vía VPN
+
+El resto de servicios privados se acceden mediante Tailscale VPN usando sus dominios internos `.home.arpa` o sus IPs privadas:
+
+```bash
+# Ejemplos de acceso vía VPN Tailscale
+https://nextcloud.home.arpa    # o http://10.10.10.65:8088
+https://grafana.home.arpa      # o http://10.10.10.50:3002
+https://immich.home.arpa       # o http://10.10.10.30:2283
+https://vault.home.arpa        # o http://10.10.10.60:8080
+```
+
+> **Diferencia importante:**
+> - **Tailscale Serve**: Crea dominios públicos HTTPS tipo `servicio.tailXXXXXX.ts.net`
+> - **Tailscale VPN**: Permite acceso directo a IPs/dominios internos estando conectado a la VPN
 
 ## Configuración DNS
 

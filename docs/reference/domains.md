@@ -18,42 +18,46 @@
 
 ### 🌐 Servicios en Red LAN (192.168.1.0/24)
 
-| Dominio                  | IP Destino     | Servicio           | Contenedor |
-| ------------------------ | -------------- | ------------------ | ---------- |
-| proxmox.home.arpa        | 192.168.1.200  | Proxmox Host       | Host       |
-| homepage.home.arpa       | 192.168.1.79   | Dashboard          | CT101      |
-| homarr.home.arpa         | 192.168.1.79   | Dashboard          | CT101      |
-| homer.home.arpa          | 192.168.1.79   | Dashboard          | CT101      |
-| heimdall.home.arpa       | 192.168.1.79   | Dashboard          | CT101      |
-| portainer.home.arpa      | 192.168.1.80   | Gestión Docker     | CT102      |
-| adguard.home.arpa        | 192.168.1.53   | DNS                | CT103      |
-| casaos.home.arpa         | 192.168.1.81   | NAS                | VM104      |
-| syncthing.home.arpa      | 192.168.1.81   | Sincronización     | VM104      |
-| duplicati.home.arpa      | 192.168.1.81   | Backups            | VM104      |
-| npm.home.arpa            | 192.168.1.82   | Nginx Proxy        | CT112      |
+**Nota**: La mayoría de dominios resuelven a Nginx Proxy Manager (192.168.1.82) que luego redirige al backend real.
+
+| Dominio                  | DNS Rewrite (AdGuard) | Backend Real       | Contenedor |
+| ------------------------ | --------------------- | ------------------ | ---------- |
+| proxmox.home.arpa        | 192.168.1.82 (NPM)    | 192.168.1.200:8006 | Host       |
+| homepage.home.arpa       | 192.168.1.82 (NPM)    | 192.168.1.79:3000  | CT101      |
+| homarr.home.arpa         | 192.168.1.82 (NPM)    | 192.168.1.79:7575  | CT101      |
+| homer.home.arpa          | 192.168.1.82 (NPM)    | 192.168.1.79:8080  | CT101      |
+| heimdall.home.arpa       | 192.168.1.82 (NPM)    | 192.168.1.79:8081  | CT101      |
+| portainer.home.arpa      | 192.168.1.82 (NPM)    | 192.168.1.80:9443  | CT102      |
+| adguard.home.arpa        | 192.168.1.82 (NPM)    | 192.168.1.53:80    | CT103      |
+| casaos.home.arpa         | 192.168.1.81          | 192.168.1.81:80    | VM104      |
+| syncthing.home.arpa      | 192.168.1.81          | 192.168.1.81:8384  | VM104      |
+| duplicati.home.arpa      | 192.168.1.81          | 192.168.1.81:8200  | VM104      |
+| npm.home.arpa            | 192.168.1.82          | 192.168.1.82:81    | CT112      |
 
 ### 🔒 Servicios en Red Privada (10.10.10.0/24)
 
-| Dominio                  | IP Destino     | Servicio           | Contenedor |
-| ------------------------ | -------------- | ------------------ | ---------- |
-| kuma.home.arpa           | 10.10.10.50    | Uptime Kuma        | CT105      |
-| grafana.home.arpa        | 10.10.10.50    | Monitorización     | CT105      |
-| prometheus.home.arpa     | 10.10.10.50    | Métricas           | CT105      |
-| speedtest.home.arpa      | 10.10.10.50    | Speedtest          | CT105      |
-| scrutiny.home.arpa       | 10.10.10.50    | SMART Discos       | CT105      |
-| beszel.home.arpa         | 10.10.10.50    | Monitoring         | CT105      |
-| vault.home.arpa          | 10.10.10.60    | Contraseñas        | CT106      |
-| paperless.home.arpa      | 10.10.10.40    | Documentos         | CT107      |
-| nextcloud.home.arpa      | 10.10.10.65    | Nube Privada       | CT108      |
-| immich.home.arpa         | 10.10.10.30    | Fotos              | VM109      |
-| tools.home.arpa          | 10.10.10.70    | IT-Tools           | CT110      |
-| pdf.home.arpa            | 10.10.10.70    | Stirling PDF       | CT110      |
-| adminer.home.arpa        | 10.10.10.73    | DB Admin           | CT111      |
-| pgadmin.home.arpa        | 10.10.10.73    | PostgreSQL Admin   | CT111      |
-| chartdb.home.arpa        | 10.10.10.73    | DB Diagrams        | CT111      |
-| auth.home.arpa           | 192.168.1.82   | SSO/Keycloak (via NPM) | CT113  |
-| music.home.arpa          | 10.10.10.82    | Navidrome          | CT114      |
-| downloads.home.arpa      | 10.10.10.83    | Music Downloader   | CT115      |
+**Nota**: Algunos dominios privados también resuelven a NPM (192.168.1.82) para gestión centralizada de SSL.
+
+| Dominio                  | DNS Rewrite (AdGuard) | Backend Real       | Contenedor |
+| ------------------------ | --------------------- | ------------------ | ---------- |
+| kuma.home.arpa           | 192.168.1.82 (NPM)    | 10.10.10.50:3001   | CT105      |
+| grafana.home.arpa        | 192.168.1.82 (NPM)    | 10.10.10.50:3002   | CT105      |
+| prometheus.home.arpa     | 10.10.10.50           | 10.10.10.50:9090   | CT105      |
+| speedtest.home.arpa      | 10.10.10.50           | 10.10.10.50:8765   | CT105      |
+| scrutiny.home.arpa       | 10.10.10.50           | 10.10.10.50:8086   | CT105      |
+| beszel.home.arpa         | 10.10.10.50           | 10.10.10.50:8090   | CT105      |
+| vault.home.arpa          | 192.168.1.82 (NPM)    | 10.10.10.60:8080   | CT106      |
+| paperless.home.arpa      | 192.168.1.82 (NPM)    | 10.10.10.40:8000   | CT107      |
+| nextcloud.home.arpa      | 192.168.1.82 (NPM)    | 10.10.10.65:8088   | CT108      |
+| immich.home.arpa         | 192.168.1.82 (NPM)    | 10.10.10.30:2283   | VM109      |
+| tools.home.arpa          | 10.10.10.70           | 10.10.10.70:8080   | CT110      |
+| pdf.home.arpa            | 10.10.10.70           | 10.10.10.70:8090   | CT110      |
+| adminer.home.arpa        | 192.168.1.82 (NPM)    | 10.10.10.73:8081   | CT111      |
+| pgadmin.home.arpa        | 10.10.10.73           | 10.10.10.73:5050   | CT111      |
+| chartdb.home.arpa        | 10.10.10.73           | 10.10.10.73:3000   | CT111      |
+| auth.home.arpa           | 192.168.1.82 (NPM)    | 10.10.10.74:8080   | CT113      |
+| music.home.arpa          | 10.10.10.82           | 10.10.10.82:4533   | CT114      |
+| downloads.home.arpa      | 10.10.10.83           | 10.10.10.83:5800   | CT115      |
 
 ## Dominios Tailscale
 
@@ -67,11 +71,22 @@ Actualmente solo Vaultwarden se publica mediante Tailscale Serve:
 
 **Nota**: `tailXXXXXX` es un placeholder. Cada instalación de Tailscale tiene su propio dominio único.
 
-### Configuración Actual en CT100
+### Configuración Actual de Tailscale Serve
+
+Vaultwarden está publicado mediante Tailscale Serve directamente desde el contenedor CT106 `vaultwarden`.
+
 ```bash
-# Vaultwarden publicado con Tailscale Serve
-tailscale serve https / http://10.10.10.60:8080
+# Ejecutar dentro de CT106
+tailscale serve status
 ```
+
+Salida esperada:
+```text
+https://vaultwarden.tailXXXXXX.ts.net (tailnet only)
+|-- / proxy http://127.0.0.1:8080
+```
+
+> **Nota**: El dominio `tailXXXXXX` es un placeholder. En cada tailnet será diferente.
 
 ### Acceso a Otros Servicios vía VPN
 

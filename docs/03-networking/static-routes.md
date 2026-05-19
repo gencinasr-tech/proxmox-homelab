@@ -31,8 +31,8 @@ default via 192.168.1.1 dev vmbr0
 100.64.0.0/10 via 192.168.1.87 dev vmbr0
 
 # Nota:
-# vmbr10 es un bridge privado sin IP en el host Proxmox.
-# El gateway de 10.10.10.0/24 es CT100 (10.10.10.87).
+# Proxmox tiene IP auxiliar 10.10.10.1 en vmbr10 para gestión del bridge.
+# El gateway real de los contenedores privados es CT100 (10.10.10.87).
 # La ruta desde LAN a la red privada debe ir vía 192.168.1.87.
 ```
 
@@ -62,7 +62,8 @@ iface vmbr0 inet static
 
 # Bridge Privado
 auto vmbr10
-iface vmbr10 inet manual
+iface vmbr10 inet static
+    address 10.10.10.1/24
     bridge-ports none
     bridge-stp off
     bridge-fd 0
@@ -70,7 +71,8 @@ iface vmbr10 inet manual
     post-up ip route add 100.64.0.0/10 via 192.168.1.87 dev vmbr0
     post-down ip route del 100.64.0.0/10 via 192.168.1.87 dev vmbr0
 
-# Nota: vmbr10 es un bridge sin IP. El gateway de 10.10.10.0/24 es CT100 (10.10.10.87)
+# Nota: Proxmox tiene IP auxiliar 10.10.10.1 para gestión del bridge.
+# El gateway real de los contenedores privados es CT100 (10.10.10.87).
 ```
 
 ### Rutas Temporales

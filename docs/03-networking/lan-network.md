@@ -183,18 +183,23 @@ ip route add 10.10.10.0/24 via 192.168.1.87
 ip route add 100.64.0.0/10 via 192.168.1.87
 ```
 
-### NAT para Red Privada
+### NAT para Red Privada en CT100
+
+**Importante:** Estos comandos se ejecutan dentro de CT100, no en el host Proxmox.
 
 ```bash
+# Dentro de CT100
 # Habilitar IP forwarding
 echo 1 > /proc/sys/net/ipv4/ip_forward
 
-# Configurar NAT
-iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -o vmbr0 -j MASQUERADE
+# Configurar NAT (eth0 es la interfaz LAN de CT100)
+iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -o eth0 -j MASQUERADE
 
 # Hacer permanente
 echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
 sysctl -p
+apt install iptables-persistent
+netfilter-persistent save
 ```
 
 ## Troubleshooting

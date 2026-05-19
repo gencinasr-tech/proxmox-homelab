@@ -283,8 +283,8 @@ redirect_uri: https://nextcloud.home.arpa/apps/oidc/redirect
 ### No hay conectividad a Internet
 
 ```bash
-# Verificar NAT
-iptables -t nat -L -n -v | grep 10.10.10.0
+# Verificar NAT (ejecutar en CT100)
+iptables -t nat -L -n -v | grep 10.10.10
 
 # Verificar forwarding
 sysctl net.ipv4.ip_forward
@@ -304,10 +304,10 @@ sysctl -p
 ping 10.10.10.60
 
 # Verificar servicio está escuchando
-nmap -p 80 10.10.10.60
+nmap -p 8080 10.10.10.60
 
 # Verificar firewall
-iptables -L -n -v | grep 10.0.0
+iptables -L -n -v | grep 10.10.10
 ```
 
 ### DNS no resuelve
@@ -317,7 +317,7 @@ iptables -L -n -v | grep 10.0.0
 cat /etc/resolv.conf
 
 # Debe tener:
-nameserver 192.168.1.103
+nameserver 192.168.1.53
 nameserver 1.1.1.1
 
 # Probar resolución

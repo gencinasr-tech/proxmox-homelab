@@ -58,14 +58,15 @@ iface vmbr0 inet static
 
 # Bridge Privado
 auto vmbr10
-iface vmbr10 inet static
-    address 10.10.10.87/24
+iface vmbr10 inet manual
     bridge-ports none
     bridge-stp off
     bridge-fd 0
     # Ruta a Tailscale
     post-up ip route add 100.64.0.0/10 via 192.168.1.87 dev vmbr0
     post-down ip route del 100.64.0.0/10 via 192.168.1.87 dev vmbr0
+
+# Nota: vmbr10 es un bridge sin IP. El gateway de 10.10.10.0/24 es CT100 (10.10.10.87)
 ```
 
 ### Rutas Temporales

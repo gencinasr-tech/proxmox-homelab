@@ -273,7 +273,8 @@ Proxmox Host
 - Datos de aplicaciones activas
 - Bases de datos
 
-**HDD (Backups)**:
+**SSD de Backups** (ruta legacy: /mnt/hdd250):
+- Crucial MX500 250GB SATA SSD
 - Backups diarios de Proxmox
 - Archivos multimedia
 - Datos menos accedidos

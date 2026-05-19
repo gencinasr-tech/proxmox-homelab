@@ -3,11 +3,11 @@
 <div align="center">
 
 ![Proxmox Version](https://img.shields.io/badge/Proxmox-9.1.9-orange)
-![Services](https://img.shields.io/badge/Services-16-blue)
+![Services](https://img.shields.io/badge/Services-15-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 ![Status](https://img.shields.io/badge/Status-Production-success)
 
-**Un homelab completo y replicable con 15+ servicios self-hosted**
+**Un homelab completo y replicable con 15 servicios self-hosted**
 
 [📖 Documentación](#-documentación) • [🚀 Quick Start](#-quick-start) • [🏗️ Arquitectura](#️-arquitectura) • [💬 Comunidad](#-comunidad-y-soporte)
 

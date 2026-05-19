@@ -15,17 +15,18 @@ Internet
             │       │
             │       ├─── vmbr0 (Bridge LAN)
             │       │       │
+            │       │       ├─── CT100 Tailscale (192.168.1.87)
+            │       │       ├─── CT101 Dashboard (192.168.1.79)
+            │       │       ├─── CT102 Portainer (192.168.1.80)
             │       │       ├─── CT103 DNS (192.168.1.53)
-            │       │       └─── CT100 Tailscale (192.168.1.87)
+            │       │       ├─── VM104 CasaOS (192.168.1.81)
+            │       │       └─── CT112 Nginx Proxy (192.168.1.82)
             │       │
-            │       └─── vmbr1 (Bridge Privado)
+            │       └─── vmbr10 (Bridge Privado)
             │               │
             │               └─── Red Privada (10.10.10.0/24)
             │                       │
             │                       ├─── CT100 Tailscale (10.10.10.87) [Gateway]
-            │                       ├─── CT101 Dashboard (10.10.10.10)
-            │                       ├─── CT102 Portainer (10.10.10.20)
-            │                       ├─── VM104 CasaOS (10.10.10.25)
             │                       ├─── VM109 Immich (10.10.10.30)
             │                       ├─── CT107 Paperless (10.10.10.40)
             │                       ├─── CT105 Monitoring (10.10.10.50)
@@ -34,7 +35,6 @@ Internet
             │                       ├─── CT110 Tools (10.10.10.70)
             │                       ├─── CT111 Databases (10.10.10.73)
             │                       ├─── CT113 Keycloak (10.10.10.74)
-            │                       ├─── CT112 Proxy (10.10.10.80)
             │                       ├─── CT114 Music (10.10.10.82)
             │                       └─── CT115 Downloads (10.10.10.83)
             │
@@ -51,19 +51,23 @@ Internet
 ### Red LAN (192.168.1.0/24)
 - **Propósito**: Red local física, acceso desde casa
 - **Gateway**: 192.168.1.1 (Router)
-- **DNS**: 192.168.1.53 (Pi-hole CT103)
+- **DNS**: 192.168.1.53 (AdGuard Home CT103)
 - **DHCP**: 192.168.1.100-192.168.1.250 (Router)
 - **Servicios Expuestos**:
-  - CT103 DNS (192.168.1.53)
   - CT100 Tailscale Gateway (192.168.1.87)
+  - CT101 Dashboard (192.168.1.79)
+  - CT102 Portainer (192.168.1.80)
+  - CT103 DNS (192.168.1.53)
+  - VM104 CasaOS (192.168.1.81)
+  - CT112 Nginx Proxy (192.168.1.82)
   - Proxmox Host (192.168.1.200)
 
 ### Red Privada (10.10.10.0/24)
 - **Propósito**: Red aislada para servicios sensibles
 - **Gateway**: 10.10.10.87 (CT100 Tailscale)
-- **DNS**: 192.168.1.53 (Pi-hole vía routing)
-- **Acceso**: Solo vía Tailscale VPN
-- **Servicios**: Todos los contenedores de aplicaciones
+- **DNS**: 192.168.1.53 (AdGuard vía routing)
+- **Acceso**: Solo vía Tailscale VPN o desde LAN a través de CT100
+- **Servicios**: Aplicaciones de productividad y utilidades
 
 ### Red Tailscale (100.x.x.x/32)
 - **Propósito**: VPN mesh para acceso remoto
@@ -87,14 +91,18 @@ iface vmbr0 inet static
 
 **Conectado a**:
 - Interfaz física: `enp3s0`
-- CT103 (DNS)
 - CT100 (interfaz eth0)
+- CT101 Dashboard
+- CT102 Portainer
+- CT103 DNS
+- VM104 CasaOS
+- CT112 Nginx Proxy
 
-### vmbr1 - Bridge Privado
+### vmbr10 - Bridge Privado
 ```bash
 # /etc/network/interfaces
-auto vmbr1
-iface vmbr1 inet static
+auto vmbr10
+iface vmbr10 inet static
     address 10.10.10.1/24
     bridge-ports none
     bridge-stp off
@@ -107,7 +115,16 @@ iface vmbr1 inet static
 **Conectado a**:
 - Sin interfaz física (virtual)
 - CT100 (interfaz eth1)
-- Todos los demás contenedores y VMs
+- CT105 Monitoring
+- CT106 Vaultwarden
+- CT107 Paperless
+- CT108 Nextcloud
+- VM109 Immich
+- CT110 Tools
+- CT111 Databases
+- CT113 Keycloak
+- CT114 Music
+- CT115 Downloads
 
 ## Routing y NAT
 
@@ -145,7 +162,7 @@ tailscale up --advertise-routes=10.10.10.0/24,192.168.1.0/24 --accept-routes
 ```
 Cliente LAN (192.168.1.x)
     ↓
-DNS Pi-hole (192.168.1.53)
+DNS AdGuard (192.168.1.53)
     ↓
 Resuelve vault.home.arpa → 10.10.10.60
     ↓
@@ -174,8 +191,8 @@ Servicio (10.10.10.60)
 ### Proxmox Host
 ```bash
 # Permitir tráfico entre bridges
-iptables -A FORWARD -i vmbr0 -o vmbr1 -j ACCEPT
-iptables -A FORWARD -i vmbr1 -o vmbr0 -j ACCEPT
+iptables -A FORWARD -i vmbr0 -o vmbr10 -j ACCEPT
+iptables -A FORWARD -i vmbr10 -o vmbr0 -j ACCEPT
 
 # NAT para red privada
 iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -o vmbr0 -j MASQUERADE
@@ -195,7 +212,7 @@ iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
 
 ### Reglas de Seguridad
 1. **Red privada no accesible desde Internet**: Solo vía Tailscale
-2. **DNS solo desde LAN**: Pi-hole no expuesto externamente
+2. **DNS solo desde LAN**: AdGuard no expuesto externamente
 3. **Proxmox solo desde LAN**: Puerto 8006 no accesible remotamente
 4. **SSH solo con clave**: Contraseñas deshabilitadas
 
@@ -205,7 +222,11 @@ iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
 | IP            | Dispositivo      | Notas                    |
 | ------------- | ---------------- | ------------------------ |
 | 192.168.1.1   | Router           | Gateway principal        |
-| 192.168.1.53  | CT103 DNS        | Pi-hole                  |
+| 192.168.1.53  | CT103 DNS        | AdGuard Home             |
+| 192.168.1.79  | CT101 Dashboard  | Homarr/Homer/Heimdall    |
+| 192.168.1.80  | CT102 Portainer  | Gestión Docker           |
+| 192.168.1.81  | VM104 CasaOS     | NAS + Backups            |
+| 192.168.1.82  | CT112 Proxy      | Nginx Proxy Manager      |
 | 192.168.1.87  | CT100 Tailscale  | Gateway VPN              |
 | 192.168.1.200 | Proxmox Host     | Servidor físico          |
 
@@ -214,8 +235,8 @@ Ver [inventory.md](./inventory.md) para lista completa.
 
 **Rangos**:
 - `10.10.10.1-10.10.10.9`: Infraestructura (Proxmox gateway)
-- `10.10.10.10-10.10.10.29`: Servicios core y gestión
-- `10.10.10.30-10.10.10.69`: Servicios de productividad
+- `10.10.10.30-10.10.10.49`: Servicios de productividad
+- `10.10.10.50-10.10.10.69`: Monitorización y gestión
 - `10.10.10.70-10.10.10.89`: Utilidades y herramientas
 - `10.10.10.90-10.10.10.99`: Reservado para expansión
 
@@ -225,9 +246,9 @@ Ver [inventory.md](./inventory.md) para lista completa.
 ```
 Cliente solicita vault.home.arpa
     ↓
-DNS configurado: 192.168.1.53 (Pi-hole)
+DNS configurado: 192.168.1.53 (AdGuard)
     ↓
-Pi-hole consulta /etc/pihole/custom.list
+AdGuard consulta DNS Rewrites
     ↓
 Encuentra: vault.home.arpa → 10.10.10.60
     ↓
@@ -271,12 +292,13 @@ Proxmox Host
 - **Grafana**: Dashboards de red, CPU, RAM, disco
 - **Loki**: Logs centralizados
 - **Uptime Kuma**: Monitorización de disponibilidad
+- **Beszel**: Monitoring ligero de recursos
 
 ### Métricas de Red
 ```bash
 # Tráfico entre bridges
 iftop -i vmbr0
-iftop -i vmbr1
+iftop -i vmbr10
 
 # Conexiones activas
 netstat -an | grep ESTABLISHED
@@ -342,14 +364,14 @@ sysctl net.ipv4.ip_forward
 
 #### DNS no resuelve dominios .home.arpa
 ```bash
-# Verificar Pi-hole
-pihole status
+# Verificar AdGuard Home
+docker ps | grep adguard
 
-# Verificar custom.list
-cat /etc/pihole/custom.list
+# Verificar DNS Rewrites en la UI
+# http://192.168.1.53 → Filters → DNS rewrites
 
-# Reiniciar DNS
-pihole restartdns
+# Reiniciar AdGuard
+docker restart adguardhome
 ```
 
 #### Tailscale no puede acceder a red privada
@@ -372,22 +394,32 @@ tailscale status | grep "subnet routes"
 5. **Autenticación**: SSO con Keycloak
 
 ### Zonas de Seguridad
-- **Zona Pública (LAN)**: DNS, acceso básico
-- **Zona Privada**: Servicios de aplicaciones
+- **Zona Pública (LAN)**: DNS, dashboards, gestión básica
+- **Zona Privada**: Servicios de aplicaciones sensibles
 - **Zona VPN**: Acceso remoto controlado
 - **Zona Gestión**: Proxmox, Portainer (solo LAN)
 
 ## Escalabilidad
 
 ### Añadir Nuevo Servicio
-1. Crear contenedor en red privada (10.10.10.x)
-2. Añadir entrada DNS en Pi-hole
-3. Configurar en Nginx Proxy Manager (opcional)
+
+#### En Red LAN
+1. Crear contenedor conectado a vmbr0
+2. Asignar IP estática en rango 192.168.1.x
+3. Añadir DNS Rewrite en AdGuard
 4. Documentar en inventory.md
-5. Añadir monitorización en Grafana
+
+#### En Red Privada
+1. Crear contenedor conectado a vmbr10
+2. Asignar IP estática en rango 10.10.10.x
+3. Configurar gateway: 10.10.10.87
+4. Añadir DNS Rewrite en AdGuard
+5. Configurar en Nginx Proxy Manager (opcional)
+6. Documentar en inventory.md
+7. Añadir monitorización en Grafana
 
 ### Añadir Nueva Red
-1. Crear nuevo bridge en Proxmox (vmbr2)
+1. Crear nuevo bridge en Proxmox (vmbr11)
 2. Configurar routing en CT100
 3. Actualizar firewall
 4. Documentar topología
@@ -398,4 +430,8 @@ tailscale status | grep "subnet routes"
 - [Tailscale Subnet Routers](https://tailscale.com/kb/1019/subnets/)
 - [Linux IP Forwarding](https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt)
 
-**Última actualización**: 2026-01-18
+**Última actualización**: 2026-05-19
+
+---
+
+[🏠 Volver al índice](../README.md) | [📋 Ver Inventario](inventory.md) | [🌐 Ver Dominios](domains.md)

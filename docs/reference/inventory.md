@@ -28,9 +28,9 @@
 ### Total Asignado
 - **LXC Containers**: 14
 - **Virtual Machines**: 2
-- **CPU Total**: 24 cores
+- **CPU Total**: 23 cores
 - **RAM Total**: 28 GB
-- **Almacenamiento Total**: 300 GB
+- **Almacenamiento Total**: 316 GB
 
 ### Distribución por Red
 - **Red LAN (192.168.1.0/24)**: CT100 (dual), CT101, CT102, CT103, VM104, CT112

@@ -32,8 +32,13 @@ Para instrucciones completas de instalación y configuración, consulta la docum
 
 ## 🔗 Acceso
 
-- **Interno:** http://10.10.10.60:80
-- **Externo:** https://vault.tu-dominio.com (vía Nginx Proxy Manager)
+- **Puerto interno Docker:** 80
+- **Puerto publicado en host:** 8080
+- **URL interna:** http://10.10.10.60:8080
+- **Dominio interno:** https://vault.home.arpa
+- **Acceso remoto:** https://vaultwarden.tailXXXXXX.ts.net (vía Tailscale Serve)
+
+> **Nota**: Reemplaza `tailXXXXXX` con tu dominio real de Tailscale
 
 ## 🔗 Recursos Relacionados
 

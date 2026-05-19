@@ -32,8 +32,13 @@ Para instrucciones completas de instalación y configuración, consulta la docum
 
 ## 🔗 Acceso
 
-- **Interno:** http://10.10.10.74:8080
-- **Externo:** https://auth.tu-dominio.com (vía Nginx Proxy Manager)
+- **Puerto interno Docker:** 8080
+- **Puerto publicado en host:** 8080
+- **URL interna:** http://10.10.10.74:8080
+- **Dominio interno:** https://auth.home.arpa
+- **Acceso remoto:** Vía Tailscale VPN
+
+> **Nota**: Keycloak está en la red privada y solo es accesible desde la LAN o vía Tailscale
 
 ## 🔗 Recursos Relacionados
 

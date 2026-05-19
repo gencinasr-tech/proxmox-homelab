@@ -51,8 +51,9 @@
 
 ### Dominios Internos
 - Todos los dominios usan el TLD `.home.arpa` (RFC 8375)
-- Resueltos por Pi-hole (CT103) en 192.168.1.53
-- Configuración DNS local en `/etc/pihole/custom.list`
+- Resueltos por AdGuard Home (CT103) en 192.168.1.53
+- Configuración DNS mediante DNS Rewrites en AdGuard Home
+- Ver [domains.md](./domains.md) para lista completa de dominios
 
 ### Puertos
 - Los puertos listados son los **puertos publicados** en el host

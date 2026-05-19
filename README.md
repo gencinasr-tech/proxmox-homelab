@@ -127,8 +127,12 @@
 
 ### Requisitos Previos
 
-- **Hardware**: Portátil/PC con al menos 8GB RAM, 100GB disco SSD + SSD/HDD adicional para backups
-- **Este proyecto**: ASUS TUF Gaming FX505DY (AMD Ryzen 5 3550H 4C/8T, 16GB RAM, Micron NVMe 500GB + Crucial MX500 SSD 250GB)
+- **Hardware mínimo**: Portátil/PC con al menos 8GB RAM, 100GB disco SSD + SSD/HDD adicional para backups
+- **Este proyecto**: ASUS TUF Gaming FX505DY
+  - CPU: AMD Ryzen 5 3550H (4 cores / 8 threads)
+  - RAM: 16GB DDR4 (15 GiB disponibles para Proxmox)
+  - Disco principal: Micron 2200V NVMe 500GB
+  - Disco backups: Crucial MX500 SSD 250GB
 - **Software**: Proxmox VE 9.1.9 instalado
 - **Red**: Acceso a router para configurar IPs estáticas o DHCP reservado
 - **Conocimientos**: Básicos de Linux, Docker y redes
@@ -275,17 +279,24 @@ cd proxmox-homelab
 
 ## 📊 Estadísticas del Proyecto
 
+### Infraestructura Virtual
 - **Contenedores LXC**: 14 (100, 101, 102, 103, 105, 106, 107, 108, 110, 111, 112, 113, 114, 115)
 - **Máquinas Virtuales**: 2 (104 CasaOS, 109 Immich)
 - **Servicios Docker**: 40+
 - **Dominios internos**: 25+
 - **Redes configuradas**: 2 (vmbr0 LAN + vmbr10 Privada)
+
+### Recursos Asignados (Virtual)
+- **CPU Total Asignada**: 23 vCPU
+- **RAM Total Asignada**: 28 GB
+- **Almacenamiento Total Asignado**: 316 GB
+
+> **⚠️ Nota sobre Overcommit**: Los recursos asignados usan overcommit de virtualización. El host físico tiene **4 cores / 8 threads** y **16 GB de RAM física**, pero la suma de recursos virtuales asignados es superior porque no todos los servicios consumen su máximo simultáneamente. Proxmox gestiona esto eficientemente mediante balanceo dinámico de recursos.
+
+### Documentación y Automatización
 - **Backups automáticos**: 3 niveles (local, remoto, selectivo)
 - **Líneas de documentación**: 5500+
 - **Scripts de automatización**: 20+
-- **CPU Total Asignada**: 20 cores
-- **RAM Total Asignada**: 23 GB
-- **Almacenamiento Total**: ~200 GB
 
 ## 🎯 Casos de Uso
 

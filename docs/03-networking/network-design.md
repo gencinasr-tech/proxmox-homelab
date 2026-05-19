@@ -208,14 +208,16 @@ Cliente → Nginx Proxy Manager (CT112)
 
 ## Direccionamiento IP
 
-### Esquema de IPs
+### Asignación de IPs
 
-| Rango | Uso | Ejemplo |
-|-------|-----|---------|
-| .1-.9 | Infraestructura | Router, Proxmox |
-| .10-.99 | Dispositivos | PCs, móviles |
-| .100-.199 | Servicios LAN | Contenedores públicos |
-| .200-.254 | Reservado | Futuro uso |
+**Nota:** Las IPs están definidas en `docs/reference/inventory.md`. No se sigue una numeración estricta por rangos; se mantienen las IPs reales del entorno actual para evitar conflictos y facilitar la gestión.
+
+**IPs principales:**
+- Router: 192.168.1.1
+- Proxmox: 192.168.1.200
+- DNS (CT103): 192.168.1.53
+- Servicios LAN: .79, .80, .81, .82, .87, etc.
+- Red privada: 10.10.10.0/24 (gateway: 10.10.10.87 en CT100)
 
 ### Tabla de Asignaciones
 

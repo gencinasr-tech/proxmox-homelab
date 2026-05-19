@@ -114,13 +114,17 @@ Template: debian-13-standard
 Disk: 8 GB
 CPU: 1 core
 RAM: 1024 MB
-Network: vmbr0 + vmbr10 (dual network)
-IP: 192.168.1.87/24
-Gateway: 192.168.1.1
-DNS: 1.1.1.1
+
+# Configuración de red dual:
+net0 (eth0): vmbr0 -> 192.168.1.87/24, gateway 192.168.1.1, DNS 1.1.1.1
+net1 (eth1): vmbr10 -> 10.10.10.87/24, sin gateway
 
 # Marcar: Unprivileged + Nesting + Start at boot
 ```
+
+**Importante:** CT100 actúa como gateway de la red privada (10.10.10.87). Los contenedores en la red privada deben usar:
+- Gateway: 10.10.10.87
+- DNS: 192.168.1.53
 
 Dentro del CT:
 
@@ -130,6 +134,15 @@ curl -fsSL https://tailscale.com/install.sh | sh
 
 # Anunciar ambas redes (LAN y Privada)
 tailscale up --advertise-routes=192.168.1.0/24,10.10.10.0/24 --accept-routes
+
+# Habilitar IP forwarding y NAT
+echo 'net.ipv4.ip_forward=1' >> /etc/sysctl.conf
+sysctl -p
+
+# Configurar NAT para la red privada
+iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -o eth0 -j MASQUERADE
+apt install iptables-persistent
+netfilter-persistent save
 
 # Nota: Debes aprobar las rutas en el panel de Tailscale (https://login.tailscale.com)
 ```

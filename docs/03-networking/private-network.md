@@ -34,16 +34,17 @@ La red privada (10.10.10.0/24) está diseñada para:
 # /etc/network/interfaces en Proxmox Host
 
 auto vmbr10
-iface vmbr10 inet static
-    address 10.10.10.87/24
+iface vmbr10 inet manual
     bridge-ports none
     bridge-stp off
     bridge-fd 0
-    # Habilitar forwarding
     post-up echo 1 > /proc/sys/net/ipv4/ip_forward
-    # NAT para acceso a internet
-    post-up iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -o vmbr0 -j MASQUERADE
-    post-down iptables -t nat -D POSTROUTING -s 10.10.10.0/24 -o vmbr0 -j MASQUERADE
+
+# Nota: El gateway de la red privada es CT100 (10.10.10.87)
+# CT100 tiene dos interfaces:
+#   - eth0 (vmbr0): 192.168.1.87/24 - Red LAN
+#   - eth1 (vmbr10): 10.10.10.87/24 - Red privada (actúa como gateway)
+# CT100 realiza NAT y routing entre ambas redes
 ```
 
 ### Aplicar Configuración
@@ -207,9 +208,9 @@ server {
 ```bash
 # Acceso directo vía Tailscale
 # Una vez conectado a Tailscale, puedes acceder directamente:
-http://10.10.10.60  # Vaultwarden
-http://10.10.10.65  # Nextcloud
-http://10.10.10.50:3000  # Grafana
+http://10.10.10.60:8080  # Vaultwarden
+http://10.10.10.65:8088  # Nextcloud
+http://10.10.10.50:3002  # Grafana
 ```
 
 ### Reglas de Firewall
@@ -271,10 +272,10 @@ datasources:
 
 ```yaml
 # Configuración OIDC
-issuer: https://auth.tu-dominio.com/realms/homelab
+issuer: https://auth.home.arpa/realms/homelab
 client_id: nextcloud
 client_secret: secret
-redirect_uri: https://cloud.tu-dominio.com/apps/oidc/redirect
+redirect_uri: https://nextcloud.home.arpa/apps/oidc/redirect
 ```
 
 ## Troubleshooting

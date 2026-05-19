@@ -91,15 +91,17 @@ iface vmbr0 inet static
 # /etc/network/interfaces
 
 auto vmbr10
-iface vmbr10 inet static
-    address 10.10.10.87/24
+iface vmbr10 inet manual
     bridge-ports none
     bridge-stp off
     bridge-fd 0
-    # NAT para acceso a internet
     post-up echo 1 > /proc/sys/net/ipv4/ip_forward
-    post-up iptables -t nat -A POSTROUTING -s 10.10.10.0/24 -o vmbr0 -j MASQUERADE
-    post-down iptables -t nat -D POSTROUTING -s 10.10.10.0/24 -o vmbr0 -j MASQUERADE
+
+# Nota: El gateway de la red privada es CT100 (10.10.10.87)
+# CT100 tiene dos interfaces:
+#   - eth0 (vmbr0): 192.168.1.87/24 - Red LAN
+#   - eth1 (vmbr10): 10.10.10.87/24 - Red privada (gateway)
+# CT100 realiza NAT y routing entre ambas redes
 ```
 
 ### Aplicar Cambios

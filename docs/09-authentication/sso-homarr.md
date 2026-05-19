@@ -62,7 +62,7 @@ services:
     container_name: homarr
     restart: unless-stopped
     ports:
-      - "192.168.1.80:7575:7575"
+      - "192.168.1.79:7575:7575"
     environment:
       # Configuración básica
       BASE_URL: "https://homarr.home.arpa"
@@ -172,8 +172,13 @@ Cada usuario debe:
 
 Este script crea automáticamente dashboards personalizados para cada miembro de la familia con widgets adaptados a su edad y necesidades.
 
+> **⚠️ ADVERTENCIA:** Este script modifica directamente la base de datos SQLite de Homarr. **Hacer backup obligatorio antes de ejecutar**.
+
 ```bash
 # Desde CT101
+# IMPORTANTE: Hacer backup de la base de datos primero
+cp /opt/stacks/dashboard/homarr/data/db.sqlite /root/homarr-db-backup-$(date +%F).sqlite
+
 mkdir -p /root/scripts
 
 cat > /root/scripts/homarr-family-provisioner.py <<'PYTHON'
@@ -227,13 +232,13 @@ WIDGET_TEMPLATES = {
         "position": {"x": 6, "y": 0, "width": 3, "height": 2}
     },
     "media-server": {
-        "type": "media-server",
-        "properties": {"service": "jellyfin", "url": "https://jellyfin.home.arpa"},
+        "type": "iframe",
+        "properties": {"url": "https://music.home.arpa", "title": "Música"},
         "position": {"x": 0, "y": 4, "width": 4, "height": 3}
     },
-    "downloads": {
-        "type": "download-speed",
-        "properties": {"services": ["qbittorrent", "sabnzbd"]},
+    "monitoring": {
+        "type": "iframe",
+        "properties": {"url": "https://grafana.home.arpa", "title": "Monitorización"},
         "position": {"x": 4, "y": 4, "width": 3, "height": 2}
     },
     "system-monitor": {
@@ -256,9 +261,9 @@ WIDGET_TEMPLATES = {
         "properties": {"category": "games"},
         "position": {"x": 0, "y": 4, "width": 6, "height": 3}
     },
-    "videos": {
+    "uptime": {
         "type": "iframe",
-        "properties": {"url": "https://jellyfin.home.arpa", "title": "Videos"},
+        "properties": {"url": "https://kuma.home.arpa", "title": "Estado Servicios"},
         "position": {"x": 0, "y": 4, "width": 8, "height": 4}
     },
     "homework": {

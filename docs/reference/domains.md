@@ -51,7 +51,7 @@
 | adminer.home.arpa        | 10.10.10.73    | DB Admin           | CT111      |
 | pgadmin.home.arpa        | 10.10.10.73    | PostgreSQL Admin   | CT111      |
 | chartdb.home.arpa        | 10.10.10.73    | DB Diagrams        | CT111      |
-| auth.home.arpa           | 10.10.10.74    | SSO/Keycloak       | CT113      |
+| auth.home.arpa           | 192.168.1.82   | SSO/Keycloak (via NPM) | CT113  |
 | music.home.arpa          | 10.10.10.82    | Navidrome          | CT114      |
 | downloads.home.arpa      | 10.10.10.83    | Music Downloader   | CT115      |
 
@@ -152,7 +152,7 @@ dns:
     - domain: chartdb.home.arpa
       answer: 10.10.10.73
     - domain: auth.home.arpa
-      answer: 10.10.10.74
+      answer: 192.168.1.82
     - domain: music.home.arpa
       answer: 10.10.10.82
     - domain: downloads.home.arpa

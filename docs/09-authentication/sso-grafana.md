@@ -62,7 +62,7 @@ services:
     container_name: grafana
     restart: unless-stopped
     ports:
-      - "10.10.10.71:3000:3000"
+      - "10.10.10.50:3002:3000"
     environment:
       # Configuración básica
       GF_SERVER_ROOT_URL: "https://grafana.home.arpa"

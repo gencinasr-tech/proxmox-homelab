@@ -1,0 +1,7 @@
+### pveversion
+### Comando: pveversion -v
+
+Write error - write (28: No space left on device)
+Write error - write (28: No space left on device)
+The package lists or status file could not be parsed or opened.
+unable to initialize AptPkg::Cache

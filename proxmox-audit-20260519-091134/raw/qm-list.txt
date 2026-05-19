@@ -1,0 +1,6 @@
+### qm-list
+### Comando: qm list
+
+      VMID NAME                 STATUS     MEM(MB)    BOOTDISK(GB) PID       
+       104 casaos-nas           running    4096              32.00 156165    
+       109 immich               running    6144              64.00 3856248   

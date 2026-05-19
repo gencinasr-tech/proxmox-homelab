@@ -1,0 +1,18 @@
+### df
+### Comando: df -hT
+
+Filesystem           Type      Size  Used Avail Use% Mounted on
+udev                 devtmpfs  6.8G     0  6.8G   0% /dev
+tmpfs                tmpfs     1.6G  5.6M  1.6G   1% /run
+/dev/mapper/pve-root ext4       94G  8.0G   82G   9% /
+tmpfs                tmpfs     7.7G   46M  7.7G   1% /dev/shm
+efivarfs             efivarfs  128K   49K   75K  40% /sys/firmware/efi/efivars
+tmpfs                tmpfs     5.0M     0  5.0M   0% /run/lock
+tmpfs                tmpfs     1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+tmpfs                tmpfs     7.7G  7.7G     0 100% /tmp
+/dev/nvme0n1p2       vfat     1022M  8.8M 1014M   1% /boot/efi
+/dev/fuse            fuse      128M   24K  128M   1% /etc/pve
+tmpfs                tmpfs     1.0M     0  1.0M   0% /run/credentials/getty@tty1.service
+/dev/sda1            ext4      229G  100G  129G  44% /mnt/hdd250
+tmpfs                tmpfs     1.6G  4.0K  1.6G   1% /run/user/0
+192.168.1.81:/data   nfs4       29G   19G  8.7G  69% /mnt/casaos-data

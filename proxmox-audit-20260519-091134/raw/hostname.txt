@@ -1,0 +1,18 @@
+### hostname
+### Comando: hostnamectl
+
+ Static hostname: pve
+       Icon name: computer-laptop
+         Chassis: laptop 💻
+      Machine ID: bc0e09b9e37e4db1a1a991d3e4bd49f8
+         Boot ID: 8f6e3ffa25fe4de4bdf05d2ad7a84c5f
+    Product UUID: 9476e99a-df14-6840-a2e9-3950a4650c30
+Operating System: Debian GNU/Linux 13 (trixie)
+          Kernel: Linux 7.0.0-3-pve
+    Architecture: x86-64
+ Hardware Vendor: ASUSTeK COMPUTER INC.
+  Hardware Model: TUF Gaming FX505DY_FX505DY
+ Hardware Serial: KBNRCV02D993463
+Firmware Version: FX505DY.315
+   Firmware Date: Mon 2020-03-09
+    Firmware Age: 6y 2month 1w 2d

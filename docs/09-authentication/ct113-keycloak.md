@@ -136,7 +136,7 @@ KC_ADMIN_PASSWORD="$(openssl rand -base64 24 | tr -d '\n')"
 # Guardar en archivo temporal (IMPORTANTE: guardar en Vaultwarden después)
 cat > /opt/stacks/identity/.env <<EOF
 KC_DB_PASSWORD=$KC_DB_PASSWORD
-KC_ADMIN_USER=guillermo
+KC_ADMIN_USER=admin-user
 KC_ADMIN_PASSWORD=$KC_ADMIN_PASSWORD
 EOF
 
@@ -283,7 +283,7 @@ Acceder desde navegador: `https://auth.home.arpa`
 
 1. Abrir `https://auth.home.arpa/admin/`
 2. Login con:
-   - Usuario: `guillermo` (valor de `KC_ADMIN_USER`)
+   - Usuario: `admin-user` (valor de `KC_ADMIN_USER`)
    - Contraseña: (valor de `KC_ADMIN_PASSWORD`)
 
 ### 2. Crear Realm `homelab`
@@ -299,7 +299,7 @@ Acceder desde navegador: `https://auth.home.arpa`
 En el realm **master** (no homelab):
 
 1. Ir a **Users** → **Add user**
-2. **Username:** `admin-guillermo`
+2. **Username:** tu nombre de usuario (ej: `admin-tuusuario`)
 3. **Email:** tu email
 4. **Email verified:** ON
 5. **Enabled:** ON
@@ -321,7 +321,7 @@ En el realm **master** (no homelab):
 
 1. Volver al realm **master**
 2. Ir a **Users**
-3. Buscar usuario `guillermo`
+3. Buscar usuario `admin-user`
 4. Click en el usuario → **Delete**
 
 ### 5. Limpiar Variables de Bootstrap

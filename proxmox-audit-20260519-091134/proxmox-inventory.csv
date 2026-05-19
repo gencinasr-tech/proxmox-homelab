@@ -1,0 +1,17 @@
+id,tipo,nombre,estado,cpu_asignada,ram_asignada_gb,ram_usada_gb,disco_asignado_gb,disco_usado_gb,node
+100,lxc,TailScale,running,1,1.0,0.05,7.78,0.83,pve
+101,lxc,dashboard,running,1,1.0,0.58,11.71,4.57,pve
+102,lxc,Portainer,running,1,1.0,0.11,11.71,1.52,pve
+103,lxc,DNS,running,1,1.0,0.13,11.71,1.56,pve
+104,qemu,casaos-nas,running,2,4.0,3.53,32.0,0.0,pve
+105,lxc,monitoring,running,1,1.0,0.2,15.58,6.59,pve
+106,lxc,vaultwarden,running,1,1.0,0.12,11.71,2.41,pve
+107,lxc,paperless,running,1,1.0,0.1,15.58,4.2,pve
+108,lxc,nextcloud,running,2,2.0,0.23,31.2,5.16,pve
+109,qemu,immich,running,4,6.0,1.22,64.0,0.0,pve
+110,lxc,tools,running,1,1.0,0.11,15.58,4.8,pve
+111,lxc,databases,running,1,2.0,0.15,23.46,3.87,pve
+112,lxc,proxy,running,1,1.0,0.26,11.71,2.92,pve
+113,lxc,identity,running,2,2.0,0.44,23.46,2.76,pve
+114,lxc,music,running,1,1.0,0.17,11.71,1.9,pve
+115,lxc,downloads,running,2,2.0,0.13,11.71,1.84,pve

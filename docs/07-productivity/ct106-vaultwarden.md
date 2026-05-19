@@ -8,7 +8,7 @@ Gestor de contraseñas auto-hospedado compatible con Bitwarden.
 - **Hostname:** vaultwarden
 - **IP Privada:** 10.10.10.60
 - **OS:** Debian 12
-- **Recursos:** 1 CPU, 1GB RAM, 8GB disco
+- **Recursos:** 1 CPU, 1GB RAM, 12GB disco
 
 ## 🎯 Propósito
 

@@ -322,35 +322,28 @@ Este homelab es perfecto para:
 - [ ] Ollama + Open WebUI (IA local)
 - [ ] Minecraft Server
 
-## 🤝 Contribuir
+## 🤝 Feedback y Mejoras
 
-¡Las contribuciones son bienvenidas! Si quieres mejorar este proyecto:
+Este repositorio documenta una implementación real de homelab. Si encuentras errores, contradicciones o tienes sugerencias:
 
-1. Fork el repositorio
-2. Crea una rama para tu feature (`git checkout -b feature/MejoraNueva`)
-3. Commit tus cambios (`git commit -m 'Añadir nueva característica'`)
-4. Push a la rama (`git push origin feature/MejoraNueva`)
-5. Abre un Pull Request
+- 📝 [Reportar error en documentación](../../issues/new?template=bug_report.md)
+- 💡 [Sugerir mejora](../../issues/new?template=feature_request.md)
+- ❓ [Hacer una pregunta](../../discussions)
 
-### Áreas donde puedes contribuir
+Ver [CONTRIBUTING.md](CONTRIBUTING.md) para más detalles sobre cómo contribuir.
 
-- 📝 Mejorar documentación
-- 🐛 Reportar bugs
-- ✨ Proponer nuevas features
-- 🎨 Mejorar diagramas
-- 🔧 Optimizar scripts
-- 🌍 Traducir documentación
+### Qué puedes reportar
+
+- Errores en comandos o configuraciones
+- Contradicciones de IPs/puertos
+- Enlaces rotos
+- Mejoras de seguridad
+- Sugerencias de servicios adicionales
+- Formas más claras de documentar
 
 ## 📝 Licencia
 
 Este proyecto está bajo la licencia MIT. Ver [LICENSE](LICENSE) para más detalles.
-
-## 💬 Comunidad y Soporte
-
-- 🐛 [Reportar un bug](../../issues/new?template=bug_report.md)
-- 💡 [Solicitar una feature](../../issues/new?template=feature_request.md)
-- ❓ [Hacer una pregunta](../../discussions)
-- 💬 [Discusiones generales](../../discussions)
 
 ## 🙏 Agradecimientos
 
@@ -360,12 +353,6 @@ Este proyecto no sería posible sin:
 - La comunidad de **r/selfhosted**
 - Todos los proyectos open-source utilizados
 - Los desarrolladores de cada servicio incluido
-
-## ⭐ Star History
-
-Si este proyecto te ha sido útil, ¡considera darle una estrella! ⭐
-
-Ayuda a otros a descubrir este proyecto y motiva a seguir mejorándolo.
 
 ## 📸 Screenshots
 

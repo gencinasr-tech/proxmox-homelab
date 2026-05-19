@@ -8,7 +8,7 @@ Servidor de autenticación y Single Sign-On (SSO).
 - **Hostname:** keycloak
 - **IP Privada:** 10.10.10.74
 - **OS:** Debian 12
-- **Recursos:** 4 CPU, 4GB RAM, 16GB disco
+- **Recursos:** 2 CPU, 2GB RAM, 24GB disco
 
 ## 🎯 Propósito
 

@@ -8,7 +8,7 @@ Cliente de torrents con interfaz web.
 - **Hostname:** downloads
 - **IP Privada:** 10.10.10.83
 - **OS:** Debian 12
-- **Recursos:** 2 CPU, 2GB RAM, 16GB disco + almacenamiento de descargas
+- **Recursos:** 2 CPU, 2GB RAM, 12GB disco + almacenamiento de descargas
 
 ## 🎯 Propósito
 

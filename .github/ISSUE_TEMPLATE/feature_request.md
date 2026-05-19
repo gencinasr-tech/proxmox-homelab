@@ -1,45 +1,63 @@
 ---
-name: Feature Request
-about: Sugerir una nueva característica o mejora
-title: '[FEATURE] '
+name: Sugerencia de Mejora
+about: Sugerir una mejora en la documentación o infraestructura
+title: '[MEJORA] '
 labels: enhancement
 assignees: ''
 ---
 
-## 💡 Descripción de la Feature
+## 💡 Descripción de la Mejora
 
-Una descripción clara y concisa de la característica que te gustaría ver.
+Descripción clara y concisa de qué quieres mejorar.
 
-## 🎯 Problema que Resuelve
+## 🎯 Problema o Necesidad
 
-¿Qué problema o necesidad resuelve esta feature?
+¿Qué problema resuelve esta mejora? ¿Por qué sería útil?
 
-## 💭 Solución Propuesta
+## 💭 Propuesta
 
-Descripción clara de cómo te gustaría que funcionara.
+Describe cómo implementarías esta mejora:
 
-## 🔄 Alternativas Consideradas
+### Opción 1: [Nombre de la opción]
+- Descripción
+- Ventajas
+- Desventajas
 
-¿Has considerado otras soluciones o features alternativas?
+### Opción 2 (si aplica): [Nombre de la opción]
+- Descripción
+- Ventajas
+- Desventajas
 
-## 📊 Casos de Uso
+## 📊 Tipo de Mejora
 
-Describe escenarios específicos donde esta feature sería útil:
+- [ ] Nuevo servicio a documentar
+- [ ] Mejora de seguridad
+- [ ] Optimización de rendimiento
+- [ ] Mejor forma de documentar algo
+- [ ] Script de automatización
+- [ ] Diagrama o visualización
+- [ ] Otro: _____
 
-1. Caso 1: ...
-2. Caso 2: ...
+## 📚 Referencias
 
-## 🎨 Mockups o Ejemplos
+Links a documentación, proyectos similares, o ejemplos relevantes:
 
-Si aplica, añade mockups, diagramas o ejemplos de cómo debería verse/funcionar.
+- [Ejemplo 1](url)
+- [Ejemplo 2](url)
 
-## 📚 Recursos Adicionales
+## 🔍 Impacto
 
-Links a documentación, proyectos similares, o referencias relevantes.
+¿A quién beneficiaría esta mejora?
+
+- [ ] Usuarios nuevos (facilita la instalación)
+- [ ] Usuarios avanzados (añade funcionalidad)
+- [ ] Mantenimiento (facilita gestión)
+- [ ] Seguridad (mejora protección)
+- [ ] Documentación (más clara)
 
 ## ✅ Checklist
 
 - [ ] He buscado en issues existentes
 - [ ] He revisado el roadmap
-- [ ] Esta feature es relevante para el proyecto
+- [ ] Esta mejora es relevante para un homelab
 - [ ] He proporcionado suficiente contexto

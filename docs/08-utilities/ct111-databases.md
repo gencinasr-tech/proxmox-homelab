@@ -8,17 +8,27 @@ Servidor centralizado de bases de datos (PostgreSQL y MariaDB).
 - **Hostname:** databases
 - **IP Privada:** 10.10.10.73
 - **OS:** Debian 12
-- **Recursos:** 4 CPU, 8GB RAM, 64GB disco
+- **Recursos:** 1 CPU, 2GB RAM, 24GB disco
 
 ## 🎯 Servicios
 
-- **PostgreSQL:** Puerto 5432
-  - Nextcloud
-  - Immich
-  - Paperless-ngx
+| Servicio | Puerto Interno Docker | Puerto Publicado | URL Acceso |
+|----------|----------------------|------------------|------------|
+| PostgreSQL | 5432 | 5432 | 10.10.10.73:5432 |
+| MariaDB | 3306 | 3306 | 10.10.10.73:3306 |
+| Adminer | 8080 | 8080 | http://10.10.10.73:8080 |
+| pgAdmin | 80 | 8082 | http://10.10.10.73:8082 |
+| ChartDB | 3000 | 8083 | http://10.10.10.73:8083 |
+
+### Bases de Datos Alojadas
+- **PostgreSQL:**
+  - Nextcloud (CT108)
+  - Immich (VM109)
+  - Paperless-ngx (CT107)
+  - Keycloak (CT113)
   
-- **MariaDB:** Puerto 3306
-  - Otros servicios que requieran MySQL
+- **MariaDB:**
+  - Servicios que requieran MySQL/MariaDB
 
 ## 🔒 Seguridad
 

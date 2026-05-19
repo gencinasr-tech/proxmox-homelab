@@ -1,332 +1,119 @@
-# 🤝 Guía de Contribución
+# 🤝 Sugerencias y Mejoras
 
-¡Gracias por tu interés en contribuir a este proyecto! Esta guía te ayudará a empezar.
+Este repositorio documenta una implementación real de homelab con Proxmox. Si encuentras errores, contradicciones o tienes sugerencias de mejora, tu feedback es bienvenido.
 
-## 📋 Tabla de Contenidos
+## 📋 Qué Puedes Reportar
 
-- [Código de Conducta](#código-de-conducta)
-- [Cómo Contribuir](#cómo-contribuir)
-- [Reportar Bugs](#reportar-bugs)
-- [Sugerir Features](#sugerir-features)
-- [Pull Requests](#pull-requests)
-- [Estilo de Código](#estilo-de-código)
-- [Documentación](#documentación)
+### Errores en la Documentación
+- Comandos incorrectos o peligrosos
+- Contradicciones entre IPs, puertos o configuraciones
+- Enlaces rotos
+- Typos o errores gramaticales
+- Instrucciones poco claras
 
-## 📜 Código de Conducta
+### Mejoras de Seguridad
+- Vulnerabilidades detectadas
+- Mejores prácticas de seguridad
+- Configuraciones inseguras
 
-Este proyecto se adhiere a un código de conducta. Al participar, se espera que mantengas un ambiente respetuoso y constructivo.
+### Sugerencias de Contenido
+- Servicios adicionales útiles
+- Mejores formas de documentar algo
+- Diagramas o visualizaciones
+- Scripts de automatización
 
-### Nuestros Estándares
+## 🐛 Reportar un Error
 
-✅ **Hacer**:
-- Ser respetuoso con otros contribuidores
-- Aceptar críticas constructivas
-- Enfocarse en lo mejor para la comunidad
-- Mostrar empatía hacia otros miembros
+Si encuentras un error en la documentación:
 
-❌ **No hacer**:
-- Usar lenguaje ofensivo o inapropiado
-- Trolling o comentarios despectivos
-- Acoso público o privado
-- Publicar información privada de otros
+1. **Verifica** que no esté ya reportado en [Issues](../../issues)
+2. **Abre un issue** usando el [template de error](../../issues/new?template=bug_report.md)
+3. **Incluye**:
+   - Qué documento tiene el error
+   - Qué está mal
+   - Cuál debería ser la información correcta
+   - Logs o screenshots si aplica
 
-## 🚀 Cómo Contribuir
+## 💡 Sugerir una Mejora
 
-Hay muchas formas de contribuir:
+Para sugerir mejoras:
 
-### 1. Reportar Bugs
-Encontraste un error? [Abre un issue](../../issues/new?template=bug_report.md)
-
-### 2. Sugerir Features
-Tienes una idea? [Propón una feature](../../issues/new?template=feature_request.md)
-
-### 3. Mejorar Documentación
-- Corregir typos
-- Añadir ejemplos
-- Clarificar instrucciones
-- Traducir a otros idiomas
-
-### 4. Contribuir Código
-- Corregir bugs
-- Implementar features
-- Optimizar scripts
-- Añadir tests
-
-### 5. Compartir Configuraciones
-- Compartir tus docker-compose personalizados
-- Compartir scripts útiles
-- Compartir configuraciones de servicios
-
-## 🐛 Reportar Bugs
-
-### Antes de Reportar
-
-1. **Busca en issues existentes** - Quizás ya fue reportado
-2. **Verifica la documentación** - Puede ser un problema de configuración
-3. **Prueba con la última versión** - Puede estar ya corregido
-
-### Cómo Reportar
-
-Usa el [template de bug report](../../issues/new?template=bug_report.md) e incluye:
-
-- **Descripción clara** del problema
-- **Pasos para reproducir** el error
-- **Comportamiento esperado** vs actual
-- **Logs relevantes** (sin información sensible)
-- **Entorno** (OS, versiones, hardware)
-- **Screenshots** si aplica
-
-## 💡 Sugerir Features
-
-### Antes de Sugerir
-
-1. **Busca en issues existentes** - Puede estar ya propuesta
-2. **Revisa el roadmap** - Puede estar planeada
-3. **Considera el alcance** - Debe ser relevante para el proyecto
-
-### Cómo Sugerir
-
-Usa el [template de feature request](../../issues/new?template=feature_request.md) e incluye:
-
-- **Descripción clara** de la feature
-- **Problema que resuelve**
-- **Casos de uso** específicos
-- **Alternativas consideradas**
-- **Mockups o ejemplos** si aplica
+1. **Abre un issue** usando el [template de sugerencia](../../issues/new?template=feature_request.md)
+2. **Describe**:
+   - Qué quieres mejorar
+   - Por qué sería útil
+   - Cómo lo implementarías
 
 ## 🔀 Pull Requests
 
-### Proceso
+Si quieres contribuir directamente:
 
-1. **Fork el repositorio**
-2. **Crea una rama** desde `main`:
-   ```bash
-   git checkout -b feature/mi-nueva-feature
-   ```
+1. **Fork** el repositorio
+2. **Crea una rama**: `git checkout -b fix/descripcion-corta`
 3. **Haz tus cambios**
-4. **Commit con mensajes claros**:
-   ```bash
-   git commit -m "Add: Nueva feature X"
-   ```
-5. **Push a tu fork**:
-   ```bash
-   git push origin feature/mi-nueva-feature
-   ```
+4. **Commit**: `git commit -m "Fix: descripción del cambio"`
+5. **Push**: `git push origin fix/descripcion-corta`
 6. **Abre un Pull Request**
 
 ### Guías para PRs
 
 ✅ **Hacer**:
-- Mantener cambios enfocados y pequeños
-- Escribir mensajes de commit descriptivos
-- Actualizar documentación si es necesario
-- Probar tus cambios antes de enviar
-- Seguir el estilo de código existente
+- Cambios pequeños y enfocados
+- Probar comandos antes de documentar
+- Mantener el estilo de documentación existente
+- Actualizar índices si añades nuevos documentos
 
-❌ **No hacer**:
-- Mezclar múltiples features en un PR
-- Hacer cambios no relacionados
-- Romper funcionalidad existente
-- Ignorar feedback de revisión
+❌ **Evitar**:
+- Cambios masivos sin discusión previa
+- Información sensible (IPs reales, passwords, dominios)
+- Romper la estructura de documentación existente
 
-### Mensajes de Commit
-
-Usa prefijos claros:
-
-- `Add:` - Nueva feature o archivo
-- `Fix:` - Corrección de bug
-- `Update:` - Actualización de código existente
-- `Docs:` - Cambios en documentación
-- `Refactor:` - Refactorización de código
-- `Style:` - Cambios de formato
-- `Test:` - Añadir o actualizar tests
-- `Chore:` - Tareas de mantenimiento
-
-Ejemplos:
-```
-Add: Docker compose para CT105 monitoring
-Fix: Error en script de backup
-Update: Documentación de Tailscale
-Docs: Añadir guía de troubleshooting
-```
-
-## 📝 Estilo de Código
-
-### Scripts Bash
-
-```bash
-#!/bin/bash
-# Descripción del script
-
-set -e  # Salir en error
-
-# Comentarios claros
-echo "Mensaje descriptivo"
-
-# Variables en MAYÚSCULAS
-VARIABLE="valor"
-
-# Funciones con nombres descriptivos
-function nombre_descriptivo() {
-    # Código
-}
-```
-
-### Docker Compose
-
-```yaml
-version: '3.8'
-
-services:
-  nombre-servicio:
-    image: imagen:tag
-    container_name: nombre-contenedor
-    restart: unless-stopped
-    ports:
-      - "puerto:puerto"
-    volumes:
-      - ./ruta:/ruta
-    environment:
-      - VARIABLE=valor
-    networks:
-      - red-nombre
-```
+## 📝 Estilo de Documentación
 
 ### Markdown
+- Headers jerárquicos (# ## ###)
+- Code blocks con syntax highlighting
+- Ejemplos prácticos y probados
+- Comandos con comentarios explicativos
 
-- Usar headers jerárquicos (# ## ###)
-- Incluir tabla de contenidos en docs largos
-- Usar code blocks con syntax highlighting
-- Incluir ejemplos prácticos
-- Mantener líneas < 120 caracteres
-
-## 📚 Documentación
-
-### Estructura
-
-Toda documentación va en `/docs`:
-
-```
-docs/
-├── 01-getting-started/
-├── 02-proxmox-base/
-├── 03-networking/
-└── ...
+### Comandos
+```bash
+# Comentario explicativo de qué hace
+comando --con-opciones
 ```
 
-### Guías de Documentación
+### Configuraciones
+- Usar placeholders para datos sensibles: `your_password_here`
+- Incluir comentarios en configs
+- Mostrar configuración completa, no fragmentos
 
-1. **Ser claro y conciso**
-2. **Incluir ejemplos prácticos**
-3. **Usar screenshots cuando ayude**
-4. **Mantener actualizado**
-5. **Probar los comandos antes de documentar**
+## 🔒 Información Sensible
 
-### Template de Documentación
+**NUNCA incluyas**:
+- Passwords reales
+- Tokens o API keys
+- Dominios Tailscale reales
+- IPs públicas
+- Información personal
 
-```markdown
-# Título del Documento
-
-Breve descripción de qué cubre este documento.
-
-## Requisitos Previos
-
-- Requisito 1
-- Requisito 2
-
-## Pasos
-
-### 1. Primer Paso
-
-Descripción y comandos:
-
-\`\`\`bash
-comando aquí
-\`\`\`
-
-### 2. Segundo Paso
-
-...
-
-## Verificación
-
-Cómo verificar que funcionó correctamente.
-
-## Troubleshooting
-
-Problemas comunes y soluciones.
-
-## Referencias
-
-- [Link 1](url)
-- [Link 2](url)
-```
-
-## 🧪 Testing
-
-Antes de enviar un PR:
-
-1. **Prueba tus cambios** en un entorno limpio
-2. **Verifica que no rompe** funcionalidad existente
-3. **Documenta** cómo probaste
-4. **Incluye logs** si es relevante
-
-## 📦 Añadir Nuevos Servicios
-
-Si quieres añadir un nuevo servicio:
-
-1. **Crea carpeta** en `/services/ctXXX-nombre/`
-2. **Incluye**:
-   - `README.md` - Documentación completa
-   - `docker-compose.yml` - Stack del servicio
-   - `configs/` - Configuraciones de ejemplo
-3. **Documenta**:
-   - Requisitos
-   - Instalación paso a paso
-   - Configuración
-   - Troubleshooting
-4. **Actualiza**:
-   - README principal
-   - Documentación en `/docs`
-   - CHANGELOG.md
-
-## 🎨 Añadir Diagramas
-
-Para diagramas:
-
-1. **Usa herramientas** como draw.io, Excalidraw
-2. **Guarda fuente** en `/diagrams/source/`
-3. **Exporta PNG** en `/diagrams/`
-4. **Optimiza tamaño** de imágenes
-5. **Usa nombres descriptivos**
-
-## 🌍 Traducciones
-
-Traducciones son bienvenidas:
-
-1. **Crea carpeta** `/docs/[idioma]/`
-2. **Traduce documentos** manteniendo estructura
-3. **Actualiza links** internos
-4. **Añade a README** principal
+Usa siempre placeholders como:
+- `your_password_here`
+- `tailXXXXXX.ts.net`
+- `tu-dominio.com`
 
 ## ❓ Preguntas
 
-Si tienes preguntas sobre cómo contribuir:
+Si tienes dudas sobre la implementación:
 
 - [Abre una discussion](../../discussions)
-- [Pregunta en un issue](../../issues/new?template=question.md)
-
-## 🙏 Reconocimientos
-
-Todos los contribuidores serán reconocidos en:
-- README principal
-- CHANGELOG.md
-- Página de contribuidores
+- [Pregunta en un issue](../../issues/new)
 
 ## 📄 Licencia
 
-Al contribuir, aceptas que tus contribuciones serán licenciadas bajo la misma licencia del proyecto (MIT).
+Al contribuir, aceptas que tus contribuciones serán licenciadas bajo MIT.
 
 ---
 
-¡Gracias por contribuir! 🎉
+**Nota**: Este no es un producto comercial ni una aplicación. Es documentación técnica de una infraestructura real, compartida para que otros puedan aprender y replicar.
+
+¡Gracias por ayudar a mejorar esta documentación! 🎉

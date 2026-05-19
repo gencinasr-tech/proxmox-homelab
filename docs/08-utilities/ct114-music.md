@@ -8,7 +8,7 @@ Servidor de streaming de música personal.
 - **Hostname:** music
 - **IP Privada:** 10.10.10.82
 - **OS:** Debian 12
-- **Recursos:** 2 CPU, 2GB RAM, 16GB disco + biblioteca de música
+- **Recursos:** 1 CPU, 1GB RAM, 12GB disco + biblioteca de música
 
 ## 🎯 Propósito
 

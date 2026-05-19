@@ -1,53 +1,51 @@
 ---
-name: Bug Report
-about: Reportar un problema o error
-title: '[BUG] '
-labels: bug
+name: Error en Documentación
+about: Reportar un error, contradicción o comando incorrecto en la documentación
+title: '[DOC ERROR] '
+labels: documentation, bug
 assignees: ''
 ---
 
-## 🐛 Descripción del Bug
+## 📄 Documento Afectado
 
-Una descripción clara y concisa del problema.
+¿Qué archivo o sección tiene el error?
 
-## 📋 Pasos para Reproducir
+- **Archivo**: [ej: docs/04-core-services/ct100-tailscale.md]
+- **Sección**: [ej: Configuración de Subnet Router]
+- **Línea** (si aplica): [ej: línea 45]
 
-1. Ir a '...'
-2. Ejecutar '...'
-3. Ver error en '...'
+## 🐛 Descripción del Error
 
-## ✅ Comportamiento Esperado
+Descripción clara y concisa de qué está mal.
 
-Descripción clara de lo que esperabas que sucediera.
-
-## ❌ Comportamiento Actual
-
-Descripción de lo que realmente sucede.
-
-## 📸 Screenshots
-
-Si aplica, añade capturas de pantalla para ayudar a explicar el problema.
-
-## 🖥️ Entorno
-
-- **OS del Host**: [ej: Proxmox VE 8.2]
-- **Servicio afectado**: [ej: CT101 Dashboard]
-- **Versión de Docker**: [ej: 24.0.7]
-- **Navegador** (si aplica): [ej: Chrome 120]
-
-## 📝 Logs
+## ❌ Contenido Incorrecto
 
 ```
-Pega aquí los logs relevantes
+Pega aquí el contenido que está mal
 ```
 
-## 🔍 Información Adicional
+## ✅ Contenido Correcto
 
-Cualquier otra información relevante sobre el problema.
+```
+Pega aquí cómo debería ser
+```
+
+## 🔍 Tipo de Error
+
+- [ ] Comando incorrecto o peligroso
+- [ ] Contradicción de IPs/puertos
+- [ ] Enlace roto
+- [ ] Configuración incorrecta
+- [ ] Typo o error gramatical
+- [ ] Información desactualizada
+- [ ] Otro: _____
+
+## 📝 Contexto Adicional
+
+Cualquier información adicional que ayude a entender el error.
 
 ## ✅ Checklist
 
+- [ ] He verificado que el error existe en la última versión
 - [ ] He buscado en issues existentes
-- [ ] He revisado la documentación
-- [ ] He incluido logs relevantes
-- [ ] He probado con la última versión
+- [ ] He proporcionado suficiente información para corregirlo

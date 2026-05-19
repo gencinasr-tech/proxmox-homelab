@@ -8,7 +8,13 @@ Plataforma de almacenamiento y colaboración en la nube auto-hospedada.
 - **Hostname:** nextcloud
 - **IP Privada:** 10.10.10.65
 - **OS:** Debian 12
-- **Recursos:** 4 CPU, 4GB RAM, 32GB disco + almacenamiento
+- **Recursos:** 2 CPU, 2GB RAM, 32GB disco + almacenamiento en /mnt/hdd250
+
+## 🔌 Puertos
+
+| Servicio | Puerto Interno Docker | Puerto Publicado | URL Acceso |
+|----------|----------------------|------------------|------------|
+| Nextcloud | 80 | 8088 | http://10.10.10.65:8088 |
 
 ## 🎯 Propósito
 
@@ -26,8 +32,9 @@ Para instrucciones completas de instalación y configuración, consulta la docum
 
 ## 🔗 Acceso
 
-- **Interno:** http://10.10.10.65:80
-- **Externo:** https://cloud.tu-dominio.com (vía Nginx Proxy Manager)
+- **Interno:** http://10.10.10.65:8088 o https://nextcloud.home.arpa
+- **Acceso remoto:** https://nextcloud.tailXXXXXX.ts.net (vía Tailscale)
+- **Base de datos:** PostgreSQL en CT111 (10.10.10.73:5432)
 
 ## 🔗 Recursos Relacionados
 

@@ -8,7 +8,13 @@ Sistema de gestión documental digital (DMS).
 - **Hostname:** paperless
 - **IP Privada:** 10.10.10.40
 - **OS:** Debian 12
-- **Recursos:** 2 CPU, 2GB RAM, 16GB disco
+- **Recursos:** 1 CPU, 1GB RAM, 16GB disco
+
+## 🔌 Puertos
+
+| Servicio | Puerto Interno Docker | Puerto Publicado | URL Acceso |
+|----------|----------------------|------------------|------------|
+| Paperless-ngx | 8000 | 8000 | http://10.10.10.40:8000 |
 
 ## 🎯 Propósito
 
@@ -25,8 +31,9 @@ Para instrucciones completas de instalación y configuración, consulta la docum
 
 ## 🔗 Acceso
 
-- **Interno:** http://10.10.10.40:8000
-- **Externo:** https://paperless.tu-dominio.com (vía Nginx Proxy Manager)
+- **Interno:** http://10.10.10.40:8000 o https://paperless.home.arpa
+- **Acceso remoto:** Vía Tailscale VPN
+- **Base de datos:** PostgreSQL en CT111 (10.10.10.73:5432)
 
 ## 🔗 Recursos Relacionados
 

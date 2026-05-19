@@ -150,9 +150,9 @@ Crear grupos para facilitar la gestión:
 192.168.1.0/24
 
 # Grupo: Trusted
-192.168.1.10
-192.168.1.20
-192.168.1.30
+192.168.1.200  # Proxmox host
+192.168.1.87   # CT100 Tailscale
+192.168.1.53   # CT103 DNS
 
 # Grupo: DMZ
 192.168.2.0/24

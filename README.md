@@ -9,7 +9,7 @@
 
 **Un homelab completo y replicable con 15 bloques principales y 40+ servicios Docker**
 
-[📖 Documentación](#-documentación) • [🚀 Quick Start](#-quick-start) • [🏗️ Arquitectura](#️-arquitectura) • [💬 Comunidad](#-comunidad-y-soporte)
+[📖 Documentación](#-documentación) • [🚀 Quick Start](#-quick-start) • [🏗️ Arquitectura](#️-arquitectura) • [💬 Feedback](#-feedback-y-mejoras)
 
 </div>
 
@@ -79,7 +79,7 @@
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-[Ver diagrama detallado →](diagrams/architecture-overview.png)
+[Ver topología detallada →](docs/reference/topology.md)
 
 ## 📋 Servicios Disponibles
 
@@ -318,7 +318,7 @@ Este homelab es perfecto para:
 - [x] Monitoring completo
 - [x] Backups automáticos
 - [x] SSO con Keycloak
-- [x] 15+ servicios funcionando
+- [x] 15 bloques principales y 40+ servicios Docker funcionando
 
 ### 🚧 En Progreso
 - [ ] Documentación completa de todos los servicios
@@ -367,7 +367,7 @@ Este proyecto no sería posible sin:
 
 ## 📸 Screenshots
 
-> Próximamente: Capturas de pantalla de los dashboards y servicios principales
+> Pendiente de añadir capturas anonimizadas de dashboards y servicios principales
 
 ---
 

@@ -419,7 +419,7 @@ tar -xzf attachments-backup.tar.gz -C /opt/appdata/vaultwarden/
 docker-compose restart vaultwarden
 
 # 4. Verificar
-curl -I https://vault.tudominio.com
+curl -I https://vault.home.arpa
 ```
 
 ### 3. Immich

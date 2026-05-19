@@ -13,7 +13,7 @@ Configuración de monitoreo y sistema de alertas para el homelab.
 
 ### Acceso
 
-- **URL:** `https://grafana.tu-dominio.com`
+- **URL:** `https://grafana.home.arpa`
 - **Contenedor:** CT105 (Monitoring)
 - **Puerto:** 3000
 
@@ -232,7 +232,7 @@ receivers:
   - name: 'email'
     email_configs:
       - to: 'tu-email@ejemplo.com'
-        from: 'alertas@tu-dominio.com'
+        from: 'alertas@home.arpa'
         smarthost: 'smtp.gmail.com:587'
         auth_username: 'tu-email@gmail.com'
         auth_password: 'tu-password'

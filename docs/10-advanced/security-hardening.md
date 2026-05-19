@@ -267,7 +267,7 @@ pct create 100 local:vztmpl/debian-12-standard_12.2-1_amd64.tar.zst \
   --features nesting=1 \
   --hostname test \
   --memory 2048 \
-  --net0 name=eth0,bridge=vmbr1,ip=dhcp
+  --net0 name=eth0,bridge=vmbr10,ip=dhcp
 ```
 
 ### 2. AppArmor
@@ -413,8 +413,8 @@ apt install certbot
 
 # Obtener certificado (DNS challenge)
 certbot certonly --manual --preferred-challenges dns \
-  -d homelab.tudominio.com \
-  -d '*.homelab.tudominio.com'
+  -d homelab.home.arpa \
+  -d '*.homelab.home.arpa'
 
 # Renovación automática
 cat > /etc/cron.d/certbot << 'EOF'
@@ -435,7 +435,7 @@ chmod +x /usr/local/bin/mkcert
 mkcert -install
 
 # Generar certificados
-mkcert "*.local.tudominio.com" localhost 127.0.0.1 ::1
+mkcert "*.home.arpa" localhost 127.0.0.1 ::1
 ```
 
 ### 3. Renovación Automática
@@ -448,8 +448,8 @@ mkcert "*.local.tudominio.com" localhost 127.0.0.1 ::1
 certbot renew --quiet
 
 # Copiar a servicios
-cp /etc/letsencrypt/live/tudominio.com/fullchain.pem /opt/certs/
-cp /etc/letsencrypt/live/tudominio.com/privkey.pem /opt/certs/
+cp /etc/letsencrypt/live/home.arpa/fullchain.pem /opt/certs/
+cp /etc/letsencrypt/live/home.arpa/privkey.pem /opt/certs/
 
 # Recargar servicios
 docker-compose -f /opt/stacks/proxy/docker-compose.yml restart

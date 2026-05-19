@@ -218,7 +218,7 @@ http://10.10.10.50:3000  # Grafana
 # En Proxmox Firewall
 
 # Permitir desde proxy a servicios privados
-IN ACCEPT -source 192.168.1.112 -dest 10.10.10.0/24
+IN ACCEPT -source 192.168.1.82 -dest 10.10.10.0/24
 
 # Permitir desde Tailscale a servicios privados
 IN ACCEPT -source 192.168.1.87 -dest 10.10.10.0/24

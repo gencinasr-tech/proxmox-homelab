@@ -486,7 +486,7 @@ services:
       replicas: 3
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.app.rule=Host(`app.local`)"
+      - "traefik.http.routers.app.rule=Host(`app.home.arpa`)"
       - "traefik.http.services.app.loadbalancer.server.port=8080"
 ```
 

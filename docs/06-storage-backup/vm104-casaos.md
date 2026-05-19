@@ -6,7 +6,7 @@ Sistema de almacenamiento y gestión de archivos con CasaOS.
 
 - **ID:** VM104
 - **Hostname:** casaos
-- **IP LAN:** 192.168.1.104
+- **IP LAN:** 192.168.1.78
 - **OS:** CasaOS (basado en Debian)
 - **Recursos:** 2 CPU, 4GB RAM, 32GB disco + almacenamiento adicional
 

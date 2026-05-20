@@ -113,8 +113,8 @@ https://vault.home.arpa        # o http://10.10.10.60:8080
 ```
 
 > **Diferencia importante:**
-> - **Tailscale Serve**: Crea dominios públicos HTTPS tipo `servicio.tailXXXXXX.ts.net`
-> - **Tailscale VPN**: Permite acceso directo a IPs/dominios internos estando conectado a la VPN
+> - **Tailscale Serve**: Crea dominios HTTPS tipo `servicio.tailXXXXXX.ts.net` accesibles solo desde la tailnet, salvo que se active Tailscale Funnel.
+> - **Tailscale VPN**: Permite acceso directo a IPs/dominios internos estando conectado a la VPN.
 
 ## Configuración DNS
 

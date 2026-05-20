@@ -22,7 +22,9 @@
 
 ### Tailscale Serve en Vaultwarden
 ![Vaultwarden Tailscale Serve](../../assets/screenshots/12-vaultwarden-tailscale-serve.png)
-*Tailscale Serve configurado localmente en CT106 para acceso HTTPS público*
+*Tailscale Serve configurado localmente en CT106 para acceso HTTPS privado dentro de la tailnet*
+
+> **Nota**: Tailscale Serve crea dominios HTTPS tipo `servicio.tailXXXXXX.ts.net` accesibles solo desde la tailnet, salvo que se active Tailscale Funnel para acceso público.
 
 ## Tabla de Dominios
 

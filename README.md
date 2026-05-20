@@ -85,23 +85,17 @@
 
 <div align="center">
 
-### Proxmox Datacenter
-![Proxmox Datacenter](assets/screenshots/01-proxmox-datacenter.png)
+| Proxmox Datacenter | Tailscale Routes |
+|:------------------:|:----------------:|
+| ![Proxmox Datacenter](assets/screenshots/01-proxmox-datacenter.png) | ![Tailscale Routes](assets/screenshots/03-tailscale-routes.png) |
 
-### Tailscale Routes
-![Tailscale Routes](assets/screenshots/03-tailscale-routes.png)
+| Nginx Proxy Manager | Keycloak Clients |
+|:-------------------:|:----------------:|
+| ![Nginx Proxy Manager](assets/screenshots/06-nginx-proxy-manager.png) | ![Keycloak Clients](assets/screenshots/08-keycloak-clients.png) |
 
-### Nginx Proxy Manager
-![Nginx Proxy Manager](assets/screenshots/06-nginx-proxy-manager.png)
-
-### Keycloak Clients
-![Keycloak Clients](assets/screenshots/08-keycloak-clients.png)
-
-### Grafana Dashboard
-![Grafana Dashboard](assets/screenshots/09-grafana-dashboard.png)
-
-### Homarr Dashboard
-![Homarr Dashboard](assets/screenshots/10-homarr-dashboard.png)
+| Grafana Dashboard | Homarr Dashboard |
+|:-----------------:|:----------------:|
+| ![Grafana Dashboard](assets/screenshots/09-grafana-dashboard.png) | ![Homarr Dashboard](assets/screenshots/10-homarr-dashboard.png) |
 
 </div>
 

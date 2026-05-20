@@ -31,7 +31,9 @@ Vaultwarden proporciona:
 ## 📸 Configuración de Tailscale Serve
 
 ![Vaultwarden Tailscale Serve](../../assets/screenshots/12-vaultwarden-tailscale-serve.png)
-*Tailscale Serve configurado en CT106 para acceso HTTPS público a Vaultwarden*
+*Tailscale Serve configurado en CT106 para acceso HTTPS privado dentro de la tailnet*
+
+> **Nota**: Tailscale Serve proporciona HTTPS solo dentro de tu tailnet (tailnet only). Para acceso público desde Internet, sería necesario activar Tailscale Funnel.
 - **Backups:** Diarios automáticos cifrados
 - **Registros:** Deshabilitados (solo invitaciones)
 - **Admin Panel:** Protegido con token

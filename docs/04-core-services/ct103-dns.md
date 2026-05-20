@@ -27,6 +27,11 @@ CT103 proporciona servicios DNS para toda la red local con:
 2. **Bloqueo de Rastreadores**: Protege la privacidad bloqueando trackers
 3. **DNS Local**: Resolución de dominios `.home.arpa` internos
 4. **DNS Seguro**: DNS-over-HTTPS (DoH) y DNS-over-TLS (DoT)
+
+## 📸 Configuración Real
+
+![AdGuard DNS Rewrites](../../assets/screenshots/05-adguard-dns-rewrites.png)
+*DNS Rewrites configurados en AdGuard Home para dominios .home.arpa*
 5. **Estadísticas**: Dashboard con métricas de consultas DNS
 
 ## 🏗️ Arquitectura

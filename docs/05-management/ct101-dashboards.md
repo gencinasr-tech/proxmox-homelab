@@ -27,6 +27,11 @@ CT101 es el **centro de control visual** del homelab, proporcionando:
 2. **Homarr**: Dashboard moderno con integración Docker
 3. **Homer**: Dashboard minimalista y rápido
 4. **Heimdall**: Dashboard tipo app launcher
+
+## 📸 Dashboard Real
+
+![Homarr Dashboard](../../assets/screenshots/10-homarr-dashboard.png)
+*Dashboard de Homarr con widgets y acceso rápido a todos los servicios*
 5. **Gestión Centralizada**: Acceso rápido a todos los servicios
 
 ## 🏗️ Arquitectura

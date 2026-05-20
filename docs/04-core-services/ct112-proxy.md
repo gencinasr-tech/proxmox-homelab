@@ -27,6 +27,11 @@ CT112 actúa como **reverse proxy centralizado** para todo el homelab:
 2. **Dominios Locales**: Gestiona todos los dominios `.home.arpa`
 3. **Certificados SSL**: Genera y gestiona certificados (autofirmados o Let's Encrypt)
 4. **Interfaz Web**: Gestión visual de proxy hosts
+
+## 📸 Configuración Real
+
+![Nginx Proxy Manager](../../assets/screenshots/06-nginx-proxy-manager.png)
+*Panel de Nginx Proxy Manager con todos los proxy hosts configurados*
 5. **Access Lists**: Control de acceso por IP o autenticación básica
 
 ## 🏗️ Arquitectura

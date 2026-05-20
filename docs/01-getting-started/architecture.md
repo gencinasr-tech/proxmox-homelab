@@ -2,6 +2,11 @@
 
 Este documento explica en detalle cómo está diseñado y estructurado el homelab, cómo se comunican los componentes y por qué se tomaron ciertas decisiones de diseño.
 
+
+## 📸 Vista del Sistema Real
+
+![Proxmox Datacenter](../../assets/screenshots/01-proxmox-datacenter.png)
+*Vista del Datacenter de Proxmox con todos los contenedores y VMs en ejecución*
 ## 📐 Visión General
 
 ```

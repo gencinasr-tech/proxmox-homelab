@@ -19,7 +19,12 @@ CasaOS proporciona:
 - 💾 Gestión de almacenamiento
 - 🖥️ Dashboard intuitivo
 
-## 📚 Documentación Detallada
+## 📸 Interfaz Real
+
+![CasaOS Dashboard](../../assets/screenshots/11-casaos-dashboard.png)
+*Dashboard de CasaOS con gestión de aplicaciones y almacenamiento*
+
+## � Documentación Detallada
 
 Para instrucciones completas de instalación y configuración, consulta la documentación principal del proyecto.
 

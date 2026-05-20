@@ -81,6 +81,30 @@
 
 [Ver topología detallada →](docs/reference/topology.md)
 
+## 📸 Capturas del Sistema
+
+<div align="center">
+
+### Proxmox Datacenter
+![Proxmox Datacenter](assets/screenshots/01-proxmox-datacenter.png)
+
+### Tailscale Routes
+![Tailscale Routes](assets/screenshots/03-tailscale-routes.png)
+
+### Nginx Proxy Manager
+![Nginx Proxy Manager](assets/screenshots/06-nginx-proxy-manager.png)
+
+### Keycloak Clients
+![Keycloak Clients](assets/screenshots/08-keycloak-clients.png)
+
+### Grafana Dashboard
+![Grafana Dashboard](assets/screenshots/09-grafana-dashboard.png)
+
+### Homarr Dashboard
+![Homarr Dashboard](assets/screenshots/10-homarr-dashboard.png)
+
+</div>
+
 ## 📋 Servicios Disponibles
 
 ### 🌐 Acceso Público (LAN)

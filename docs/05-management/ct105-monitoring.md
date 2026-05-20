@@ -27,6 +27,11 @@ El stack de monitorización proporciona:
 ## 🔒 Seguridad
 
 - **Criticidad:** ALTA (visibilidad de toda la infraestructura)
+
+## 📸 Dashboard Real
+
+![Grafana Dashboard](../../assets/screenshots/09-grafana-dashboard.png)
+*Dashboard de Grafana mostrando métricas del sistema en tiempo real*
 - **Acceso:** HTTPS vía proxy para servicios web
 - **Métricas:** Solo accesibles desde red privada
 - **Backups:** Configuración y dashboards

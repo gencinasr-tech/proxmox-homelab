@@ -28,7 +28,17 @@ Tailscale proporciona:
 - 📱 Acceso desde cualquier dispositivo
 - 🚀 Subnet routing para acceder a toda la red local
 
-## 📚 Documentación Detallada
+## 📸 Configuración Real
+
+### Rutas Anunciadas
+![Tailscale Routes](../../assets/screenshots/03-tailscale-routes.png)
+*Subnet routes configuradas: 192.168.1.0/24 y 10.10.10.0/24*
+
+### Máquina en Tailscale
+![Tailscale Machine](../../assets/screenshots/04-tailscale-machine.png)
+*CT100 registrado en Tailscale como subnet router*
+
+## � Documentación Detallada
 
 Para instrucciones completas de instalación y configuración, consulta:
 

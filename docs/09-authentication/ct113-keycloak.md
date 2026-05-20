@@ -27,6 +27,11 @@ Keycloak proporciona:
 - **Criticidad:** CRÍTICA
 - **Acceso:** Solo vía proxy con SSL (https://auth.home.arpa)
 - **Backups:** Diarios automáticos de PostgreSQL
+
+## 📸 Configuración Real
+
+![Keycloak Clients](../../assets/screenshots/08-keycloak-clients.png)
+*Clientes OAuth configurados en Keycloak para SSO con los servicios del homelab*
 - **Certificados:** SSL local vía Nginx Proxy Manager
 
 ---

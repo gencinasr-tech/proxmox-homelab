@@ -72,4 +72,7 @@ notas-personales.md
 *-export-real.json
 *-backup-real.yml
 realm-export-production.json
+
+# Carpeta de fotos/capturas de pantalla (no subir al repo)
+fotos/
 proxmox-info-export/

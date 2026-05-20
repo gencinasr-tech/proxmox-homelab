@@ -24,6 +24,11 @@ Portainer proporciona:
 - 📝 Logs y consola de contenedores
 - 🌐 Gestión de múltiples entornos Docker
 
+## 📸 Configuración Real
+
+![Portainer Environments](../../assets/screenshots/07-portainer-environments.png)
+*Entornos Docker gestionados por Portainer con múltiples agentes conectados*
+
 ## 🔒 Seguridad
 
 - **Criticidad:** CRÍTICA (acceso a todos los contenedores)

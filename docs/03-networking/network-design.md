@@ -9,6 +9,11 @@ Arquitectura y diseño de la red del homelab.
 - [Segmentación](#segmentación)
 - [Flujo de Tráfico](#flujo-de-tráfico)
 
+## 📸 Topología de Red Real
+
+![Topología de Red](../../assets/screenshots/02-proxmox-network-vmbr.png)
+*Vista simplificada de la topología de red con vmbr0 (LAN) y vmbr10 (Privada)*
+
 ## Visión General
 
 ### Principios de Diseño

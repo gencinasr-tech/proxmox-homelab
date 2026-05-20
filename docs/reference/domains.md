@@ -14,6 +14,16 @@
 <servicio>.home.arpa
 ```
 
+## 📸 Configuración DNS Real
+
+### DNS Rewrites en AdGuard Home
+![AdGuard DNS Rewrites](../../assets/screenshots/05-adguard-dns-rewrites.png)
+*Configuración de DNS rewrites en AdGuard Home apuntando a NPM*
+
+### Tailscale Serve en Vaultwarden
+![Vaultwarden Tailscale Serve](../../assets/screenshots/12-vaultwarden-tailscale-serve.png)
+*Tailscale Serve configurado localmente en CT106 para acceso HTTPS público*
+
 ## Tabla de Dominios
 
 ### 🌐 Servicios en Red LAN (192.168.1.0/24)

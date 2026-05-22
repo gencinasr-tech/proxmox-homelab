@@ -1,7 +1,0 @@
-### pvesm-status
-### Comando: pvesm status
-
-Name                  Type     Status     Total (KiB)      Used (KiB) Available (KiB)        %
-hdd250-backups         dir     active       239253280       104400232       134836664   43.64%
-local                  dir     active        98497780         8292572        85155660    8.42%
-local-lvm          lvmthin     active       365760512       104900114       260860397   28.68%

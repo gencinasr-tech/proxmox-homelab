@@ -1,4 +1,0 @@
-### uptime
-### Comando: uptime
-
- 09:11:35 up 8 days,  9:28,  1 user,  load average: 2.46, 1.47, 1.21
